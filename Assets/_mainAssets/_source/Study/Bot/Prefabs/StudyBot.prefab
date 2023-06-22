@@ -341,8 +341,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6261303357040441471}
-  - component: {fileID: 6261303357040441470}
-  - component: {fileID: 6261303357040441457}
   - component: {fileID: 6441788062046614473}
   - component: {fileID: 4647245343640813638}
   m_Layer: 0
@@ -367,151 +365,8 @@ Transform:
   - {fileID: 6261303357910976780}
   - {fileID: 5867670553899803680}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!82 &6261303357040441470
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6261303357040441456}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 0
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
---- !u!114 &6261303357040441457
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6261303357040441456}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c1d4309f2fdb1d48bd414baacdf2d2a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Chapters:
-  - ChapterName: "\u0413\u043B\u0430\u0432\u0430 1 \"\u0413\u043E\u0440\u043E\u0434\""
-    Levels:
-    - LevelName: "\u0420\u0435\u043D\u043E\u0432\u0430\u0446\u0438\u044F \u0411\u0443\u0434\u0443\u0449\u0435\u0433\u043E"
-      Stages: []
-    - LevelName: "\u0420\u0435\u0430\u043B\u044C\u043D\u0430\u044F \u0420\u0435\u043D\u043E\u0432\u0430\u0446\u0438\u044F"
-      Stages: []
-  - ChapterName: "\u0413\u043B\u0430\u0432\u0430 2 \"\u0414\u043E\u0440\u043E\u0433\u0430\""
-    Levels:
-    - LevelName: "\u0414\u0435\u043C\u043E\u043D\u0442\u0430\u0436"
-      Stages: []
-    - LevelName: "\u041F\u0435\u0440\u0435\u0445\u043E\u0434"
-      Stages: []
-    - LevelName: "\u0422\u0440\u0430\u043D\u0441\u043F\u043E\u0440\u0442"
-      Stages: []
-    - LevelName: "\u041E\u0441\u0442\u0440\u043E\u0432\u043E\u043A \u0431\u0435\u0437\u043E\u043F\u0430\u0441\u043D\u043E\u0441\u0442\u0438"
-      Stages: []
-  - ChapterName: "\u0413\u043B\u0430\u0432\u0430 3 \"\u0417\u043E\u043D\u044B\""
-    Levels:
-    - LevelName: "\u0412\u0435\u043B\u043E\u0434\u043E\u0440\u043E\u0436\u043A\u0430"
-      Stages: []
-    - LevelName: "\u041F\u0430\u0440\u043A\u043E\u0432\u043E\u0447\u043D\u044B\u0435
-        \u043A\u0430\u0440\u043C\u0430\u043D\u044B"
-      Stages: []
-    - LevelName: "\u0417\u043E\u043D\u044B \u0442\u043E\u0440\u0433\u043E\u0432\u043B\u0438"
-      Stages: []
-    - LevelName: "\u0417\u043E\u043D\u044B \u0434\u043E\u0441\u0443\u0433\u0430"
-      Stages: []
-  BackgroundMusic: {fileID: 6441788062046614473}
-  _audioSource: {fileID: 6261303357040441470}
-  _timeDelay: 1
-  _bgVolume: 0.03
-  OnStudyComplete:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!82 &6441788062046614473
 AudioSource:
   m_ObjectHideFlags: 0
@@ -522,7 +377,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: c0341275363f7ab43b4d4660b8bb68da, type: 3}
+  m_audioClip: {fileID: 8300000, guid: b045f7ce9d7f2254380901046ed9f955, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -620,13 +475,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b284abc12be8a54bbbccc48bf3c5c93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveSpeed: 1
-  RotateSpeed: 2
+  MoveSpeed: 5
+  RotateSpeed: 3
   StudyDistance: 1
   OnMoveComplete:
     m_PersistentCalls:
       m_Calls: []
-  _audio: {fileID: 6441788062046614473}
 --- !u!1 &6261303357910976782
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: 5347a180850b77d4e94ab7515b410ede
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - CloseTools: {instanceID: 0}
+  - OnCloseBtn: {fileID: 8300000, guid: c780ee7dffa26c04182c81651dccb46b, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
