@@ -4,7 +4,7 @@ using StudySystem;
 
 namespace ToolsSystem.Old
 {
-    public class Buildable : Selectable
+    public class Buildable : Selectable, IStudy
     {
         [SerializeField] private GameObject Standart;
         [SerializeField] private BuildVariant[] Variants;

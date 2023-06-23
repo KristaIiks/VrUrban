@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
+using StudySystem;
 
 namespace ToolsSystem.Old
 {
@@ -11,7 +12,6 @@ namespace ToolsSystem.Old
         public UnityEvent OnDeselect = new UnityEvent();
 
         private bool _isSelected = false;
-        //private Material _material;
         protected ToolParams Params;
 
         public virtual void Awake()
@@ -61,6 +61,5 @@ namespace ToolsSystem.Old
                 }
             }
         }
-
     }
 }

@@ -71,7 +71,6 @@ GameObject:
   - component: {fileID: 5335218824077633498}
   - component: {fileID: -1282716859917743021}
   - component: {fileID: 4915627227511779151}
-  - component: {fileID: 2561648964617727762}
   m_Layer: 0
   m_Name: BuildSlot
   m_TagString: Untagged
@@ -198,25 +197,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &2561648964617727762
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5335218824077633496}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7951c64acb0fa62458bf30a60089fe2d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_IgnoreReversedGraphics: 0
-  m_CheckFor2DOcclusion: 0
-  m_CheckFor3DOcclusion: 0
-  m_BlockingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RaycastTriggerInteraction: 1
 --- !u!1 &7401859374533233939
 GameObject:
   m_ObjectHideFlags: 0
