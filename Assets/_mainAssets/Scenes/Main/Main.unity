@@ -3872,7 +3872,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05168f959b3f94d45b00168515a03270, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _canInteract: 0
+  _canInteract: 1
   OnSelect:
     m_PersistentCalls:
       m_Calls: []
@@ -10135,7 +10135,7 @@ PrefabInstance:
     - target: {fileID: 3450395385435877649, guid: 228db004d7705d0448114695d3bf63e4,
         type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3450395385435877649, guid: 228db004d7705d0448114695d3bf63e4,
         type: 3}
@@ -82480,58 +82480,6 @@ PrefabInstance:
     - target: {fileID: 3802221215126525149, guid: b261dfe346e6264439ef877ca0595d71,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4486142449050101049, guid: b261dfe346e6264439ef877ca0595d71,
-        type: 3}
-      propertyPath: m_PositionInput.m_Reference
-      value: 
-      objectReference: {fileID: 7862207684358717888, guid: c348712bda248c246b8c49b3db54643f,
-        type: 3}
-    - target: {fileID: 4486142449050101049, guid: b261dfe346e6264439ef877ca0595d71,
-        type: 3}
-      propertyPath: m_RotationInput.m_Reference
-      value: 
-      objectReference: {fileID: -530380113134220495, guid: c348712bda248c246b8c49b3db54643f,
-        type: 3}
-    - target: {fileID: 4486142449050101049, guid: b261dfe346e6264439ef877ca0595d71,
-        type: 3}
-      propertyPath: m_PositionInput.m_Action.m_Id
-      value: cbadac34-1254-4c9f-8a8b-6f645173154b
-      objectReference: {fileID: 0}
-    - target: {fileID: 4486142449050101049, guid: b261dfe346e6264439ef877ca0595d71,
-        type: 3}
-      propertyPath: m_RotationInput.m_Action.m_Id
-      value: e0aa262a-33a5-4a52-a32c-c82b1316fe22
-      objectReference: {fileID: 0}
-    - target: {fileID: 4486142449050101049, guid: b261dfe346e6264439ef877ca0595d71,
-        type: 3}
-      propertyPath: m_PositionInput.m_UseReference
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4486142449050101049, guid: b261dfe346e6264439ef877ca0595d71,
-        type: 3}
-      propertyPath: m_RotationInput.m_UseReference
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4486142449050101049, guid: b261dfe346e6264439ef877ca0595d71,
-        type: 3}
-      propertyPath: m_PositionInput.m_Action.m_Name
-      value: Position Input
-      objectReference: {fileID: 0}
-    - target: {fileID: 4486142449050101049, guid: b261dfe346e6264439ef877ca0595d71,
-        type: 3}
-      propertyPath: m_RotationInput.m_Action.m_Name
-      value: Rotation Input
-      objectReference: {fileID: 0}
-    - target: {fileID: 4486142449050101049, guid: b261dfe346e6264439ef877ca0595d71,
-        type: 3}
-      propertyPath: m_TrackingStateInput.m_UseReference
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5694406738322577496, guid: b261dfe346e6264439ef877ca0595d71,
-        type: 3}
-      propertyPath: m_RequestedTrackingOriginMode
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5852481470863121408, guid: b261dfe346e6264439ef877ca0595d71,
