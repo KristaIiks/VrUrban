@@ -58140,7 +58140,7 @@ GameObject:
   - component: {fileID: 1720284087}
   - component: {fileID: 1720284082}
   - component: {fileID: 1720284088}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58252,7 +58252,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_InteractionLayers:
-    m_Bits: 1
+    m_Bits: 2147483648
   m_DistanceCalculationMode: 1
   m_SelectMode: 1
   m_CustomReticle: {fileID: 0}
@@ -82427,6 +82427,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 2225637657561571312, guid: b261dfe346e6264439ef877ca0595d71,
+        type: 3}
+      propertyPath: m_InteractionManager
+      value: 
+      objectReference: {fileID: 1942423688}
+    - target: {fileID: 2240586057711209741, guid: b261dfe346e6264439ef877ca0595d71,
+        type: 3}
+      propertyPath: m_InteractionManager
+      value: 
+      objectReference: {fileID: 1942423688}
     - target: {fileID: 3802221215126525149, guid: b261dfe346e6264439ef877ca0595d71,
         type: 3}
       propertyPath: m_RootOrder
@@ -82482,12 +82492,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5852481470863121408, guid: b261dfe346e6264439ef877ca0595d71,
+    - target: {fileID: 7344216768863281028, guid: b261dfe346e6264439ef877ca0595d71,
         type: 3}
       propertyPath: m_InteractionManager
       value: 
       objectReference: {fileID: 1942423688}
-    - target: {fileID: 8451156076262378112, guid: b261dfe346e6264439ef877ca0595d71,
+    - target: {fileID: 9210736526148012871, guid: b261dfe346e6264439ef877ca0595d71,
         type: 3}
       propertyPath: m_InteractionManager
       value: 

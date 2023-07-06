@@ -1,50 +1,108 @@
 using Unity.XR.CoreUtils;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class HandControls : MonoBehaviour
 {
+    [SerializeField] private XRRayInteractor _standartHand;
+    [SerializeField] private XRRayInteractor _teleportHand;
+
 	[SerializeField] private InputActionReference _rotateInput;
     [SerializeField] private InputActionReference _snapValue;
     [SerializeField] private float _snapSpeed = 45;
 
+    [SerializeField] private InputActionReference _teleport;
+
     [SerializeField] private ControllerTips[] _tips;
 
     private XROrigin _rig;
+    private TeleportationProvider _provider;
+
     private GameObject _current;
+    private bool _teleporting = false;
 
 
     private void Awake()
     {
         _rig = GetComponentInParent<XROrigin>();
+        _provider = GetComponentInParent<TeleportationProvider>();
        
         _rotateInput.action.performed += (s) => _rig.RotateAroundCameraUsingOriginUp((_snapValue.action.ReadValue<Vector2>().x != 0 ? Mathf.Sign(_snapValue.action.ReadValue<Vector2>().x) : 0) * _snapSpeed);
+
+        _teleport.action.performed += (s) => StartTeleport(s);
+        _teleport.action.canceled += (s) => FinishTeleport();
     }
+
+    private void StartTeleport(InputAction.CallbackContext context)
+    {
+        if (context.ReadValue<Vector2>() == Vector2.zero) { return; }
+
+        _standartHand.gameObject.SetActive(false);
+        _teleportHand.gameObject.SetActive(true);
+        _teleporting = true;
+    }
+
+    private void FinishTeleport()
+    {
+        if (!_teleporting) { return; }
+
+        _standartHand.gameObject.SetActive(true);
+        _teleportHand.gameObject.SetActive(false);
+
+        //if (_teleportHand.TryGetCurrent3DRaycastHit(out RaycastHit hit))
+        //{
+        //    _provider.QueueTeleportRequest(new TeleportRequest
+        //    {
+        //        destinationPosition = hit.point
+        //    });
+        //}
+        _teleporting = false;
+    }
+
+    #region Study
 
     public void StartStudy(ControllerBtn _btn) => Study(_btn);
     public void StartStudy(ControllerBtn _btn, bool _autoFinish) => Study(_btn, _autoFinish);
 
     private void Study(ControllerBtn _btn, bool _autoFinish = true)
     {
-        //switch (_btn)
-        //{
-        //    case ControllerBtn.Joystick:
-        //        break;
-        //    default:
-        //        Debug.Log("No study");
-        //        break;
-        //}
-        //_rotateInput.action.performed += (s) => StopStudy(obj);
+        foreach (ControllerTips item in _tips)
+        {
+            if (item._btn == _btn)
+            {
+                _current = item._model;
+
+                if (_autoFinish)
+                {
+                    item._action.performed += (s) => StopStudy(_btn);
+                }
+                break;
+            }
+        }
+
     }
 
-    public void StopStudy(GameObject _model = null)
+    public void StopStudy(ControllerBtn _btn = ControllerBtn.None)
     {
-        if(_model != null)
+        if (_btn != ControllerBtn.None) // Auto finish
         {
-            _model.SetActive(false);
+
+            foreach (ControllerTips item in _tips)
+            {
+                if (item._btn == _btn)
+                {
+                    item._model.SetActive(false);
+                    break;
+                }
+            }
+
+            return;
         }
         _current?.SetActive(false);
     }
+
+    #endregion
 
 }
 
@@ -53,11 +111,15 @@ public struct ControllerTips
 {
     public GameObject _model;
     public ControllerBtn _btn;
+    public InputAction _action;
 }
 
 [System.Serializable]
 public enum ControllerBtn
 {
     Trigger,
-    Joystick
+    Joystick,
+    Catch,
+    Menu,
+    None
 }
