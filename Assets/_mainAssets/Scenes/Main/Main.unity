@@ -82492,11 +82492,29 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4156616673586961855, guid: b261dfe346e6264439ef877ca0595d71,
+        type: 3}
+      propertyPath: _teleport
+      value: 
+      objectReference: {fileID: 2559827040501072063, guid: c348712bda248c246b8c49b3db54643f,
+        type: 3}
+    - target: {fileID: 4156616673586961855, guid: b261dfe346e6264439ef877ca0595d71,
+        type: 3}
+      propertyPath: _trackpad
+      value: 
+      objectReference: {fileID: -8525429354371678379, guid: c348712bda248c246b8c49b3db54643f,
+        type: 3}
     - target: {fileID: 7344216768863281028, guid: b261dfe346e6264439ef877ca0595d71,
         type: 3}
       propertyPath: m_InteractionManager
       value: 
       objectReference: {fileID: 1942423688}
+    - target: {fileID: 8896322069393422393, guid: b261dfe346e6264439ef877ca0595d71,
+        type: 3}
+      propertyPath: _trackpad
+      value: 
+      objectReference: {fileID: -7374733323251553461, guid: c348712bda248c246b8c49b3db54643f,
+        type: 3}
     - target: {fileID: 9210736526148012871, guid: b261dfe346e6264439ef877ca0595d71,
         type: 3}
       propertyPath: m_InteractionManager
@@ -82515,6 +82533,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 908406970}
     m_Modifications:
+    - target: {fileID: 1770695628805713465, guid: d65da675f57980a45a3462ec9dd7fc7d,
+        type: 3}
+      propertyPath: m_InteractionManager
+      value: 
+      objectReference: {fileID: 1942423688}
     - target: {fileID: 6261303357040441456, guid: d65da675f57980a45a3462ec9dd7fc7d,
         type: 3}
       propertyPath: m_Name

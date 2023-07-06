@@ -802,12 +802,12 @@
             "actions": [
                 {
                     "name": "Teleport Activate",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "cbeaf823-3b69-4004-8ec8-13ea2ca3fc31",
-                    "expectedControlType": "Button",
-                    "processors": "",
+                    "expectedControlType": "Vector2",
+                    "processors": "StickDeadzone(max=0.9)",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 },
                 {
                     "name": "Turn",
@@ -837,7 +837,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Snap Turn",
+                    "name": "TrackpadClick",
                     "type": "Button",
                     "id": "8c14e969-a054-4f12-840c-4e0bd85173d9",
                     "expectedControlType": "Button",
@@ -850,7 +850,7 @@
                     "type": "Value",
                     "id": "04599f28-c29f-4f02-a230-2160b69ad5c5",
                     "expectedControlType": "Vector2",
-                    "processors": "",
+                    "processors": "StickDeadzone(min=0.9,max=1)",
                     "interactions": "",
                     "initialStateCheck": true
                 }
@@ -859,9 +859,9 @@
                 {
                     "name": "",
                     "id": "95fa1419-ca7b-4c8a-8d15-7d46e58d82e3",
-                    "path": "<XRController>{LeftHand}/trackpadClicked",
+                    "path": "<XRController>{RightHand}/primary2DAxis",
                     "interactions": "",
-                    "processors": "AxisDeadzone(min=1.401298E-45,max=0.9)",
+                    "processors": "",
                     "groups": "Generic XR Controller",
                     "action": "Teleport Activate",
                     "isComposite": false,
@@ -905,9 +905,9 @@
                     "id": "a46b49d0-0754-4dac-a9a5-a822e10751f2",
                     "path": "<XRController>{LeftHand}/trackpadClicked",
                     "interactions": "",
-                    "processors": "AxisDeadzone(min=0.9)",
+                    "processors": "",
                     "groups": "Generic XR Controller",
-                    "action": "Snap Turn",
+                    "action": "TrackpadClick",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -915,8 +915,8 @@
                     "name": "",
                     "id": "9da03d61-cf91-4602-a2de-4195d4e2ca2d",
                     "path": "<XRController>{LeftHand}/primary2DAxis",
-                    "interactions": "",
-                    "processors": "StickDeadzone(min=0.9)",
+                    "interactions": "Sector(directions=12)",
+                    "processors": "",
                     "groups": "Generic XR Controller",
                     "action": "Snap",
                     "isComposite": false,
@@ -1457,15 +1457,6 @@
             "id": "99ce76d3-82c5-4289-9670-2ecffa6833fd",
             "actions": [
                 {
-                    "name": "Teleport Activate",
-                    "type": "Value",
-                    "id": "02e43582-8973-4940-af06-dff6158e3df2",
-                    "expectedControlType": "",
-                    "processors": "AxisDeadzone(max=0.01)",
-                    "interactions": "",
-                    "initialStateCheck": true
-                },
-                {
                     "name": "Turn",
                     "type": "Value",
                     "id": "9fb2eb2b-2fb6-4328-8167-10a1bf11b424",
@@ -1493,7 +1484,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Snap Turn",
+                    "name": "TrackpadClick",
                     "type": "Button",
                     "id": "44441ad6-5762-466d-ad54-aa44fcd61a5c",
                     "expectedControlType": "Button",
@@ -1506,23 +1497,21 @@
                     "type": "Value",
                     "id": "1ce527bf-0b68-4941-811a-21a02efea190",
                     "expectedControlType": "Vector2",
-                    "processors": "",
+                    "processors": "StickDeadzone(min=0.9,max=1)",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Teleport",
+                    "type": "Value",
+                    "id": "97b0382c-6eb7-4fda-bcf2-8f49ff4ef96a",
+                    "expectedControlType": "Vector2",
+                    "processors": "StickDeadzone(max=0.9)",
                     "interactions": "",
                     "initialStateCheck": true
                 }
             ],
             "bindings": [
-                {
-                    "name": "",
-                    "id": "919c4a6c-22ed-4083-8e14-f30e91ff59fe",
-                    "path": "<XRController>{RightHand}/primary2DAxis",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Generic XR Controller",
-                    "action": "Teleport Activate",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
                 {
                     "name": "",
                     "id": "d6c08c3d-3d41-4695-994d-1ac9016a5a9e",
@@ -1561,9 +1550,9 @@
                     "id": "31d838df-4d4e-4c16-a373-b9c07d9d2e2a",
                     "path": "<XRController>{RightHand}/trackpadClicked",
                     "interactions": "",
-                    "processors": "AxisDeadzone(min=0.9)",
+                    "processors": "",
                     "groups": "Generic XR Controller",
-                    "action": "Snap Turn",
+                    "action": "TrackpadClick",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -1572,9 +1561,20 @@
                     "id": "9b73cd80-b7aa-40df-abda-026fe65fff1f",
                     "path": "<XRController>{RightHand}/primary2DAxis",
                     "interactions": "",
-                    "processors": "StickDeadzone(min=0.9)",
+                    "processors": "",
                     "groups": "Generic XR Controller",
                     "action": "Snap",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "008b6c51-a6e1-4eea-925e-81f6a344c999",
+                    "path": "<XRController>{RightHand}/primary2DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Generic XR Controller",
+                    "action": "Teleport",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

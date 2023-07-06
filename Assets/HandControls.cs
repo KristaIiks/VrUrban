@@ -8,7 +8,8 @@ public class HandControls : MonoBehaviour
     [SerializeField] private XRRayInteractor _standartHand;
     [SerializeField] private XRRayInteractor _teleportHand;
 
-	[SerializeField] private InputActionReference _rotateInput;
+	[SerializeField] private InputActionReference _trackpad;
+
     [SerializeField] private InputActionReference _snapValue;
     [SerializeField] private float _snapSpeed = 45;
 
@@ -28,15 +29,15 @@ public class HandControls : MonoBehaviour
         _rig = GetComponentInParent<XROrigin>();
         _provider = GetComponentInParent<TeleportationProvider>();
        
-        _rotateInput.action.performed += (s) => _rig.RotateAroundCameraUsingOriginUp((_snapValue.action.ReadValue<Vector2>().x != 0 ? Mathf.Sign(_snapValue.action.ReadValue<Vector2>().x) : 0) * _snapSpeed);
+        _trackpad.action.performed += (s) => _rig.RotateAroundCameraUsingOriginUp((_snapValue.action.ReadValue<Vector2>().x != 0 ? Mathf.Sign(_snapValue.action.ReadValue<Vector2>().x) : 0) * _snapSpeed);
 
-        _teleport.action.performed += (s) => StartTeleport(s);
-        _teleport.action.canceled += (s) => FinishTeleport();
+        _trackpad.action.performed += (s) => StartTeleport();
+        _trackpad.action.canceled += (s) => FinishTeleport();
     }
 
-    private void StartTeleport(InputAction.CallbackContext context)
+    private void StartTeleport()
     {
-        if (context.ReadValue<Vector2>() == Vector2.zero) { return; }
+        if (_teleport.action.ReadValue<Vector2>() == Vector2.zero) { return; }
 
         _standartHand.gameObject.SetActive(false);
         _teleportHand.gameObject.SetActive(true);
@@ -57,6 +58,7 @@ public class HandControls : MonoBehaviour
         //        destinationPosition = hit.point
         //    });
         //}
+
         _teleporting = false;
     }
 
