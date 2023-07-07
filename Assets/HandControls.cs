@@ -21,7 +21,6 @@ public class HandControls : MonoBehaviour
     private TeleportationProvider _provider;
 
     private GameObject _current;
-    private bool _teleporting = false;
 
 
     private void Awake()
@@ -29,7 +28,7 @@ public class HandControls : MonoBehaviour
         _rig = GetComponentInParent<XROrigin>();
         _provider = GetComponentInParent<TeleportationProvider>();
        
-        _trackpad.action.performed += (s) => _rig.RotateAroundCameraUsingOriginUp((_snapValue.action.ReadValue<Vector2>().x != 0 ? Mathf.Sign(_snapValue.action.ReadValue<Vector2>().x) : 0) * _snapSpeed);
+        //_trackpad.action.performed += (s) => _rig.RotateAroundCameraUsingOriginUp((_snapValue.action.ReadValue<Vector2>().x != 0 ? Mathf.Sign(_snapValue.action.ReadValue<Vector2>().x) : 0) * _snapSpeed);
 
         _trackpad.action.performed += (s) => StartTeleport();
         _trackpad.action.canceled += (s) => FinishTeleport();
@@ -37,29 +36,22 @@ public class HandControls : MonoBehaviour
 
     private void StartTeleport()
     {
-        if (_teleport.action.ReadValue<Vector2>() == Vector2.zero) { return; }
-
         _standartHand.gameObject.SetActive(false);
         _teleportHand.gameObject.SetActive(true);
-        _teleporting = true;
     }
 
     private void FinishTeleport()
     {
-        if (!_teleporting) { return; }
-
         _standartHand.gameObject.SetActive(true);
         _teleportHand.gameObject.SetActive(false);
 
-        //if (_teleportHand.TryGetCurrent3DRaycastHit(out RaycastHit hit))
-        //{
-        //    _provider.QueueTeleportRequest(new TeleportRequest
-        //    {
-        //        destinationPosition = hit.point
-        //    });
-        //}
-
-        _teleporting = false;
+        if (_teleportHand.TryGetHitInfo(out Vector3 _pos, out _, out _, out bool isValid) && isValid) //TryGetCurrent3DRaycastHit(out RaycastHit hit))
+        {
+            _provider.QueueTeleportRequest(new TeleportRequest
+            {
+                destinationPosition = _pos
+            });
+        }
     }
 
     #region Study
