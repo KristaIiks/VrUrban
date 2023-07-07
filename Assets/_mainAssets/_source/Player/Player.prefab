@@ -272,7 +272,7 @@ Transform:
   m_Children:
   - {fileID: 2149742503225655235}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5694406738322577496
 MonoBehaviour:
@@ -2924,35 +2924,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 256447057301938316}
     m_Modifications:
-    - target: {fileID: 3966690911583425055, guid: bfddcee513575b84b986f6150e548665,
-        type: 3}
-      propertyPath: m_LineType
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3966690911583425055, guid: bfddcee513575b84b986f6150e548665,
-        type: 3}
-      propertyPath: m_RaycastMask.m_Bits
-      value: 128
-      objectReference: {fileID: 0}
-    - target: {fileID: 3966690911583425055, guid: bfddcee513575b84b986f6150e548665,
-        type: 3}
-      propertyPath: m_EnableUIInteraction
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3966690911583425055, guid: bfddcee513575b84b986f6150e548665,
-        type: 3}
-      propertyPath: m_InteractionLayers.m_Bits
-      value: 2147483648
-      objectReference: {fileID: 0}
     - target: {fileID: 5299286227291268975, guid: bfddcee513575b84b986f6150e548665,
         type: 3}
       propertyPath: m_Name
       value: Teleport
-      objectReference: {fileID: 0}
-    - target: {fileID: 5299286227291268975, guid: bfddcee513575b84b986f6150e548665,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5592424038717434816, guid: bfddcee513575b84b986f6150e548665,
         type: 3}
@@ -3040,25 +3015,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5242245970305664045}
     m_Modifications:
-    - target: {fileID: 3966690911583425055, guid: bfddcee513575b84b986f6150e548665,
-        type: 3}
-      propertyPath: m_EnableUIInteraction
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3966690911583425055, guid: bfddcee513575b84b986f6150e548665,
-        type: 3}
-      propertyPath: m_InteractionLayers.m_Bits
-      value: 2147483648
-      objectReference: {fileID: 0}
     - target: {fileID: 5299286227291268975, guid: bfddcee513575b84b986f6150e548665,
         type: 3}
       propertyPath: m_Name
       value: Teleport
-      objectReference: {fileID: 0}
-    - target: {fileID: 5299286227291268975, guid: bfddcee513575b84b986f6150e548665,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5592424038717434816, guid: bfddcee513575b84b986f6150e548665,
         type: 3}
@@ -3151,21 +3111,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: StandartLeft
       objectReference: {fileID: 0}
-    - target: {fileID: 5032873303833665053, guid: f4b66f075fdee734f95f692c16409f36,
-        type: 3}
-      propertyPath: m_UseForceGrab
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5032873303833665053, guid: f4b66f075fdee734f95f692c16409f36,
-        type: 3}
-      propertyPath: m_AllowAnchorControl
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5032873303833665053, guid: f4b66f075fdee734f95f692c16409f36,
-        type: 3}
-      propertyPath: m_InteractionLayers.m_Bits
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7610643663996600994, guid: f4b66f075fdee734f95f692c16409f36,
         type: 3}
       propertyPath: m_RootOrder
@@ -3257,11 +3202,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: StandartRight
       objectReference: {fileID: 0}
-    - target: {fileID: 6951020092636991505, guid: a919043f08988ee4d9b0f4a707b305df,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7327982016405704532, guid: a919043f08988ee4d9b0f4a707b305df,
         type: 3}
       propertyPath: m_RootOrder
@@ -3316,21 +3256,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8994189208259835460, guid: a919043f08988ee4d9b0f4a707b305df,
-        type: 3}
-      propertyPath: m_UseForceGrab
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8994189208259835460, guid: a919043f08988ee4d9b0f4a707b305df,
-        type: 3}
-      propertyPath: m_AllowAnchorControl
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8994189208259835460, guid: a919043f08988ee4d9b0f4a707b305df,
-        type: 3}
-      propertyPath: m_InteractionLayers.m_Bits
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
