@@ -36,7 +36,9 @@ namespace StudySystem
 				_bgStandartVolume = BackgroundMusic.volume;
 
 				StartNextStage(1f);
-			}
+                //ToolsSystem.Old
+                //StudySystem.Bot.BotAction.ClickEvent
+            }
 		}
 
 		public void StartNextStage()
