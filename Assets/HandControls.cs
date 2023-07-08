@@ -6,7 +6,9 @@ using UnityEngine.XR.Interaction.Toolkit;
 public class HandControls : MonoBehaviour
 {
     [SerializeField] private XRRayInteractor _standartHand;
+
     [SerializeField] private XRRayInteractor _teleportHand;
+    [SerializeField] private XRInteractorLineVisual _teleportVisual;
 
 	[SerializeField] private InputActionReference _trackpad;
 
@@ -45,11 +47,11 @@ public class HandControls : MonoBehaviour
         _standartHand.gameObject.SetActive(true);
         _teleportHand.gameObject.SetActive(false);
 
-        if (_teleportHand.TryGetHitInfo(out Vector3 _pos, out _, out _, out bool isValid) && isValid) //TryGetCurrent3DRaycastHit(out RaycastHit hit))
+        if (_teleportHand.TryGetCurrent3DRaycastHit(out RaycastHit hit))
         {
             _provider.QueueTeleportRequest(new TeleportRequest
             {
-                destinationPosition = _pos
+                destinationPosition = hit.point
             });
         }
     }
