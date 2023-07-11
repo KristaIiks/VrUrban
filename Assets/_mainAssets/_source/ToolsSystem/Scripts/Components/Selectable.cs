@@ -1,38 +1,26 @@
 using UnityEngine;
 using UnityEngine.Events;
-using StudySystem;
 
-namespace ToolsSystem.Old
+namespace ToolsSystem
 {
     public class Selectable : MonoBehaviour
     {
         public bool _canInteract = true;
 
+        [HideInInspector]
+        public ToolParams _params;
+
         public UnityEvent OnSelect = new UnityEvent();
         public UnityEvent OnDeselect = new UnityEvent();
 
         private bool _isSelected = false;
-        protected ToolParams Params;
 
-        public virtual void Awake()
+        public virtual void Interact()
         {
-            Params.Selected = gameObject;
+            if (!_canInteract) { return; }
         }
 
-        public virtual bool Interact()
-        {
-            if (!CanInteract()) { return false; }
-
-            Select();
-            return true;
-        }
-
-        public bool CanInteract()
-        {
-            return _canInteract;
-        }
-
-        private void Select()
+        public virtual void Select()
         {
             OnSelect?.Invoke();
             _isSelected = true;
@@ -45,7 +33,7 @@ namespace ToolsSystem.Old
             }
         }
 
-        public void Deselect()
+        public virtual void Deselect()
         {
             if (_isSelected) { return; }
 

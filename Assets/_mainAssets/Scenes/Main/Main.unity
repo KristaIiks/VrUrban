@@ -3881,10 +3881,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 152101375}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05168f959b3f94d45b00168515a03270, type: 3}
+  m_Script: {fileID: 11500000, guid: 8c303b3c69ee8f242a989fc21c06b0c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _canInteract: 0
+  _canInteract: 1
+  _params:
+    _tool: {fileID: 0}
+    _buildVariants: []
   OnSelect:
     m_PersistentCalls:
       m_Calls: []
@@ -3892,7 +3895,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   Standart: {fileID: 800749377}
-  Variants:
+  _variants:
   - Icon: {fileID: 21300000, guid: 19364c95506b5164f8ca6008522c6841, type: 3}
     Object: {fileID: 144797866}
     _canSelect: 1
@@ -35959,7 +35962,6 @@ GameObject:
   - component: {fileID: 997577899}
   - component: {fileID: 997577898}
   - component: {fileID: 997577902}
-  - component: {fileID: 997577901}
   - component: {fileID: 997577903}
   m_Layer: 0
   m_Name: Canvas
@@ -36052,23 +36054,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!114 &997577901
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 997577896}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2aa1fe5de6c663242984e503857a79ec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Panel: {fileID: 2118332655}
-  Content: {fileID: 2118332654}
-  VariantPrefab: {fileID: 5335218824077633496, guid: f0d01ee0d48745746a2c68977b79e2a0,
-    type: 3}
-  OnSelectBuild: {fileID: 8300000, guid: 5bcde61f66e89914c9268d2b0838758b, type: 3}
 --- !u!82 &997577902
 AudioSource:
   m_ObjectHideFlags: 0
@@ -73460,12 +73445,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1973460042}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &1973626499 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 256447057301938316, guid: b261dfe346e6264439ef877ca0595d71,
-    type: 3}
-  m_PrefabInstance: {fileID: 2892888067518128463}
-  m_PrefabAsset: {fileID: 0}
 --- !u!64 &1975006919
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -81947,7 +81926,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7029415541544649519, guid: fc347f6baaf7c7e41bcb8f4e25ad6d20,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2118332656}
   m_SourcePrefab: {fileID: 100100000, guid: fc347f6baaf7c7e41bcb8f4e25ad6d20, type: 3}
 --- !u!224 &2118332653 stripped
 RectTransform:
@@ -81967,6 +81950,22 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 2118332652}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2118332656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2118332655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2993a12aff94a747a4f208af8e26f5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _toolName: BuildTool
+  _variantPrefab: {fileID: 5335218824077633496, guid: f0d01ee0d48745746a2c68977b79e2a0,
+    type: 3}
+  _content: {fileID: 2118332654}
 --- !u!1001 &2119295737
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -83064,7 +83063,8 @@ PrefabInstance:
       propertyPath: m_InteractionManager
       value: 
       objectReference: {fileID: 1942423688}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 633404434624461275, guid: b261dfe346e6264439ef877ca0595d71, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 5242245970305664045, guid: b261dfe346e6264439ef877ca0595d71,
@@ -83072,6 +83072,10 @@ PrefabInstance:
       insertIndex: 0
       addedObject: {fileID: 997577897}
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1639595778136558007, guid: b261dfe346e6264439ef877ca0595d71,
+        type: 3}
+      insertIndex: 5
+      addedObject: {fileID: 2892888067518128469}
     - targetCorrespondingSourceObject: {fileID: 269958388091218776, guid: b261dfe346e6264439ef877ca0595d71,
         type: 3}
       insertIndex: -1
@@ -83083,7 +83087,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 269958388091218776, guid: b261dfe346e6264439ef877ca0595d71,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2892888067518128465}
+      addedObject: {fileID: 2892888067518128470}
   m_SourcePrefab: {fileID: 100100000, guid: b261dfe346e6264439ef877ca0595d71, type: 3}
 --- !u!114 &2892888067518128464 stripped
 MonoBehaviour:
@@ -83097,26 +83101,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6803edce0201f574f923fd9d10e5b30a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2892888067518128465
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1739619911}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3659dea37013fb549926b652fbe489ac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  RayPoint: {fileID: 1973626499}
-  RayDistance: 10
-  RayMask:
-    serializedVersion: 2
-    m_Bits: 8
-  SelectAction: {fileID: -1611314839757085638, guid: c348712bda248c246b8c49b3db54643f,
-    type: 3}
-  OnSelectClip: {fileID: 8300000, guid: 539c45ce8bbf0fe4695299f858d26203, type: 3}
 --- !u!82 &2892888067518128466
 AudioSource:
   m_ObjectHideFlags: 0
@@ -83317,6 +83301,109 @@ LineRenderer:
   m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
+--- !u!1 &2892888067518128468 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1639595778136558007, guid: b261dfe346e6264439ef877ca0595d71,
+    type: 3}
+  m_PrefabInstance: {fileID: 2892888067518128463}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2892888067518128469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2892888067518128468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6a9b0ced7dfd3a4ea2687b8b3e2cfd1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _windowInput: {fileID: 6022728534817867589, guid: c348712bda248c246b8c49b3db54643f,
+    type: 3}
+  _menuAudio: {fileID: 8300000, guid: c780ee7dffa26c04182c81651dccb46b, type: 3}
+--- !u!114 &2892888067518128470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1739619911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e486fff50ebf674faeeaa6dd0c54c90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _toolName: BuildTool
+  _canSelect: 1
+  _rayDistance: 10
+  _rayMask:
+    serializedVersion: 2
+    m_Bits: 8
+  CanSelectGrad:
+    serializedVersion: 2
+    key0: {r: 1, g: 0, b: 0, a: 1}
+    key1: {r: 1, g: 0, b: 0, a: 1}
+    key2: {r: 0, g: 0, b: 0, a: 0}
+    key3: {r: 0, g: 0, b: 0, a: 0}
+    key4: {r: 0, g: 0, b: 0, a: 0}
+    key5: {r: 0, g: 0, b: 0, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 0
+    ctime1: 65535
+    ctime2: 0
+    ctime3: 0
+    ctime4: 0
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 1
+    m_ColorSpace: -1
+    m_NumColorKeys: 2
+    m_NumAlphaKeys: 2
+  ErrorSelectGrad:
+    serializedVersion: 2
+    key0: {r: 0.04289031, g: 1, b: 0, a: 1}
+    key1: {r: 0.04289031, g: 1, b: 0, a: 1}
+    key2: {r: 0, g: 0, b: 0, a: 0}
+    key3: {r: 0, g: 0, b: 0, a: 0}
+    key4: {r: 0, g: 0, b: 0, a: 0}
+    key5: {r: 0, g: 0, b: 0, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 0
+    ctime1: 65535
+    ctime2: 0
+    ctime3: 0
+    ctime4: 0
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 1
+    m_ColorSpace: -1
+    m_NumColorKeys: 2
+    m_NumAlphaKeys: 2
+  _selectAction: {fileID: -1611314839757085638, guid: c348712bda248c246b8c49b3db54643f,
+    type: 3}
+  _selectClip: {fileID: 8300000, guid: 539c45ce8bbf0fe4695299f858d26203, type: 3}
+  OnSelectBuild: {fileID: 8300000, guid: 5bcde61f66e89914c9268d2b0838758b, type: 3}
 --- !u!1001 &6261303356131780358
 PrefabInstance:
   m_ObjectHideFlags: 0
