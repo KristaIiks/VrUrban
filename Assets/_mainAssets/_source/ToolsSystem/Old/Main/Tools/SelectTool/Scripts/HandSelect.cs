@@ -28,7 +28,7 @@ namespace ToolsSystem.Old
             _line = GetComponent<LineRenderer>();
             _audioSource = GetComponent<AudioSource>();
 
-            if (Instance == null) { Instance = this; }
+            Instance = this;
         }
 
         private void Update()
