@@ -1,9 +1,5 @@
 fileFormatVersion: 2
-<<<<<<< HEAD:Assets/_mainAssets/Content/Models/suhca/Materials/textures/DefaultMaterial_Metallic.png.meta
 guid: ff8604ecd64579846986ed22ec411331
-=======
-guid: 6b5a2d0878d8456419c26d3cf76e200d
->>>>>>> Develop:Assets/_mainAssets/Content/Models/balkon1/Materials/textures/DefaultMaterial_Metallic.png.meta
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,7 +106,6 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-<<<<<<< HEAD:Assets/_mainAssets/Content/Models/suhca/Materials/textures/DefaultMaterial_Metallic.png.meta
   - serializedVersion: 3
     buildTarget: Windows Store Apps
     maxTextureSize: 2048
@@ -124,8 +119,6 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-=======
->>>>>>> Develop:Assets/_mainAssets/Content/Models/balkon1/Materials/textures/DefaultMaterial_Metallic.png.meta
   spriteSheet:
     serializedVersion: 2
     sprites: []

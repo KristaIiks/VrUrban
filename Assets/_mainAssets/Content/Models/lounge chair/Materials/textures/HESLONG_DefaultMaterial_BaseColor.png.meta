@@ -1,9 +1,5 @@
 fileFormatVersion: 2
-<<<<<<< HEAD:Assets/_mainAssets/Content/Models/lounge chair/Materials/textures/HESLONG_DefaultMaterial_BaseColor.png.meta
 guid: f24caaf685a1b9646b6e56f393c97944
-=======
-guid: c60b0c6ea0ca22145894310b29591914
->>>>>>> Develop:Assets/_mainAssets/Content/Models/HESLONG/textures/HESLONG_DefaultMaterial_BaseColor.png.meta
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,7 +106,6 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-<<<<<<< HEAD:Assets/_mainAssets/Content/Models/lounge chair/Materials/textures/HESLONG_DefaultMaterial_BaseColor.png.meta
   - serializedVersion: 3
     buildTarget: Windows Store Apps
     maxTextureSize: 2048
@@ -124,8 +119,6 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-=======
->>>>>>> Develop:Assets/_mainAssets/Content/Models/HESLONG/textures/HESLONG_DefaultMaterial_BaseColor.png.meta
   spriteSheet:
     serializedVersion: 2
     sprites: []

@@ -1,0 +1,17 @@
+{
+    "name": "StudySystem.Bot",
+    "rootNamespace": "StudySystem.Bot",
+    "references": [
+        "GUID:2bc31648b6daf72458ae823f1ab22205",
+        "GUID:fe685ec1767f73d42b749ea8045bfe43"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

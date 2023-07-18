@@ -9,7 +9,7 @@ namespace StudySystem.Bot
     {
         [SerializeField] private AudioClip _clickSound;
 
-        public static UnityAction<SelectEnterEventArgs> ClickEvent;
+        public static UnityAction<ActivateEventArgs> ClickEvent;
 
         private XRSimpleInteractable _inter;
         private AudioSource _audioSource;
@@ -19,8 +19,8 @@ namespace StudySystem.Bot
             _inter = GetComponent<XRSimpleInteractable>();
             _audioSource = GetComponent<AudioSource>();
 
-            ClickEvent += (s) => _audioSource.PlayOneShot(_clickSound);
-            _inter.selectEntered.AddListener(ClickEvent);
+            _inter.activated.AddListener(ClickEvent);
+            ClickEvent += (s) => _audioSource.PlayOneShot(_clickSound); 
         }
     }
 }

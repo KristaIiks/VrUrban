@@ -1,9 +1,5 @@
 fileFormatVersion: 2
-<<<<<<< HEAD:Assets/_mainAssets/Content/Models/lounge chair/Materials/textures/HESLONG_DefaultMaterial_Normal.png.meta
 guid: e1c6fd239a514b745b90d718e788b8e5
-=======
-guid: 64a333b100f16ad479cebcfb3a2e8e28
->>>>>>> Develop:Assets/_mainAssets/Content/Models/HESLONG/textures/HESLONG_DefaultMaterial_Normal.png.meta
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -11,11 +7,7 @@ TextureImporter:
   mipmaps:
     mipMapMode: 0
     enableMipMap: 1
-<<<<<<< HEAD:Assets/_mainAssets/Content/Models/lounge chair/Materials/textures/HESLONG_DefaultMaterial_Normal.png.meta
     sRGBTexture: 0
-=======
-    sRGBTexture: 1
->>>>>>> Develop:Assets/_mainAssets/Content/Models/HESLONG/textures/HESLONG_DefaultMaterial_Normal.png.meta
     linearTexture: 0
     fadeOut: 0
     borderMipMap: 0
@@ -62,11 +54,7 @@ TextureImporter:
   alphaUsage: 1
   alphaIsTransparency: 0
   spriteTessellationDetail: -1
-<<<<<<< HEAD:Assets/_mainAssets/Content/Models/lounge chair/Materials/textures/HESLONG_DefaultMaterial_Normal.png.meta
   textureType: 1
-=======
-  textureType: 0
->>>>>>> Develop:Assets/_mainAssets/Content/Models/HESLONG/textures/HESLONG_DefaultMaterial_Normal.png.meta
   textureShape: 1
   singleChannelComponent: 0
   flipbookRows: 1
@@ -118,7 +106,6 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-<<<<<<< HEAD:Assets/_mainAssets/Content/Models/lounge chair/Materials/textures/HESLONG_DefaultMaterial_Normal.png.meta
   - serializedVersion: 3
     buildTarget: Windows Store Apps
     maxTextureSize: 2048
@@ -132,8 +119,6 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-=======
->>>>>>> Develop:Assets/_mainAssets/Content/Models/HESLONG/textures/HESLONG_DefaultMaterial_Normal.png.meta
   spriteSheet:
     serializedVersion: 2
     sprites: []

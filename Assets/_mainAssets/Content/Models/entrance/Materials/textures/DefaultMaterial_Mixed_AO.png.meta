@@ -1,9 +1,5 @@
 fileFormatVersion: 2
-<<<<<<< HEAD:Assets/_mainAssets/Content/Models/entrance/Materials/textures/DefaultMaterial_Mixed_AO.png.meta
 guid: 907fb0cc5467987438f1021fabfa0bb7
-=======
-guid: 5d4fc4f770175d14899c4a1ab1e46e5a
->>>>>>> Develop:Assets/_mainAssets/Content/Models/PODIESD/Materials/textures/DefaultMaterial_Mixed_AO.png.meta
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -11,11 +7,7 @@ TextureImporter:
   mipmaps:
     mipMapMode: 0
     enableMipMap: 1
-<<<<<<< HEAD:Assets/_mainAssets/Content/Models/entrance/Materials/textures/DefaultMaterial_Mixed_AO.png.meta
     sRGBTexture: 0
-=======
-    sRGBTexture: 1
->>>>>>> Develop:Assets/_mainAssets/Content/Models/PODIESD/Materials/textures/DefaultMaterial_Mixed_AO.png.meta
     linearTexture: 0
     fadeOut: 0
     borderMipMap: 0
@@ -62,11 +54,7 @@ TextureImporter:
   alphaUsage: 1
   alphaIsTransparency: 0
   spriteTessellationDetail: -1
-<<<<<<< HEAD:Assets/_mainAssets/Content/Models/entrance/Materials/textures/DefaultMaterial_Mixed_AO.png.meta
   textureType: 1
-=======
-  textureType: 0
->>>>>>> Develop:Assets/_mainAssets/Content/Models/PODIESD/Materials/textures/DefaultMaterial_Mixed_AO.png.meta
   textureShape: 1
   singleChannelComponent: 0
   flipbookRows: 1
@@ -118,7 +106,6 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-<<<<<<< HEAD:Assets/_mainAssets/Content/Models/entrance/Materials/textures/DefaultMaterial_Mixed_AO.png.meta
   - serializedVersion: 3
     buildTarget: Windows Store Apps
     maxTextureSize: 2048
@@ -132,8 +119,6 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-=======
->>>>>>> Develop:Assets/_mainAssets/Content/Models/PODIESD/Materials/textures/DefaultMaterial_Mixed_AO.png.meta
   spriteSheet:
     serializedVersion: 2
     sprites: []

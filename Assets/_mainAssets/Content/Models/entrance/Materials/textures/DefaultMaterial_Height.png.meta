@@ -1,9 +1,5 @@
 fileFormatVersion: 2
-<<<<<<< HEAD:Assets/_mainAssets/Content/Models/entrance/Materials/textures/DefaultMaterial_Height.png.meta
 guid: 02c31bed47e134942be7ec1114d8e405
-=======
-guid: cc0c6433114b5584bb4b70576fa9aff3
->>>>>>> Develop:Assets/_mainAssets/Content/Models/PODIESD/Materials/textures/DefaultMaterial_Height.png.meta
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,7 +106,6 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-<<<<<<< HEAD:Assets/_mainAssets/Content/Models/entrance/Materials/textures/DefaultMaterial_Height.png.meta
   - serializedVersion: 3
     buildTarget: Windows Store Apps
     maxTextureSize: 2048
@@ -124,8 +119,6 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-=======
->>>>>>> Develop:Assets/_mainAssets/Content/Models/PODIESD/Materials/textures/DefaultMaterial_Height.png.meta
   spriteSheet:
     serializedVersion: 2
     sprites: []

@@ -1,9 +1,5 @@
 fileFormatVersion: 2
-<<<<<<< HEAD:Assets/_mainAssets/Content/Models/suhca/Materials/textures/DefaultMaterial_Base_Color.png.meta
 guid: f3d20f8394a71be4db7c262d4212af74
-=======
-guid: e706ecdf26eeeaf4a833f4dc45c98aab
->>>>>>> Develop:Assets/_mainAssets/Content/Models/balkon1/Materials/textures/DefaultMaterial_Base_Color.png.meta
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,7 +106,6 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-<<<<<<< HEAD:Assets/_mainAssets/Content/Models/suhca/Materials/textures/DefaultMaterial_Base_Color.png.meta
   - serializedVersion: 3
     buildTarget: Windows Store Apps
     maxTextureSize: 2048
@@ -124,8 +119,6 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-=======
->>>>>>> Develop:Assets/_mainAssets/Content/Models/balkon1/Materials/textures/DefaultMaterial_Base_Color.png.meta
   spriteSheet:
     serializedVersion: 2
     sprites: []

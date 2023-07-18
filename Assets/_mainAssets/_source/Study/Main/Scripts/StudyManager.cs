@@ -36,7 +36,7 @@ namespace StudySystem
 				_bgStandartVolume = BackgroundMusic.volume;
 
 				StartNextStage(1f);
-            }
+			}
 		}
 
 		public void StartNextStage()

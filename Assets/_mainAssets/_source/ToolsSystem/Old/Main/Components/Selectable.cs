@@ -47,17 +47,18 @@ namespace ToolsSystem.Old
 
         public void Deselect()
         {
-            if (_isSelected) { return; }
-
-            OnDeselect?.Invoke();
-            _isSelected = false;
-
-            int _layer = LayerMask.NameToLayer("Selectable");
-
-            gameObject.layer = _layer;
-            foreach (var item in transform.GetComponentsInChildren<MeshRenderer>())
+            if (_isSelected)
             {
-                item.gameObject.layer = _layer;
+                OnDeselect?.Invoke();
+                _isSelected = false;
+
+                int _layer = LayerMask.NameToLayer("Selectable");
+
+                gameObject.layer = _layer;
+                foreach (var item in transform.GetComponentsInChildren<MeshRenderer>())
+                {
+                    item.gameObject.layer = _layer;
+                }
             }
         }
     }

@@ -1,9 +1,5 @@
 fileFormatVersion: 2
-<<<<<<< HEAD:Assets/_mainAssets/Content/Models/suhca/Materials/textures/DefaultMaterial_Mixed_AO.png.meta
 guid: 744bf177f22b4df4c887466d0daf9b86
-=======
-guid: cdc6776f15ca3e04da143dcbf494c200
->>>>>>> Develop:Assets/_mainAssets/Content/Models/balkon1/Materials/textures/DefaultMaterial_Mixed_AO.png.meta
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,7 +106,6 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-<<<<<<< HEAD:Assets/_mainAssets/Content/Models/suhca/Materials/textures/DefaultMaterial_Mixed_AO.png.meta
   - serializedVersion: 3
     buildTarget: Windows Store Apps
     maxTextureSize: 2048
@@ -124,8 +119,6 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-=======
->>>>>>> Develop:Assets/_mainAssets/Content/Models/balkon1/Materials/textures/DefaultMaterial_Mixed_AO.png.meta
   spriteSheet:
     serializedVersion: 2
     sprites: []

@@ -1,9 +1,5 @@
 fileFormatVersion: 2
-<<<<<<< HEAD:Assets/_mainAssets/Content/Models/LASALCA/model/lasalca.fbx.meta
 guid: 5902609b6aebb9542874e03c012a051a
-=======
-guid: ca903a0629fe83d47949d22200d43963
->>>>>>> Develop:Assets/_mainAssets/Content/Models/LASALCA/textures/lasalca.fbx.meta
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []

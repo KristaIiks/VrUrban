@@ -1,9 +1,5 @@
 fileFormatVersion: 2
-<<<<<<< HEAD:Assets/_mainAssets/Content/Models/bench str/model/scameica.blend.meta
 guid: ae5332d88ad1c3243a7ada3412d243b6
-=======
-guid: 91694256530d0f041b23805d8e14eeac
->>>>>>> Develop:Assets/_mainAssets/Content/Models/scameica/model/scameica.blend.meta
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
