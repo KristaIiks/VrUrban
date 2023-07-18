@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/_mainAssets/Content/Models/split system/Materials/textures/3/DefaultMaterial_Roughness.png.meta
 guid: a1b7cf5bc35807f49a6e6de2d94fc46c
+=======
+guid: 202192ba5bd63ab4f8001d8636be9fe5
+>>>>>>> Develop:Assets/_mainAssets/Content/Models/split cictema/Materials/textures/3/DefaultMaterial_Roughness.png.meta
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -106,6 +110,7 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+<<<<<<< HEAD:Assets/_mainAssets/Content/Models/split system/Materials/textures/3/DefaultMaterial_Roughness.png.meta
   - serializedVersion: 3
     buildTarget: Windows Store Apps
     maxTextureSize: 2048
@@ -119,6 +124,8 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+=======
+>>>>>>> Develop:Assets/_mainAssets/Content/Models/split cictema/Materials/textures/3/DefaultMaterial_Roughness.png.meta
   spriteSheet:
     serializedVersion: 2
     sprites: []

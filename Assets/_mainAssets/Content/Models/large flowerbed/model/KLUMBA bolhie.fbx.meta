@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/_mainAssets/Content/Models/large flowerbed/model/KLUMBA bolhie.fbx.meta
 guid: 71dcc8ef23682da48a9f821c57ef3972
+=======
+guid: 80ac2a68cbc85894ea12f12652df8d75
+>>>>>>> Develop:Assets/_mainAssets/Content/Models/KLUMBA bolhie/model/KLUMBA bolhie.fbx.meta
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []

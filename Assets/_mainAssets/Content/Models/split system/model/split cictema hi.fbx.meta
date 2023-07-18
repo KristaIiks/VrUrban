@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/_mainAssets/Content/Models/split system/model/split cictema hi.fbx.meta
 guid: d492d7f5bcf709846a679b186b734659
+=======
+guid: a1f9093cfe5898d4d96091877c7601f3
+>>>>>>> Develop:Assets/_mainAssets/Content/Models/split cictema/model/split cictema hi.fbx.meta
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []

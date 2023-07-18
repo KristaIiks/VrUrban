@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/_mainAssets/Content/Models/slide n/model/GORCA N.blend.meta
 guid: 2457643bdf32d4a47ab083e50099fd4b
+=======
+guid: de13d8d99f7f91a49ae548aef1e2c819
+>>>>>>> Develop:Assets/_mainAssets/Content/Models/GORCA N/model/GORCA N.blend.meta
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []

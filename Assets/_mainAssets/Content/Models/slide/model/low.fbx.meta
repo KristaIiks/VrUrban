@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/_mainAssets/Content/Models/slide/model/low.fbx.meta
 guid: de76f961153322549a3253dbbcdd8ccc
+=======
+guid: 2d6c7724f769cf643a69969e49c914e1
+>>>>>>> Develop:Assets/_mainAssets/Content/Models/GORCA/model/low.fbx.meta
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []

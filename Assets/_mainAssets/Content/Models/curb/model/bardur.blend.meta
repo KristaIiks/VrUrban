@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/_mainAssets/Content/Models/curb/model/bardur.blend.meta
 guid: 76dd9265de1c0364090cabac21f93323
+=======
+guid: cbab8f80e8a1590458f94650fe2d2ef9
+>>>>>>> Develop:Assets/_mainAssets/Content/Models/bardur/model/bardur.blend.meta
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []

@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/_mainAssets/Content/Models/pavilion/model/becedka.blend.meta
 guid: 59be9182d7afc9a43b7f10ffdc7f1a54
+=======
+guid: 72d8499f480dfc749b560704267ac4a9
+>>>>>>> Develop:Assets/_mainAssets/Content/Models/becedka/model/becedka.blend.meta
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []

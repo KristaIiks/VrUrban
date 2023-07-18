@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/_mainAssets/Content/Models/entrance/Materials.meta
 guid: e160afd6e88471d4e8b20a6f4b50bb6b
+=======
+guid: 6f9dbd221d896c8458e02b4a5c2417b5
+>>>>>>> Develop:Assets/_mainAssets/Content/Models/PODIESD/Materials.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/_mainAssets/Content/Models/split system/Materials.meta
 guid: 9f7f545df9371b942b19654cfc35599e
+=======
+guid: 6607421a2f6a3dd4aa10f9e11fcdc18d
+>>>>>>> Develop:Assets/_mainAssets/Content/Models/split cictema/Materials.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

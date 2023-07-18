@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/_mainAssets/Content/Models/trashcan n/model/MUSORKA NOVAI.fbx.meta
 guid: 8add124a47ca85a439bb32402795d9bc
+=======
+guid: e5aa04a241af8da4fa60736ce76b3f41
+>>>>>>> Develop:Assets/_mainAssets/Content/Models/MUSORKA NOVAI/model/MUSORKA NOVAI.fbx.meta
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []

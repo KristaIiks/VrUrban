@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/_mainAssets/Content/Models/lodge/model/domic.blend.meta
 guid: 3d3505380feff4244b09c3384bbae901
+=======
+guid: c34368b968e6a77498e5f8f14ddf8054
+>>>>>>> Develop:Assets/_mainAssets/Content/Models/domic/model/domic.blend.meta
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []

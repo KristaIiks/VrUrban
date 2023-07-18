@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/_mainAssets/Content/Models/curb/model/bardur.fbx.meta
 guid: e4745ec2e00f0f046a63893519149451
+=======
+guid: bc5d5b755b97bb84484489e66a7d03df
+>>>>>>> Develop:Assets/_mainAssets/Content/Models/bardur/model/bardur.fbx.meta
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []

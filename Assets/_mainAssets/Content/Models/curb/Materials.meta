@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/_mainAssets/Content/Models/curb/Materials.meta
 guid: ea05becb5396f9546a2966dda04f6cf7
+=======
+guid: f0b80d947c3207e409ec4c8ba1d50231
+>>>>>>> Develop:Assets/_mainAssets/Content/Models/bardur/Materials.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

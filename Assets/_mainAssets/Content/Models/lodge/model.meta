@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/_mainAssets/Content/Models/lodge/model.meta
 guid: 8d73288ace3ee424eb112a4ff0bcaea3
+=======
+guid: b523b5aada41c604c933ca710858d29f
+>>>>>>> Develop:Assets/_mainAssets/Content/Models/domic/model.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

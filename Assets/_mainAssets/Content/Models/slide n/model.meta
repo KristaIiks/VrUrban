@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/_mainAssets/Content/Models/slide n/model.meta
 guid: c14aa37979c253d4eb5c4fdbed1805d3
+=======
+guid: 3029893f1aac9b945bcb0c434c84fabe
+>>>>>>> Develop:Assets/_mainAssets/Content/Models/GORCA N/model.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

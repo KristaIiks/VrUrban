@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/_mainAssets/Content/Models/entrance/model/PODESD HIGH.fbx.meta
 guid: fd1bf8687497a314ab2a8d29e7a8f807
+=======
+guid: 9d242a9982c9e5f4fac56560cb7bcad2
+>>>>>>> Develop:Assets/_mainAssets/Content/Models/PODIESD/model/PODESD HIGH.fbx.meta
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []

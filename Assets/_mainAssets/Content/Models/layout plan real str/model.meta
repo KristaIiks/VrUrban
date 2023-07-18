@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/_mainAssets/Content/Models/layout plan real str/model.meta
 guid: 0d345954f4f7fa64c802c9ed2c9eb231
+=======
+guid: c161e96730c4ebd47b7cdf713afe4daf
+>>>>>>> Develop:Assets/_mainAssets/Content/Models/plohadca/model.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

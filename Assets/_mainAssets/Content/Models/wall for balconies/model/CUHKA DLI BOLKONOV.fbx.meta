@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/_mainAssets/Content/Models/wall for balconies/model/CUHKA DLI BOLKONOV.fbx.meta
 guid: 76d27cd190b37e24c9e859e33c10b696
+=======
+guid: 66472c386021a74469bc5e27135de706
+>>>>>>> Develop:Assets/_mainAssets/Content/Models/CUHKA DLI BOLKONOV/model/CUHKA DLI BOLKONOV.fbx.meta
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
