@@ -1319,7 +1319,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _standartHand: {fileID: 0}
   _teleportHand: {fileID: 7344216768863281028}
-  _teleportVisual: {fileID: 0}
   _trackpad: {fileID: 0}
   _snapValue: {fileID: -4151821623971414720, guid: c348712bda248c246b8c49b3db54643f,
     type: 3}
@@ -2131,7 +2130,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _standartHand: {fileID: 0}
   _teleportHand: {fileID: 9210736526148012871}
-  _teleportVisual: {fileID: 0}
   _trackpad: {fileID: 0}
   _snapValue: {fileID: 1138458836235298817, guid: c348712bda248c246b8c49b3db54643f,
     type: 3}

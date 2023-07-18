@@ -10,7 +10,6 @@ namespace Player.Hands
         [SerializeField] private XRRayInteractor _standartHand;
 
         [SerializeField] private XRRayInteractor _teleportHand;
-        [SerializeField] private XRInteractorLineVisual _teleportVisual;
 
         [SerializeField] private InputActionReference _trackpad;
 
