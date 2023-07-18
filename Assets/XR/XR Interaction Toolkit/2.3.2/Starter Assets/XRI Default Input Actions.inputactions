@@ -1487,7 +1487,7 @@
                     "path": "<XRController>{RightHand}/gripPressed",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Generic XR Controller",
                     "action": "SelectTools",
                     "isComposite": false,
                     "isPartOfComposite": false

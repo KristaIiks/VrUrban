@@ -16,10 +16,8 @@ namespace ToolsSystem
         private AudioSource _audioSource;
         private ToolWindow[] _windows;
 
-        protected virtual void Awake()
+        private void Awake()
         {
-            if(Instance != null) { Destroy(this); }
-
             Instance = this;
             _audioSource = GetComponent<AudioSource>();
             _windows = FindObjectsOfType<ToolWindow>();

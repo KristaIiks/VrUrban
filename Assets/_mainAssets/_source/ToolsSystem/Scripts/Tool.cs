@@ -60,10 +60,12 @@ namespace ToolsSystem
                 {
                     _currentRayObject = hit.collider.GetComponentInParent<Selectable>();
                     SetRayColor(_currentRayObject._canInteract ? CanSelectGrad : ErrorSelectGrad);
+                    _line.enabled = true;
                 }
                 else if (_selectAction.action.IsPressed())
                 {
                     SetRayColor(ErrorSelectGrad);
+                    _line.enabled = true;
                 }
                 else if (!_hasHit)
                 {
