@@ -12,6 +12,7 @@ namespace ToolsSystem
 
         [SerializeField] private bool _canSelect = true;
 
+        [SerializeField] private Transform _transform;
         [SerializeField] private float _rayDistance = 10f;
         [SerializeField] private LayerMask _rayMask;
 
@@ -53,18 +54,25 @@ namespace ToolsSystem
         {
             if (_canSelect)
             {
+                _line.SetPosition(0, _transform.position);
+
                 RaycastHit hit;
-                bool _hasHit = Physics.Raycast(transform.position, transform.forward, out hit, _rayDistance, _rayMask);
+                bool _hasHit = Physics.Raycast(_transform.position, _transform.forward, out hit, _rayDistance, _rayMask);
 
                 if (_hasHit && (_currentRayObject == null || hit.collider.gameObject != _currentRayObject))
                 {
                     _currentRayObject = hit.collider.GetComponentInParent<Selectable>();
+
                     SetRayColor(_currentRayObject._canInteract ? CanSelectGrad : ErrorSelectGrad);
+                    _line.SetPosition(1, hit.point);
+
                     _line.enabled = true;
                 }
                 else if (_selectAction.action.IsPressed())
                 {
                     SetRayColor(ErrorSelectGrad);
+                    _line.SetPosition(1, _transform.position + _transform.forward * _rayDistance);
+
                     _line.enabled = true;
                 }
                 else if (!_hasHit)
