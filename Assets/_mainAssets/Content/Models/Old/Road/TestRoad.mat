@@ -59,9 +59,9 @@ Material:
     - _Blend: 0
     - _CastShadows: 1
     - _Cull: 2
-    - _DashesCount: 80
+    - _DashesCount: 120
     - _DashesLines: 2
-    - _DashesRate: 0.4
+    - _DashesRate: 0.6
     - _DstBlend: 0
     - _InnerLineDistance: 0.02
     - _LineDstance: 0.48
