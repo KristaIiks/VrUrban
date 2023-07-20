@@ -1,9 +1,19 @@
 fileFormatVersion: 2
 guid: 21ce570f30646254b8e74861adef8218
 ModelImporter:
-  serializedVersion: 21300
+  serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: "\u041C\u0430\u0442\u0435\u0440\u0438\u0430\u043B"
+    second: {fileID: 2100000, guid: d75f3aee077b04d4aa744fc3ec4dba75, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: "\u041C\u0430\u0442\u0435\u0440\u0438\u0430\u043B.001"
+    second: {fileID: 2100000, guid: b6fe9503ac9da9b4ab3c639ec48fbf22, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -40,6 +50,7 @@ ModelImporter:
     addColliders: 0
     useSRGBMaterialColor: 1
     sortHierarchyByName: 1
+    importPhysicalCameras: 1
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1
@@ -67,6 +78,7 @@ ModelImporter:
     secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
     useFileScale: 1
+    strictVertexDataChecks: 0
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -99,6 +111,7 @@ ModelImporter:
   humanoidOversampling: 1
   avatarSetup: 0
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  importBlendShapeDeformPercent: 0
   remapMaterialsIfMaterialImportModeIsNone: 0
   additionalBone: 0
   userData: 
