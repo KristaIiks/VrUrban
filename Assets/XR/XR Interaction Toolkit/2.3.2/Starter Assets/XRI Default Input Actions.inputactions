@@ -800,7 +800,7 @@
                     "path": "<XRController>{LeftHand}/menu",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Generic XR Controller",
                     "action": "CloseTool",
                     "isComposite": false,
                     "isPartOfComposite": false

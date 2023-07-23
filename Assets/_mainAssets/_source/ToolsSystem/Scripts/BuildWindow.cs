@@ -4,11 +4,15 @@ namespace ToolsSystem
 {
     public class BuildWindow : ToolWindow
     {
+        [SerializeField] private GameObject _window;
+
         [SerializeField] private GameObject _variantPrefab;
         [SerializeField] private Transform _content;
 
         public override void Open(ToolParams _params)
         {
+            _window.SetActive(true);
+
             foreach (Transform item in _content)
             {
                 Destroy(item.gameObject);
@@ -23,7 +27,7 @@ namespace ToolsSystem
 
         public override void Close()
         {
-            _content.gameObject.SetActive(false);
+            _window.SetActive(false);
         }
     }
 }

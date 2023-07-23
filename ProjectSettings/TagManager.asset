@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Folder
+  - SelectObject
   layers:
   - Default
   - TransparentFX

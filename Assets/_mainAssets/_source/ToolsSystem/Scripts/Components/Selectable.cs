@@ -22,6 +22,8 @@ namespace ToolsSystem
 
         public virtual void Select()
         {
+            if (_isSelected) { return; }
+
             OnSelect?.Invoke();
             _isSelected = true;
             int _layer = LayerMask.NameToLayer("Outline");
@@ -35,7 +37,7 @@ namespace ToolsSystem
 
         public virtual void Deselect()
         {
-            if (_isSelected) { return; }
+            if (!_isSelected) { return; }
 
             OnDeselect?.Invoke();
             _isSelected = false;

@@ -59,17 +59,33 @@ namespace ToolsSystem
                 RaycastHit hit;
                 bool _hasHit = Physics.Raycast(_transform.position, _transform.forward, out hit, _rayDistance, _rayMask);
 
-                if (_hasHit && (_currentRayObject == null || hit.collider.gameObject != _currentRayObject))
+                if (_hasHit)
                 {
-                    _currentRayObject = hit.collider.GetComponentInParent<Selectable>();
+                    Transform _obj = hit.transform;
 
-                    SetRayColor(_currentRayObject._canInteract ? CanSelectGrad : ErrorSelectGrad);
+                    while (_obj.parent != null)
+                    {
+                        if (_obj.parent.tag == "SelectObject")
+                        {
+                            _obj = _obj.parent;
+                            break;
+                        }
+                        _obj = _obj.parent;
+                    }
                     _line.SetPosition(1, hit.point);
 
-                    _line.enabled = true;
+                    if (_currentRayObject == null || _obj.gameObject != _currentRayObject.gameObject)
+                    {
+                        _currentRayObject = _obj.GetComponent<Selectable>();
+
+                        SetRayColor(_currentRayObject._canInteract ? CanSelectGrad : ErrorSelectGrad);
+                        _line.enabled = true;
+                    }
                 }
                 else if (_selectAction.action.IsPressed())
                 {
+                    _currentRayObject = null;
+
                     SetRayColor(ErrorSelectGrad);
                     _line.SetPosition(1, _transform.position + _transform.forward * _rayDistance);
 
@@ -77,6 +93,8 @@ namespace ToolsSystem
                 }
                 else if (!_hasHit)
                 {
+                    _currentRayObject = null;
+
                     _line.enabled = false;
                 }
             }
