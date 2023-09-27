@@ -70,9 +70,11 @@ namespace Player.Hands
                 {
                     _current = item._model;
 
+                    //TODO: action with object
+
                     if (_autoFinish)
                     {
-                        item._action.performed += (s) => StopStudy(_btn);
+                        item._action.performed += (s) => StopStudy(_btn); //TODO: action unsubscribe
                     }
                     break;
                 }
@@ -84,7 +86,6 @@ namespace Player.Hands
         {
             if (_btn != ControllerBtn.None) // Auto finish
             {
-
                 foreach (ControllerTips item in _tips)
                 {
                     if (item._btn == _btn)
