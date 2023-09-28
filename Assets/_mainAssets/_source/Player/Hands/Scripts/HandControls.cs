@@ -1,60 +1,38 @@
-using Unity.XR.CoreUtils;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.XR.Interaction.Toolkit;
 
 namespace Player.Hands
 {
     public class HandControls : MonoBehaviour
     {
-        [SerializeField] private XRRayInteractor _standartHand;
+        [SerializeField] private GameObject _standartHand;
 
-        [SerializeField] private XRRayInteractor _teleportHand;
-
-        [SerializeField] private InputActionReference _trackpad;
-
-        [SerializeField] private InputActionReference _snapValue;
-        [SerializeField] private float _snapSpeed = 45;
-
-        [SerializeField] private InputActionReference _teleport;
+        [SerializeField] private GameObject _teleportHand;
+        [SerializeField] private InputActionReference _teleportAction;
 
         [SerializeField] private ControllerTips[] _tips;
-
-        private XROrigin _rig;
-        private TeleportationProvider _provider;
-
         private GameObject _current;
 
 
         private void Awake()
         {
-            _rig = GetComponentInParent<XROrigin>();
-            _provider = GetComponentInParent<TeleportationProvider>();
-
-            //_trackpad.action.performed += (s) => _rig.RotateAroundCameraUsingOriginUp((_snapValue.action.ReadValue<Vector2>().x != 0 ? Mathf.Sign(_snapValue.action.ReadValue<Vector2>().x) : 0) * _snapSpeed);
-
-            _trackpad.action.performed += (s) => StartTeleport();
-            _trackpad.action.canceled += (s) => FinishTeleport();
+            _teleportAction.action.performed += StartTeleport;
+            _teleportAction.action.canceled += FinishTeleport;
         }
 
-        private void StartTeleport()
+        private void StartTeleport(InputAction.CallbackContext cnt)
         {
-            _standartHand.gameObject.SetActive(false);
-            _teleportHand.gameObject.SetActive(true);
+            Debug.Log("+");
+            _standartHand.SetActive(false);
+            _teleportHand.SetActive(true);
         }
 
-        private void FinishTeleport()
+        private void FinishTeleport(InputAction.CallbackContext cnt) => Invoke("Deactivate", .1f);
+        private void Deactivate()
         {
-            _standartHand.gameObject.SetActive(true);
-            _teleportHand.gameObject.SetActive(false);
-
-            if (_teleportHand.TryGetCurrent3DRaycastHit(out RaycastHit hit))
-            {
-                _provider.QueueTeleportRequest(new TeleportRequest
-                {
-                    destinationPosition = hit.point
-                });
-            }
+            Debug.Log("-");
+            _standartHand.SetActive(true);
+            _teleportHand.SetActive(false);
         }
 
         #region Study

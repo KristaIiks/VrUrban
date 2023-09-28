@@ -100,7 +100,7 @@ Preset:
   - target: {fileID: 0}
     propertyPath: m_PositionAction.m_Reference
     value: 
-    objectReference: {fileID: -2024308242397127297, guid: c348712bda248c246b8c49b3db54643f,
+    objectReference: {fileID: -2024308242397127297, guid: 235669c4015014d4e91f8b0722af02da,
       type: 3}
   - target: {fileID: 0}
     propertyPath: m_RotationAction.m_UseReference
@@ -141,7 +141,7 @@ Preset:
   - target: {fileID: 0}
     propertyPath: m_RotationAction.m_Reference
     value: 
-    objectReference: {fileID: 8248158260566104461, guid: c348712bda248c246b8c49b3db54643f,
+    objectReference: {fileID: 8248158260566104461, guid: 235669c4015014d4e91f8b0722af02da,
       type: 3}
   - target: {fileID: 0}
     propertyPath: m_TrackingStateAction.m_UseReference
@@ -182,7 +182,7 @@ Preset:
   - target: {fileID: 0}
     propertyPath: m_TrackingStateAction.m_Reference
     value: 
-    objectReference: {fileID: 684395432459739428, guid: c348712bda248c246b8c49b3db54643f,
+    objectReference: {fileID: 684395432459739428, guid: 235669c4015014d4e91f8b0722af02da,
       type: 3}
   - target: {fileID: 0}
     propertyPath: m_SelectAction.m_UseReference
@@ -223,7 +223,7 @@ Preset:
   - target: {fileID: 0}
     propertyPath: m_SelectAction.m_Reference
     value: 
-    objectReference: {fileID: -6131295136447488360, guid: c348712bda248c246b8c49b3db54643f,
+    objectReference: {fileID: -6131295136447488360, guid: 235669c4015014d4e91f8b0722af02da,
       type: 3}
   - target: {fileID: 0}
     propertyPath: m_SelectActionValue.m_UseReference
@@ -264,7 +264,7 @@ Preset:
   - target: {fileID: 0}
     propertyPath: m_SelectActionValue.m_Reference
     value: 
-    objectReference: {fileID: 6558622148059887818, guid: c348712bda248c246b8c49b3db54643f,
+    objectReference: {fileID: 6558622148059887818, guid: 235669c4015014d4e91f8b0722af02da,
       type: 3}
   - target: {fileID: 0}
     propertyPath: m_ActivateAction.m_UseReference
@@ -305,7 +305,7 @@ Preset:
   - target: {fileID: 0}
     propertyPath: m_ActivateAction.m_Reference
     value: 
-    objectReference: {fileID: -5982496924579745919, guid: c348712bda248c246b8c49b3db54643f,
+    objectReference: {fileID: -5982496924579745919, guid: 235669c4015014d4e91f8b0722af02da,
       type: 3}
   - target: {fileID: 0}
     propertyPath: m_ActivateActionValue.m_UseReference
@@ -346,7 +346,7 @@ Preset:
   - target: {fileID: 0}
     propertyPath: m_ActivateActionValue.m_Reference
     value: 
-    objectReference: {fileID: -4289430672226363583, guid: c348712bda248c246b8c49b3db54643f,
+    objectReference: {fileID: -4289430672226363583, guid: 235669c4015014d4e91f8b0722af02da,
       type: 3}
   - target: {fileID: 0}
     propertyPath: m_UIPressAction.m_UseReference
@@ -387,7 +387,7 @@ Preset:
   - target: {fileID: 0}
     propertyPath: m_UIPressAction.m_Reference
     value: 
-    objectReference: {fileID: -6395602842196007441, guid: c348712bda248c246b8c49b3db54643f,
+    objectReference: {fileID: -6395602842196007441, guid: 235669c4015014d4e91f8b0722af02da,
       type: 3}
   - target: {fileID: 0}
     propertyPath: m_UIPressActionValue.m_UseReference
@@ -428,7 +428,7 @@ Preset:
   - target: {fileID: 0}
     propertyPath: m_UIPressActionValue.m_Reference
     value: 
-    objectReference: {fileID: 71106601250685021, guid: c348712bda248c246b8c49b3db54643f,
+    objectReference: {fileID: 71106601250685021, guid: 235669c4015014d4e91f8b0722af02da,
       type: 3}
   - target: {fileID: 0}
     propertyPath: m_HapticDeviceAction.m_UseReference
@@ -469,7 +469,7 @@ Preset:
   - target: {fileID: 0}
     propertyPath: m_HapticDeviceAction.m_Reference
     value: 
-    objectReference: {fileID: -8785819595477538065, guid: c348712bda248c246b8c49b3db54643f,
+    objectReference: {fileID: -8785819595477538065, guid: 235669c4015014d4e91f8b0722af02da,
       type: 3}
   - target: {fileID: 0}
     propertyPath: m_RotateAnchorAction.m_UseReference
@@ -510,7 +510,7 @@ Preset:
   - target: {fileID: 0}
     propertyPath: m_RotateAnchorAction.m_Reference
     value: 
-    objectReference: {fileID: -7363382999065477798, guid: c348712bda248c246b8c49b3db54643f,
+    objectReference: {fileID: -7363382999065477798, guid: 235669c4015014d4e91f8b0722af02da,
       type: 3}
   - target: {fileID: 0}
     propertyPath: m_DirectionalAnchorRotationAction.m_UseReference
@@ -551,7 +551,7 @@ Preset:
   - target: {fileID: 0}
     propertyPath: m_DirectionalAnchorRotationAction.m_Reference
     value: 
-    objectReference: {fileID: -8811388872089202044, guid: c348712bda248c246b8c49b3db54643f,
+    objectReference: {fileID: -8811388872089202044, guid: 235669c4015014d4e91f8b0722af02da,
       type: 3}
   - target: {fileID: 0}
     propertyPath: m_TranslateAnchorAction.m_UseReference
@@ -592,7 +592,7 @@ Preset:
   - target: {fileID: 0}
     propertyPath: m_TranslateAnchorAction.m_Reference
     value: 
-    objectReference: {fileID: 7779212132400271959, guid: c348712bda248c246b8c49b3db54643f,
+    objectReference: {fileID: 7779212132400271959, guid: 235669c4015014d4e91f8b0722af02da,
       type: 3}
   - target: {fileID: 0}
     propertyPath: m_ButtonPressPoint
