@@ -10,6 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ab487ffcfc861164d8ebad82aa6407f8, type: 3}
-  m_Name: test
+  m_Name: Future_Stage
   m_EditorClassIdentifier: 
-  Questions: []
+  _questions:
+  - {fileID: 11400000, guid: 1d3812722a84d6d43a4752edb145f06a, type: 2}

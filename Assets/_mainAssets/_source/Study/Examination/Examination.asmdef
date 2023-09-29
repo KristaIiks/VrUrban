@@ -1,6 +1,6 @@
 {
-    "name": "Certification",
-    "rootNamespace": "Certification",
+    "name": "Examination",
+    "rootNamespace": "Study.Examination",
     "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],

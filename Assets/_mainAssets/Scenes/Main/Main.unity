@@ -67055,6 +67055,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 3277447208967621316, guid: a546186008a18da4693e5c94a18e24ca,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6229160716741003577, guid: a546186008a18da4693e5c94a18e24ca,
         type: 3}
       propertyPath: m_RootOrder
@@ -67130,6 +67135,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 0a121e5289ef7c8419add527dd58ac7c, type: 2}
+    - target: {fileID: 7159759952602874501, guid: a546186008a18da4693e5c94a18e24ca,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -72087,10 +72097,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7491443415975057013, guid: 75f5455938b8b2c428c5374a7e6f2543,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8023553528801780948, guid: 75f5455938b8b2c428c5374a7e6f2543,
         type: 3}
       propertyPath: m_Name
       value: Larek1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8023553528801780948, guid: 75f5455938b8b2c428c5374a7e6f2543,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -76517,7 +76537,7 @@ GameObject:
   - component: {fileID: 1305037034646566523}
   - component: {fileID: 4931218027643105431}
   - component: {fileID: 4931218027643105430}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -76599,8 +76619,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2531917458888724059, guid: 228db004d7705d0448114695d3bf63e4,
         type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2531917458888724059, guid: 228db004d7705d0448114695d3bf63e4,
+        type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 3450395385435877649, guid: 228db004d7705d0448114695d3bf63e4,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3450395385435877649, guid: 228db004d7705d0448114695d3bf63e4,
         type: 3}
