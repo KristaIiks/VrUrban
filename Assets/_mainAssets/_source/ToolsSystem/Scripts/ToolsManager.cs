@@ -11,7 +11,7 @@ namespace ToolsSystem
 
         public static ToolsManager Instance;
 
-        [SerializeField]private ToolParams _currentTool;
+        [SerializeField] private Tool _currentTool;
 
         private AudioSource _audioSource;
         private ToolWindow[] _windows;
@@ -39,9 +39,9 @@ namespace ToolsSystem
 
         private void WindowBtn()
         {
-            if (_currentTool._tool == null) { return; }
+            if (_currentTool == null) { return; }
 
-            _currentTool._tool.CloseMenu();
+            _currentTool.CloseMenu();
             _audioSource.PlayOneShot(_menuAudio);
         }
 

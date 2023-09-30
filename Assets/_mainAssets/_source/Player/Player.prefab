@@ -1033,7 +1033,7 @@ MonoBehaviour:
     m_ColorSpace: -1
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
-  _selectAction: {fileID: -1611314839757085638, guid: c348712bda248c246b8c49b3db54643f,
+  _selectAction: {fileID: -2207097934044270749, guid: 235669c4015014d4e91f8b0722af02da,
     type: 3}
   _selectClip: {fileID: 8300000, guid: 539c45ce8bbf0fe4695299f858d26203, type: 3}
   OnSelectBuild: {fileID: 8300000, guid: 5bcde61f66e89914c9268d2b0838758b, type: 3}
@@ -1714,12 +1714,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6a9b0ced7dfd3a4ea2687b8b3e2cfd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _windowInput: {fileID: 6022728534817867589, guid: c348712bda248c246b8c49b3db54643f,
+  _windowInput: {fileID: -1848205397392326240, guid: 235669c4015014d4e91f8b0722af02da,
     type: 3}
   _menuAudio: {fileID: 8300000, guid: c780ee7dffa26c04182c81651dccb46b, type: 3}
-  _currentTool:
-    _tool: {fileID: 314992964274179374}
-    _buildVariants: []
+  _currentTool: {fileID: 314992964274179374}
 --- !u!82 &679280613429507345
 AudioSource:
   m_ObjectHideFlags: 0
