@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 namespace Player.Hands
@@ -22,15 +23,13 @@ namespace Player.Hands
 
         private void StartTeleport(InputAction.CallbackContext cnt)
         {
-            Debug.Log("+");
             _standartHand.SetActive(false);
             _teleportHand.SetActive(true);
         }
 
-        private void FinishTeleport(InputAction.CallbackContext cnt) => Invoke("Deactivate", .1f);
+        private void FinishTeleport(InputAction.CallbackContext cnt) => Invoke("Deactivate", .01f);
         private void Deactivate()
         {
-            Debug.Log("-");
             _standartHand.SetActive(true);
             _teleportHand.SetActive(false);
         }
