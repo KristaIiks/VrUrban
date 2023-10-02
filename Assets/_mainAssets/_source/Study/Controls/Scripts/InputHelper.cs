@@ -17,8 +17,10 @@ namespace Study.Controls
         private InputAction _action;
         private Material _oldMat;
 
-        private void Study(ControllerBtn _btn, bool _autoFinish = true)
+        public void Study(int _id)
         {
+            ControllerBtn _btn = (ControllerBtn)_id;
+            bool _autoFinish = true;
             StopStudy();
 
             _handModel.SetActive(false);
