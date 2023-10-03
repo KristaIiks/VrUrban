@@ -37,7 +37,7 @@ namespace Study.Examination
 
             if (_result)
             {
-                Invoke("StartQuestion", 1f);
+                // Start next
             }
 
             return _result;
@@ -45,8 +45,6 @@ namespace Study.Examination
 
         public void StartQuestion()
         {
-            if(_currentQuestion >= _currentExam.Length) { return; }
-
             string[] _variants = new string[_currentExam[_currentQuestion].Answers.Length];
 
             for (int i = 0; i < _currentExam[_currentQuestion].Answers.Length; i++)
