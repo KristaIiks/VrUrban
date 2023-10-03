@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 namespace Study.Examination
@@ -30,7 +29,7 @@ namespace Study.Examination
 
         public QuestionVariant[] _variants;
 
-        public QuestionVariant GenerateQuestion() => _variants[UnityEngine.Random.Range(0, _variants.Length - 1)];
+        public QuestionVariant GenerateQuestion() => _variants[Random.Range(0, _variants.Length - 1)];
     }
 
     public abstract class QuestionVariant : ScriptableObject
@@ -41,50 +40,17 @@ namespace Study.Examination
         [field: SerializeField] public string _question { get; private set; }
         [field: SerializeField] public AudioClip _audio { get; private set; }
 
-        [SerializeField] private string _help;
+        [field: SerializeField] public Answers[] Answers { get; private set; }
 
-        public void GetHelp()
-        {
-            Debug.Log(_help); // Test help
-        }
+        public bool TryAnswer(uint _id) => Answers[_id]._isAnswer;
     }
-
-    public struct QuestionResult
-    {
-        public float _time;
-        public bool _result;
-        public string _comments;
-
-        public QuestionResult(float time, bool result, string comments = "")
-        {
-            _time = time;
-            _result = result;
-            _comments = comments;
-        }
-    }
-
-    [CreateAssetMenu(fileName = "Standart", menuName = "Study/Examination/New Question Variant/Standart")]
-    public class StandartQuestion : QuestionVariant
-    {
-        public Answers[] Answers;
-    }
-
-    // Sample how use custom Question Variant
-    //
-    //[CreateAssetMenu(fileName = "Special", menuName = "Study/Examination/New Question Variant/Special")]
-    //public class SpecialQuestion : QuestionVariant
-    //{
-    //    public string _test;
-    //}
 
     [System.Serializable]
     public struct Answers
     {
         public string _text;
-        public Sprite _image;
 
         public AudioClip _reaction;
-
         public bool _isAnswer;
     }
 }
