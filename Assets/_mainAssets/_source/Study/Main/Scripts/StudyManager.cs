@@ -39,7 +39,14 @@ namespace StudySystem
             }
 		}
 
-		public void StartNextStage()
+		public void Animate()
+		{
+			//
+		}
+
+		public void Sound(AudioClip _clip) => _audioSource.PlayOneShot(_clip);
+
+        public void StartNextStage()
 		{
 			StartCoroutine(NextStage(3f));
 		}

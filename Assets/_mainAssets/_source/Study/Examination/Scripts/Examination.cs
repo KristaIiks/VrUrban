@@ -1,3 +1,4 @@
+using StudySystem;
 using UnityEngine;
 
 namespace Study.Examination
@@ -8,10 +9,10 @@ namespace Study.Examination
 
         public static Examination Instance { get; private set; }
 
-        private QuestionVariant[] _currentExam = null;
+        private Question[] _currentExam = null;
         private uint _currentQuestion = 0;
 
-        private uint _totalAttemps = 0;
+        public uint _totalAttemps = 0;
 
         private void OnValidate()
         {
@@ -26,35 +27,56 @@ namespace Study.Examination
             _currentExam = _exam.GenerateExam();
 
             // Start first question
-            StartQuestion();
+            string[] _variants = new string[_currentExam[_currentQuestion]._variant.Answers.Length];
+
+            for (int i = 0; i < _currentExam[_currentQuestion]._variant.Answers.Length; i++)
+            {
+                _variants.SetValue(_currentExam[_currentQuestion]._variant.Answers[i]._text + "\n", i);
+            }
+
+            _display.Display(_currentExam[_currentQuestion]._question, _variants);
         }
 
         public bool TryAnswer(uint _id)
         {
             _totalAttemps++;
 
-            bool _result = _currentExam[_currentQuestion].TryAnswer(_id);
+            bool _result = _currentExam[_currentQuestion]._variant.TryAnswer(_id);
 
             if (_result)
             {
-                // Start next
+                Invoke("StartQuestion", 2f);
             }
+
+            StudyManager.Instance.Sound(_currentExam[_currentQuestion]._variant.Answers[_id]._reaction);
 
             return _result;
         }
 
         public void StartQuestion()
         {
-            string[] _variants = new string[_currentExam[_currentQuestion].Answers.Length];
+            _currentQuestion++;
 
-            for (int i = 0; i < _currentExam[_currentQuestion].Answers.Length; i++)
+            if(_currentQuestion >= _currentExam.Length) { _display.Clear(); return; } // finish
+
+            if (_currentExam[_currentQuestion]._custom != null)
             {
-                _variants.SetValue(_currentExam[_currentQuestion].Answers[i]._text + "\n", i);
+                _display.Clear();
+                _display.Display(_currentExam[_currentQuestion]._question);
+
+                // Spawn quest
+
+                return;
+            }
+
+            string[] _variants = new string[_currentExam[_currentQuestion]._variant.Answers.Length];
+
+            for (int i = 0; i < _currentExam[_currentQuestion]._variant.Answers.Length; i++)
+            {
+                _variants.SetValue(_currentExam[_currentQuestion]._variant.Answers[i]._text + "\n", i);
             }
 
             _display.Display(_currentExam[_currentQuestion]._question, _variants);
-
-            _currentQuestion++;
         }
     }
 }
