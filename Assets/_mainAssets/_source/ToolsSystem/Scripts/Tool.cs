@@ -148,6 +148,8 @@ namespace ToolsSystem
         protected virtual void OpenMenu(ToolParams _params) => _window.Open(_params);
         public virtual void CloseMenu()
         {
+            if(_window == null) { return; }
+
             _window.Close();
 
             if(_selectedObject != null)
