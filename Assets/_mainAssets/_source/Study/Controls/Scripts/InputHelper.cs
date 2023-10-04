@@ -16,6 +16,7 @@ namespace Study.Controls
         private Renderer _current;
         private InputAction _action;
         private Material _oldMat;
+        private bool _activeState = false;
 
         public void Study(int _id)
         {
@@ -23,6 +24,7 @@ namespace Study.Controls
             bool _autoFinish = true;
             StopStudy();
 
+            _activeState = _handModel.activeSelf;
             _handModel.SetActive(false);
             _controllerModel.SetActive(true);
 
@@ -49,7 +51,7 @@ namespace Study.Controls
         {
             if(_current == null) { return; }
 
-            _handModel.SetActive(true);
+            _handModel.SetActive(_activeState);
             _controllerModel.SetActive(false);
 
             _current.material = _oldMat;

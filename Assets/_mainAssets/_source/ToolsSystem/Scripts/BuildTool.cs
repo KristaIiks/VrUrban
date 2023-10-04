@@ -9,12 +9,16 @@ namespace ToolsSystem
 
         public static BuildTool Instance;
 
+        private void OnValidate()
+        {
+            _source ??= GetComponent<AudioSource>();
+        }
+
         protected override void Awake()
         {
             base.Awake();
 
             Instance = this;
-            _source = GetComponent<AudioSource>();
         }
 
         public void SelectBuild(GameObject _obj)

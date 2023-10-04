@@ -12,6 +12,8 @@ namespace ToolsSystem
 
         [SerializeField] private bool _canSelect = true;
 
+        [SerializeField] private GameObject _uiHand;
+
         [SerializeField] private Transform _transform;
         [SerializeField] private float _rayDistance = 10f;
         [SerializeField] private LayerMask _rayMask;
@@ -79,6 +81,8 @@ namespace ToolsSystem
                         _currentRayObject = _obj.GetComponent<Selectable>();
 
                         SetRayColor(_currentRayObject._canInteract ? CanSelectGrad : ErrorSelectGrad);
+
+                        _uiHand.SetActive(false);
                         _line.enabled = true;
                     }
                 }
@@ -89,12 +93,14 @@ namespace ToolsSystem
                     SetRayColor(ErrorSelectGrad);
                     _line.SetPosition(1, _transform.position + _transform.forward * _rayDistance);
 
+                    _uiHand.SetActive(false);
                     _line.enabled = true;
                 }
                 else if (!_hasHit)
                 {
                     _currentRayObject = null;
 
+                    _uiHand.SetActive(true);
                     _line.enabled = false;
                 }
             }

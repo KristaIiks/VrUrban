@@ -7,6 +7,7 @@ namespace Player.Hands
 {
     public class HandControls : MonoBehaviour, IStudy
     {
+        [SerializeField] private GameObject _uiHand;
         [SerializeField] private GameObject _interactHand;
         [SerializeField] private GameObject _teleportHand;
 
@@ -20,6 +21,7 @@ namespace Player.Hands
 
         private void StartTeleport(InputAction.CallbackContext cnt)
         {
+            _uiHand.SetActive(false);
             _interactHand.SetActive(false);
             _teleportHand.SetActive(true);
         }
@@ -27,6 +29,7 @@ namespace Player.Hands
         private void FinishTeleport(InputAction.CallbackContext cnt) => Invoke("Deactivate", .01f);
         private void Deactivate()
         {
+            _uiHand.SetActive(true);
             _interactHand.SetActive(true);
             _teleportHand.SetActive(false);
         }

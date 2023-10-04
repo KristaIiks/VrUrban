@@ -77792,6 +77792,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 851201015}
     m_Modifications:
+    - target: {fileID: 2003934979173737, guid: b261dfe346e6264439ef877ca0595d71, type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].time
+      value: 0.059700012
+      objectReference: {fileID: 0}
+    - target: {fileID: 2003934979173737, guid: b261dfe346e6264439ef877ca0595d71, type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].value
+      value: 0.01657486
+      objectReference: {fileID: 0}
     - target: {fileID: 1259207243425156099, guid: b261dfe346e6264439ef877ca0595d71,
         type: 3}
       propertyPath: m_InteractionManager
@@ -77812,6 +77820,11 @@ PrefabInstance:
       propertyPath: m_InteractionManager
       value: 
       objectReference: {fileID: 1942423688}
+    - target: {fileID: 3599031915019767167, guid: b261dfe346e6264439ef877ca0595d71,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3802221215126525149, guid: b261dfe346e6264439ef877ca0595d71,
         type: 3}
       propertyPath: m_RootOrder
@@ -77872,6 +77885,11 @@ PrefabInstance:
       propertyPath: m_InteractionManager
       value: 
       objectReference: {fileID: 1942423688}
+    - target: {fileID: 6148076616774351427, guid: b261dfe346e6264439ef877ca0595d71,
+        type: 3}
+      propertyPath: _currentTool
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 7344216768863281028, guid: b261dfe346e6264439ef877ca0595d71,
         type: 3}
       propertyPath: m_InteractionManager

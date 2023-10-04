@@ -11,7 +11,7 @@ namespace ToolsSystem
 
         public static ToolsManager Instance;
 
-        [SerializeField] private Tool _currentTool;
+        private Tool _currentTool;
 
         private AudioSource _audioSource;
         private ToolWindow[] _windows;
