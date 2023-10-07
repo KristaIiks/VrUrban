@@ -10,6 +10,7 @@ namespace ToolsSystem
         [SerializeField] private AudioClip _menuAudio;
 
         [SerializeField] private GameObject _interactHand;
+        [SerializeField] private GameObject _handModel;
 
         public static ToolsManager Instance;
 
@@ -25,11 +26,16 @@ namespace ToolsSystem
             _windows = FindObjectsOfType<ToolWindow>();
 
             _windowInput.action.performed += (s) => WindowBtn();
+
+            SetTool(GazTool.Instance);
         }
 
         public void SetTool(Tool _tool)
         {
+            _handModel.SetActive(true);
+
             _interactHand.SetActive(false);
+
             BuildTool.Instance.gameObject.SetActive(false);
             GazTool.Instance.gameObject.SetActive(false);
 
@@ -40,6 +46,7 @@ namespace ToolsSystem
                     break;
                 case GazTool:
                     GazTool.Instance.gameObject.SetActive(true);
+                    _handModel.SetActive(false);
                     break;
                 default:
                     _interactHand.SetActive(true);

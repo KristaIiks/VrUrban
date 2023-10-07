@@ -7,7 +7,7 @@ namespace ToolsSystem
     {
         [SerializeField] private GameObject _obj;
 
-        private GazTerritory _territory;
+        public GazTerritory _territory;
         private Collider _collider;
 
         private void OnValidate()
@@ -22,6 +22,8 @@ namespace ToolsSystem
 
         public void Paint()
         {
+            _obj.SetActive(true);
+
             _territory.Paint();
             _collider.enabled = false;
         }

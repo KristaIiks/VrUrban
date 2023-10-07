@@ -22,10 +22,11 @@ namespace ToolsSystem
         {
             base.Awake();
 
-            Instance = this;
-
             _input.action.performed += (s) => _isEnabled = true;
             _input.action.canceled += (s) => _isEnabled = false;
+
+            Instance ??= this;
+            gameObject.SetActive(false);
         }
 
         protected override void Start() { } // No ui
@@ -33,37 +34,39 @@ namespace ToolsSystem
         private float _lastTime = 0;
         protected override void Update()
         {
-            _lastTime += Time.deltaTime;
-
             if (_isEnabled)
             {
+                _lastTime += Time.deltaTime;
+
                 if (!_source.isPlaying)
                 {
-                    _effect.Play();
+                    //_effect.Play();
                     _source.Play();
-
-                    _lastTime = 0f;
                 }
 
                 if (_lastTime >= .2f)
                 {
                     _lastTime = 0f;
-
+                    
                     RaycastHit _hit;
                     PaintPoint _point;
 
-                    if (Physics.Raycast(transform.position, Vector3.forward, out _hit, 5f) && _hit.transform.TryGetComponent(out _point))
+                    if (Physics.Raycast(transform.position, transform.forward, out _hit, 5f) && _hit.transform.TryGetComponent(out _point))
                     {
                         _point.Paint();
                     }
                 }
             }
-
-            if (_source.isPlaying)
+            else
             {
-                _effect.Stop();
-                _source.Stop();
+                if (_source.isPlaying)
+                {
+                    //_effect.Stop();
+                    _source.Stop();
+                }
             }
+
+            
         }
     }
 }

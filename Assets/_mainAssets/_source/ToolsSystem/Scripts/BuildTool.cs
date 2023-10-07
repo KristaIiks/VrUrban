@@ -18,7 +18,8 @@ namespace ToolsSystem
         {
             base.Awake();
 
-            Instance = this;
+            Instance ??= this;
+            gameObject.SetActive(false);
         }
 
         public void SelectBuild(GameObject _obj)

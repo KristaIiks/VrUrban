@@ -6,10 +6,18 @@ namespace ToolsSystem
 {
     public class GazTerritory : MonoBehaviour, IStudy
     {
-        [SerializeField] private GameObject[] _blocks;
+        [SerializeField] private PaintPoint[] _blocks;
         private uint _painted = 0;
 
         [SerializeField] private Action _onComplete;
+
+        private void Awake()
+        {
+            for (int i = 0; i < _blocks.Length; i++)
+            {
+                _blocks[i].Init(this);
+            }
+        }
 
         public void Paint()
         {
