@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db1873a9170a9364dbca947452823856, type: 3}
+  m_Name: 1
+  m_EditorClassIdentifier: 
+  _variants:
+  - <_question>k__BackingField: "1 \u0412\u043E\u043F\u0440\u043E\u0441. \u041A\u0430\u043A
+      \u043B\u0443\u0447\u0448\u0435 \u043F\u043E\u0432\u044B\u0441\u0438\u0442\u044C
+      \u042D\u043D\u0435\u0440\u0433\u043E-\u044D\u0444\u0444\u0435\u043A\u0442\u0438\u043D\u043E\u0432\u0441\u0442\u044C
+      \u0434\u043E\u043C\u0430?"
+    <_audio>k__BackingField: {fileID: 8300000, guid: d190b517f877b0845a388cd5a6d791ca,
+      type: 3}
+    _variant:
+      <Answers>k__BackingField:
+      - _text: "\u0421\u043E\u043B\u043D\u0435\u0447\u043D\u044B\u0435 \u043F\u0430\u043D\u0435\u043B\u0438"
+        _sprite: {fileID: 21300000, guid: e5cc9ca02a8c18f4a9c3c42572103a30, type: 3}
+        _reaction: {fileID: 8300000, guid: a1c374c97316b664ca726157856a7ea9, type: 3}
+        _isAnswer: 1
+      - _text: "\u0412\u0435\u0442\u0440\u044F\u043A"
+        _sprite: {fileID: 21300000, guid: 720ee12815267064296ad7d3a5dc1990, type: 3}
+        _reaction: {fileID: 8300000, guid: 8ec3e994d0e50b84ba1e3ef36ae61c06, type: 3}
+        _isAnswer: 0
+      - _text: "\u041F\u0435\u0440\u0435\u0440\u0430\u0431\u043E\u0442\u043A\u0430
+          \u043C\u0443\u0441\u043E\u0440\u0430"
+        _sprite: {fileID: 21300000, guid: 90be46bca5051dc498b1e1e6f08274e7, type: 3}
+        _reaction: {fileID: 8300000, guid: 9629920e5197c82479678c35f567da67, type: 3}
+        _isAnswer: 0
+    _custom: {fileID: 0}

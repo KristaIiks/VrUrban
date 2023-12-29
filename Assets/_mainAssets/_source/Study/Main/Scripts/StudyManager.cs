@@ -36,12 +36,14 @@ namespace StudySystem
 				_bgStandartVolume = BackgroundMusic.volume;
 
 				StartNextStage(1f);
-			}
+            }
 		}
 
-		public void StartNextStage()
+		public void Sound(AudioClip _clip) => _audioSource.PlayOneShot(_clip);
+
+        public void StartNextStage()
 		{
-			StartCoroutine(NextStage(3f));
+			StartCoroutine(NextStage(4f));
 		}
 
 		public void StartNextStage(float time, GameObject _object = null)
@@ -53,7 +55,7 @@ namespace StudySystem
 		{
 			StudyStage _stage = new StudyStage();
 
-			if (_object != null) // Set to completed
+			if (_object != null && Chapters[_currentChapter].Levels[_currentLevel].Stages[_currentStage].Quests.Length > 1) // Set to completed
 			{
 				_stage = Chapters[_currentChapter].Levels[_currentLevel].Stages[_currentStage];
 
@@ -67,7 +69,7 @@ namespace StudySystem
 				}
 			}
 
-			yield return ChangeStage(_stage, time, _object == null);
+			yield return ChangeStage(_stage, time, _object == null || Chapters[_currentChapter].Levels[_currentLevel].Stages[_currentStage].Quests.Length <= 1);
 		}
 
 		private IEnumerator ChangeStage(StudyStage _stage, float time, bool _skip)
@@ -204,7 +206,7 @@ namespace StudySystem
 	[System.Serializable]
 	public struct AudioEvent
 	{
-		public int _time;
+		public float _time;
 		public UnityEvent _events;
 	}
 

@@ -89,6 +89,11 @@ namespace StudySystem.Bot
             _audio.Stop();
         }
 
+        public void Teleport(Transform _point)
+        {
+            transform.position = _point.position;
+            transform.rotation = _point.rotation;
+        }
 
         public void StudyMove(Transform _point)
         {
