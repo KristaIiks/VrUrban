@@ -11,7 +11,7 @@ namespace UnityEditor.XR.Interaction.Toolkit.Samples
     /// </summary>
     class StarterAssetsSampleProjectValidation
     {
-        const string k_Category = "XR Interaction Toolkit";
+        const string k_Category = "XR_Toolkit";
         const string k_StarterAssetsSampleName = "Starter Assets";
         const string k_TeleportLayerName = "Teleport";
         const int k_TeleportLayerIndex = 31;
