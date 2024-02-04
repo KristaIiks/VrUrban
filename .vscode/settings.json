@@ -56,5 +56,6 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "VrUrban.sln"
+    "dotnet.defaultSolution": "VrUrban.sln",
+    "dotnet.preferCSharpExtension": true
 }
