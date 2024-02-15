@@ -1,51 +1,24 @@
 fileFormatVersion: 2
-guid: 1d28d23408c19974ca694f51b28abbe3
+guid: 9fa701c6be5713a4aa9d17a519df71e3
 ModelImporter:
-  serializedVersion: 22200
+  serializedVersion: 21300
   internalIDToNameTable: []
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Material.017
-    second: {fileID: -876546973899608171, guid: 583fa6850f3a64d4188c9f46552bb3c8,
-      type: 3}
+      name: brows
+    second: {fileID: 2100000, guid: f9cb1c47fba1b85499d8a5f6cb81c2e0, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Material.032
-    second: {fileID: -876546973899608171, guid: 583fa6850f3a64d4188c9f46552bb3c8,
-      type: 3}
+      name: eyes
+    second: {fileID: 2100000, guid: b66d5a47ccafb48419d5fb801148838d, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Material.033
-    second: {fileID: -876546973899608171, guid: 583fa6850f3a64d4188c9f46552bb3c8,
-      type: 3}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material.035
-    second: {fileID: -876546973899608171, guid: 583fa6850f3a64d4188c9f46552bb3c8,
-      type: 3}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material.036
-    second: {fileID: -876546973899608171, guid: 583fa6850f3a64d4188c9f46552bb3c8,
-      type: 3}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material.037
-    second: {fileID: -876546973899608171, guid: 583fa6850f3a64d4188c9f46552bb3c8,
-      type: 3}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material.038
-    second: {fileID: -876546973899608171, guid: 583fa6850f3a64d4188c9f46552bb3c8,
-      type: 3}
+      name: helmet
+    second: {fileID: 2100000, guid: 4de4524f33f447b4bab4dfefd9b01047, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -56,7 +29,7 @@ ModelImporter:
     bakeSimulation: 0
     resampleCurves: 1
     optimizeGameObjects: 0
-    removeConstantScaleCurves: 0
+    removeConstantScaleCurves: 1
     motionNodeName: 
     rigImportErrors: 
     rigImportWarnings: 
@@ -77,12 +50,11 @@ ModelImporter:
     isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: 0.2
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
     sortHierarchyByName: 1
-    importPhysicalCameras: 1
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1
@@ -110,7 +82,6 @@ ModelImporter:
     secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
     useFileScale: 1
-    strictVertexDataChecks: 0
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -132,7 +103,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 1
+    globalScale: 0.002
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
@@ -143,7 +114,6 @@ ModelImporter:
   humanoidOversampling: 1
   avatarSetup: 0
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
-  importBlendShapeDeformPercent: 1
   remapMaterialsIfMaterialImportModeIsNone: 0
   additionalBone: 0
   userData: 

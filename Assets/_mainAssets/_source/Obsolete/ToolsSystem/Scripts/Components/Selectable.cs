@@ -19,7 +19,11 @@ namespace ToolsSystem
 
 		private void OnValidate()
 		{
-			_outline ??= GetComponent<Outline>();
+			if(_outline == null)
+			{
+				_outline = GetComponent<Outline>();
+				_outline.enabled = false;
+			}
 		}
 
 
