@@ -7,7 +7,6 @@ namespace ToolsSystem
     public class BuildTool : Tool
     {
         [SerializeField] private InputActionReference _placeBtn;
-        [SerializeField] private AudioClip OnSelectBuild;
 
         [SerializeField] private Renderer _model;
 

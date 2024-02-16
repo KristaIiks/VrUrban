@@ -15,14 +15,16 @@ namespace ToolsSystem
 		public UnityEvent OnDeselect = new UnityEvent();
 
 		private bool _isSelected = false;
-		private Outline _outline;
+		protected Outline _outline;
 
-		private void OnValidate()
+		protected virtual void OnValidate()
 		{
 			if(_outline == null)
 			{
 				_outline = GetComponent<Outline>();
 				_outline.enabled = false;
+				_outline.OutlineWidth = 10f;
+				_outline.BakeOutline = true;
 			}
 		}
 
