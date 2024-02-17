@@ -26,7 +26,7 @@ namespace ToolsSystem
 
             if (_isStudy)
             {
-                FinishStidy();
+                FinishStudy();
             }
         }
 
@@ -35,7 +35,7 @@ namespace ToolsSystem
             _isStudy = true;
         }
 
-        private void FinishStidy()
+        private void FinishStudy()
         {
             StudyManager.Instance.StartNextStage(3f, gameObject);
             _isStudy = false;

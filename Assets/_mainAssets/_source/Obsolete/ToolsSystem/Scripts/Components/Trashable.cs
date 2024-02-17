@@ -6,6 +6,8 @@ public class Trashable : Selectable, IStudy
 {
 	protected override void OnValidate()
 	{
+		_params._openMenu = false;
+		
 		if(_outline == null)
 		{
 			_outline = GetComponent<Outline>();
@@ -15,7 +17,7 @@ public class Trashable : Selectable, IStudy
 		}
 	}
 	
-	private bool _destroyed = true;
+	private bool _destroyed = false;
 	public override void Interact()
 	{
 		base.Interact();
@@ -31,7 +33,7 @@ public class Trashable : Selectable, IStudy
 	{
 		if(_destroyed)
 		{
-			transform.localScale = new Vector3(transform.localScale.x - Time.deltaTime, transform.localScale.y - Time.deltaTime, transform.localScale.z - Time.deltaTime);
+			transform.localScale = new Vector3(transform.localScale.x - transform.localScale.x * .3f * Time.deltaTime, transform.localScale.y - transform.localScale.y * .3f * Time.deltaTime, transform.localScale.z - transform.localScale.z * .3f * Time.deltaTime);
 		}
 	}
 
