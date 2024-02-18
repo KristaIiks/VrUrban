@@ -53,7 +53,7 @@ namespace StudySystem.Bot
             {
                 transform.position = Vector3.MoveTowards(transform.position, _target.position, MoveSpeed * Time.deltaTime);
 
-                if (Vector3.Distance(transform.position, _target.position) == 0)
+                if (Vector3.Distance(transform.position, _target.position) <= .1f)
                 {
                     _isFinish = true;
                     _canMove = false;

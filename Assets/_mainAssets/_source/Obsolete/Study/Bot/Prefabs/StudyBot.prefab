@@ -44,7 +44,8 @@ AudioSource:
   m_GameObject: {fileID: 6261303357040441456}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 1775223780548176870, guid: 928911c2dd37e3d42a7d3aec32eaafc6,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: b045f7ce9d7f2254380901046ed9f955, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -190,7 +191,8 @@ AudioSource:
   m_GameObject: {fileID: 6261303357910976782}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -1098048806519755292, guid: 928911c2dd37e3d42a7d3aec32eaafc6,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: cbeccf69787b35d46b05375d9e4cc77d, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -285,10 +287,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6261303357040441471}
     m_Modifications:
+    - target: {fileID: 641508462938590524, guid: c505d84088e545d4aa14e35233c288a4,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1045020275429689937, guid: c505d84088e545d4aa14e35233c288a4,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1980611762328082413, guid: c505d84088e545d4aa14e35233c288a4,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7103356000246912451, guid: c505d84088e545d4aa14e35233c288a4,
         type: 3}
       propertyPath: m_Name
       value: Model
+      objectReference: {fileID: 0}
+    - target: {fileID: 7495129162325029225, guid: c505d84088e545d4aa14e35233c288a4,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7629062624011554681, guid: c505d84088e545d4aa14e35233c288a4,
         type: 3}
