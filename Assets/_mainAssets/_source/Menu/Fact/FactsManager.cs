@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-[RequireComponent(typeof(AudioSource))]
+[RequireComponent(typeof(AudioSource)), System.Obsolete("Fact system?")]
 public class FactsManager : MonoBehaviour
 {
 	[SerializeField] private FactScriptable[] _facts;
