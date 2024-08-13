@@ -1,7 +1,9 @@
 {
-    "name": "Logging",
-    "rootNamespace": "Logging",
-    "references": [],
+    "name": "SmartConsole",
+    "rootNamespace": "SmartConsole",
+    "references": [
+        "GUID:470d86000698a8344872a3e62a70ef3d"
+    ],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,

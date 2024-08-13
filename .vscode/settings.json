@@ -57,5 +57,8 @@
         "Temp/": true
     },
     "dotnet.defaultSolution": "VrUrban.sln",
-    "dotnet.preferCSharpExtension": true
+    "dotnet.preferCSharpExtension": true,
+    "cSpell.words": [
+        "scriptable"
+    ]
 }

@@ -7,6 +7,20 @@ PresetManager:
   m_DefaultPresets:
   - first:
       m_NativeTypeID: 114
+      m_ManagedTypePPtr: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc,
+        type: 3}
+      m_ManagedTypeFallback: 
+    second:
+    - m_Preset: {fileID: 2655988077585873504, guid: 085c56c4b8a9c944089c93c2aab36d10,
+        type: 2}
+      m_Filter: 
+      m_Disabled: 0
+    - m_Preset: {fileID: 2655988077585873504, guid: 5151b46e609aee84ba982bba86763bb6,
+        type: 2}
+      m_Filter: Canvas_BG
+      m_Disabled: 0
+  - first:
+      m_NativeTypeID: 114
       m_ManagedTypePPtr: {fileID: 11500000, guid: 38f6bf3d943ac7945842268c9ef1dca6,
         type: 3}
       m_ManagedTypeFallback: 
@@ -28,18 +42,4 @@ PresetManager:
     - m_Preset: {fileID: 2655988077585873504, guid: a0fecfaf4d05afc4fb9a69e8e6bb19fb,
         type: 2}
       m_Filter: Icon
-      m_Disabled: 0
-  - first:
-      m_NativeTypeID: 114
-      m_ManagedTypePPtr: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc,
-        type: 3}
-      m_ManagedTypeFallback: 
-    second:
-    - m_Preset: {fileID: 2655988077585873504, guid: 085c56c4b8a9c944089c93c2aab36d10,
-        type: 2}
-      m_Filter: 
-      m_Disabled: 0
-    - m_Preset: {fileID: 2655988077585873504, guid: 5151b46e609aee84ba982bba86763bb6,
-        type: 2}
-      m_Filter: Canvas_BG
       m_Disabled: 0

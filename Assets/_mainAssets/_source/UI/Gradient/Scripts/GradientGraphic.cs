@@ -149,12 +149,14 @@ public class GradientGraphic : MaskableGraphic, ILayoutElement
 			UnTrackImage();
 	}
 
+	#if UNITY_EDITOR
 	protected override void OnValidate()
 	{
 		base.OnValidate();
 		gradientSmoothness = Mathf.Max( gradientSmoothness, 1 );
 		pixelsPerUnitMultiplier = Mathf.Max( pixelsPerUnitMultiplier, 0.01f );
 	}
+	#endif
 
 	protected override void OnPopulateMesh( VertexHelper vh )
 	{
