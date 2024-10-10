@@ -7,7 +7,7 @@ namespace SmartConsole
 	// TODO: create editor menu to configure
 	// TODO: add filter to control display level in game + state
 	// TODO: add scriptable settings
-	public class Console
+	public class SConsole
 	{
 		private const string LOG_TAG = "<color=#ffff00ff>Console</color>";
 		private const int DISPLAY_NUM = 2;
