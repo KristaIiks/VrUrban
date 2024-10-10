@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: ec90d861300ec684ba783ff81ea56f60
+guid: 3451d7baf2eb4c54095a31b00e3f5e12
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -7,7 +7,7 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Vertex
+      name: Material.070
     second: {fileID: -876546973899608171, guid: 583fa6850f3a64d4188c9f46552bb3c8,
       type: 3}
   materials:

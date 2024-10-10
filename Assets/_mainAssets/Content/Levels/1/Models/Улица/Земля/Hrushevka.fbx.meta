@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: ec90d861300ec684ba783ff81ea56f60
+guid: 8e53a571ad766fb438250a5fc0cebafb
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -7,9 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Vertex
-    second: {fileID: -876546973899608171, guid: 583fa6850f3a64d4188c9f46552bb3c8,
-      type: 3}
+      name: Material.001
+    second: {fileID: 2100000, guid: cfe01d7f0e7cad94c942233607387507, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -41,14 +40,14 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 1
+    addColliders: 0
     useSRGBMaterialColor: 1
     sortHierarchyByName: 1
     importPhysicalCameras: 1
     importVisibility: 1
     importBlendShapes: 1
-    importCameras: 0
-    importLights: 0
+    importCameras: 1
+    importLights: 1
     nodeNameCollisionStrategy: 1
     fileIdsGeneration: 2
     swapUVChannels: 0
@@ -82,7 +81,7 @@ ModelImporter:
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
   referencedClips: []
-  importAnimation: 0
+  importAnimation: 1
   humanDescription:
     serializedVersion: 3
     human: []
