@@ -6,16 +6,15 @@ namespace ToolsSystem
 	[RequireComponent(typeof(Collider))]
 	public abstract class SprayPoint : BaseToolObject
 	{
-		public const string GRASS_TAG = "SprayPoint";
+		public const string SPRAY_POINT_TAG = "SprayPoint";
 		
-		[SerializeField] private GameObject _grassObject;
-		
-		public abstract event Action Painted;
+		public abstract event Action OnPaint;
 		
 		private Collider _collider;
 
 		private void OnValidate()
 		{
+			gameObject.tag = SPRAY_POINT_TAG;
 			_collider ??= GetComponent<Collider>();
 		}
 

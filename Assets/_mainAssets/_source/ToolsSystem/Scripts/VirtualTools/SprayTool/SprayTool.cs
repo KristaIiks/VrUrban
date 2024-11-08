@@ -43,7 +43,7 @@ namespace ToolsSystem
 		
 		private void TryInteract()
 		{
-			if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, _sprayDistance) && hit.collider.tag == SprayPoint.GRASS_TAG)
+			if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, _sprayDistance) && hit.collider.tag == SprayPoint.SPRAY_POINT_TAG)
 			{
 				hit.transform.GetComponent<SprayPoint>()?.Paint();
 			}

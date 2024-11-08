@@ -68,7 +68,7 @@ namespace ToolsSystem
 		
 		public virtual void Select()
 		{
-			if (!CanInteract || _isSelected) { return; }
+			if (!CanSelect || _isSelected) { return; }
 			
 			
 			_isSelected = true;
