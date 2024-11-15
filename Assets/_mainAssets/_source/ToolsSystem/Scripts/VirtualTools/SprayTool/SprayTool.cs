@@ -9,23 +9,13 @@ namespace ToolsSystem
 	// TODO: add filter points (grass, graffiti or other)
 	public sealed class SprayTool : VirtualTool
 	{
-		[SerializeField] private InputActionReference _btnInput;
-		[SerializeField] private float _sprayDistance = 2f;
+		[SerializeField] private InputActionReference _interactInput;
+		[SerializeField, Min(.1f)] private float _sprayDistance = 2f;
 		[SerializeField] private float _interactionDelay = .5f;
 		[SerializeField] private VisualEffect _effect;
 		
 		private float _lastTime;
 		private bool _isWork;
-		
-		private void OnEnable()
-		{
-			_btnInput.action.performed += OnInteractTool;
-		}
-
-		private void OnDisable()
-		{
-			_btnInput.action.performed -= OnInteractTool;
-		}
 		
 		private void Update()
 		{
@@ -48,20 +38,47 @@ namespace ToolsSystem
 				hit.transform.GetComponent<SprayPoint>()?.Paint();
 			}
 		}
-		
-		private void OnInteractTool(InputAction.CallbackContext cnt)
+
+		protected override void SelectTool(bool state)
+		{			
+			if (state) 
+			{
+				_interactInput.action.performed += OnInteractTool;
+			}
+			else
+			{
+				_interactInput.action.performed -= OnInteractTool;
+				ChangeInputState(state);
+			}
+			
+			base.SelectTool(state);
+		}
+
+		private void ChangeInputState(bool state)
 		{
-			if (cnt.started)
+			if (state)
 			{
 				_effect.Play();
 				_audio.Play();
 				_isWork = true;
 			}
-			else if (cnt.canceled)
+			else
 			{
 				_effect.Stop();
 				_audio.Stop();
-				_isWork = true;
+				_isWork = false;
+			}
+		}
+		
+		private void OnInteractTool(InputAction.CallbackContext cnt)
+		{
+			if (cnt.started)
+			{
+				ChangeInputState(true);
+			}
+			else if (cnt.canceled)
+			{
+				ChangeInputState(false);
 			}
 		}
 	}

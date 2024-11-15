@@ -13,7 +13,7 @@ namespace ToolsSystem
 		private MeshRenderer _meshRenderer;
 		private bool _canPaint;
 		
-		private void OnValidate()
+		protected override void OnValidate()
 		{
 			_meshRenderer ??= GetComponent<MeshRenderer>();
 		}

@@ -12,7 +12,7 @@ namespace ToolsSystem
 		
 		private Collider _collider;
 
-		private void OnValidate()
+		protected virtual void OnValidate()
 		{
 			gameObject.tag = SPRAY_POINT_TAG;
 			_collider ??= GetComponent<Collider>();
