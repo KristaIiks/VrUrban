@@ -15,6 +15,7 @@ namespace ToolsSystem
 		
 		protected override void OnValidate()
 		{
+			base.OnValidate();
 			_meshRenderer ??= GetComponent<MeshRenderer>();
 		}
 		
