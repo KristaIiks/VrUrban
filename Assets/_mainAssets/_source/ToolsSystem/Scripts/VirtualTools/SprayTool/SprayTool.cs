@@ -33,21 +33,27 @@ namespace ToolsSystem
 		
 		private void TryInteract()
 		{
-			if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, _sprayDistance) && hit.collider.tag == SprayPoint.SPRAY_POINT_TAG)
+			
+			if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, _sprayDistance) && hit.collider.tag == SprayPoint.SPRAY_POINT_TAG )
+			
 			{
+				Debug.LogError("Down");
 				hit.transform.GetComponent<SprayPoint>()?.Paint();
 			}
+			
 		}
 
 		protected override void SelectTool(bool state)
 		{			
 			if (state) 
 			{
-				_interactInput.action.performed += OnInteractTool;
+				_interactInput.action.started += OnInteractTool;
+				_interactInput.action.canceled += OnInteractTool;
 			}
 			else
 			{
-				_interactInput.action.performed -= OnInteractTool;
+				_interactInput.action.started -= OnInteractTool;
+				_interactInput.action.canceled -= OnInteractTool;
 				ChangeInputState(state);
 			}
 			
@@ -56,6 +62,7 @@ namespace ToolsSystem
 
 		private void ChangeInputState(bool state)
 		{
+			Debug.LogError(state);
 			if (state)
 			{
 				_effect.Play();
@@ -69,17 +76,21 @@ namespace ToolsSystem
 				_isWork = false;
 			}
 		}
-		
+	
 		private void OnInteractTool(InputAction.CallbackContext cnt)
 		{
 			if (cnt.started)
 			{
 				ChangeInputState(true);
+				
 			}
 			else if (cnt.canceled)
 			{
 				ChangeInputState(false);
+				
 			}
+			
 		}
+		
 	}
 }

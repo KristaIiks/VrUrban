@@ -12,7 +12,6 @@ namespace ToolsSystem
 
 		private MeshRenderer _meshRenderer;
 		private bool _canPaint;
-		
 		protected override void OnValidate()
 		{
 			base.OnValidate();
