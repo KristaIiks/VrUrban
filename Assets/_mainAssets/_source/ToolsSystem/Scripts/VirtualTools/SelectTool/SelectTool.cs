@@ -56,7 +56,11 @@ namespace ToolsSystem
 		protected override void OnValidate()
 		{
 			base.OnValidate();
-			_lineRenderer ??= GetComponent<LineRenderer>();
+			if (!_lineRenderer)
+			{
+				_lineRenderer = GetComponent<LineRenderer>();
+				_lineRenderer.enabled = false;
+			}
 		}
 		
 		protected virtual void OnEnable()
@@ -70,10 +74,7 @@ namespace ToolsSystem
 			Deselect();
 		}
 		
-		protected virtual void Update()
-		{
-			CalculateRay();
-		}
+		protected virtual void Update() => CalculateRay();
 
 		public virtual void InteractObject(T obj)
 		{
@@ -140,29 +141,23 @@ namespace ToolsSystem
 				SetRayPosition(1, hit.point); 
 				
 				Transform obj = hit.transform.root;
-				if (obj.tag == Selectable.OBJECT_TAG && obj != RayObject)
+				if (obj != RayObject && obj.TryGetComponent(out T selectable))
 				{
-					RayObject = obj.GetComponent<T>();
+					RayObject = selectable;
 				}
+				return;
 			}
-			else if (SelectBtn.action.IsPressed())
+			
+			if(SelectBtn.action.IsPressed() || ForceShowRay)
 			{
 				SetRayPosition(1, transform.position + transform.forward * RayDistance);
-				RayObject = null;
 			}
 			else
 			{
-				if (ForceShowRay)
-				{
-					SetRayPosition(1, transform.position + transform.forward * RayDistance);
-				}
-				else
-				{
-					_lineRenderer.enabled = false;
-				}
-				
-				RayObject = null;
+				_lineRenderer.enabled = false;
 			}
+			
+			RayObject = null;
 		}
 		
 		private void SetRayColor(Gradient _gradient) => _lineRenderer.colorGradient = _gradient;

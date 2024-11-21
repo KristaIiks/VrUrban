@@ -1,10 +1,11 @@
+using System;
+using SmartConsole;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.VFX;
 
 namespace ToolsSystem
 {
-	
 	// TODO: replace to Physic Tool
 	// TODO: add filter points (grass, graffiti or other)
 	public sealed class SprayTool : VirtualTool
@@ -13,6 +14,8 @@ namespace ToolsSystem
 		[SerializeField, Min(.1f)] private float _sprayDistance = 2f;
 		[SerializeField] private float _interactionDelay = .5f;
 		[SerializeField] private VisualEffect _effect;
+		
+		public event Action<SprayPoint> PaintPoint;
 		
 		private float _lastTime;
 		private bool _isWork;
@@ -33,14 +36,16 @@ namespace ToolsSystem
 		
 		private void TryInteract()
 		{
-			
-			if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, _sprayDistance) && hit.collider.tag == SprayPoint.SPRAY_POINT_TAG )
-			
+			if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, _sprayDistance) 
+			&& hit.collider.TryGetComponent(out SprayPoint sprayPoint))
 			{
-				Debug.LogError("Down");
-				hit.transform.GetComponent<SprayPoint>()?.Paint();
+				SConsole.Log(LOG_TAG, $"Try paint - {sprayPoint.gameObject.name}");
+				if (sprayPoint.Paint())
+				{
+					PaintPoint?.Invoke(sprayPoint);
+					SConsole.Log(LOG_TAG, "Successful pained");
+				}
 			}
-			
 		}
 
 		protected override void SelectTool(bool state)
@@ -54,6 +59,7 @@ namespace ToolsSystem
 			{
 				_interactInput.action.started -= OnInteractTool;
 				_interactInput.action.canceled -= OnInteractTool;
+				
 				ChangeInputState(state);
 			}
 			
@@ -62,7 +68,6 @@ namespace ToolsSystem
 
 		private void ChangeInputState(bool state)
 		{
-			Debug.LogError(state);
 			if (state)
 			{
 				_effect.Play();
@@ -73,24 +78,21 @@ namespace ToolsSystem
 			{
 				_effect.Stop();
 				_audio.Stop();
+				_lastTime = 0f;
 				_isWork = false;
 			}
 		}
-	
+		
 		private void OnInteractTool(InputAction.CallbackContext cnt)
 		{
 			if (cnt.started)
 			{
 				ChangeInputState(true);
-				
 			}
 			else if (cnt.canceled)
 			{
 				ChangeInputState(false);
-				
 			}
-			
 		}
-		
 	}
 }

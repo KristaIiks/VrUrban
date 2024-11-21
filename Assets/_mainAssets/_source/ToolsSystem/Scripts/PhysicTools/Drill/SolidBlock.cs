@@ -6,8 +6,7 @@ namespace ToolsSystem
 {
 	public sealed class SolidBlock : BaseToolObject
 	{
-		public const string OBJECT_TAG = "SolidBlock";
-		private const string LOG_TAG = "Tool: DrillTool";
+		private const string LOG_TAG = "SolidBlock";
 		
 		[SerializeField] private float _health;
 		[SerializeField] private GameObject[] _blockStages;
@@ -18,17 +17,12 @@ namespace ToolsSystem
 		
 		private float _stageHealth { get => Settings.Health / _blockStages.Length; }
 		
-		private void OnValidate()
-		{
-			gameObject.tag = OBJECT_TAG;
-		}
-		
 		private void Awake()
 		{
 			if (!Settings)
 			{
 				SConsole.LogException(LOG_TAG, new NullReferenceException(), Settings);
-				Destroy(gameObject);
+				gameObject.SetActive(false);
 			}
 			else
 			{
@@ -39,6 +33,7 @@ namespace ToolsSystem
 		
 		public bool ApplyDamage(float damage)
 		{
+			SConsole.Log(LOG_TAG, $"Block: {gameObject.name} takes damage \nHP reduced from {_health} to {_health - damage}");
 			_health -= damage;
 			OnDamage?.Invoke(_health);
 			
@@ -66,7 +61,7 @@ namespace ToolsSystem
 		private void Destroy()
 		{
 			gameObject.SetActive(false);
-			SConsole.Log(LOG_TAG, "SolidBlock destroyed: " + gameObject.name);
+			SConsole.Log(LOG_TAG, $"Destroy - {gameObject.name}");
 			OnDestroy?.Invoke();
 		}
 	}

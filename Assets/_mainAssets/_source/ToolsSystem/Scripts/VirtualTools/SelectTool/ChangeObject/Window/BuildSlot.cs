@@ -31,14 +31,8 @@ namespace ToolsSystem
 			}
 			else
 			{
-				if (isSelected)
-				{
-					SelectedIcon.SetActive(true);
-				}
-				else
-				{
-					BlockedIcon.SetActive(true);
-				}
+				SelectedIcon.SetActive(isSelected);
+				BlockedIcon.SetActive(isBlocked);
 				
 				_selectButton.interactable = false;
 			}

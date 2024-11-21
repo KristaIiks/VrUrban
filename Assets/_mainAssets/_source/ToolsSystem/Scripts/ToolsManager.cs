@@ -1,23 +1,17 @@
 using System;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 namespace ToolsSystem
 {
 	[RequireComponent(typeof(AudioSource))]
-	public static class ToolsManager// : MonoBehaviour
-	{
-		public static Action<Tool> OnSelectTool;
-		private static Tool _selectedTool;
-	
-		
-		
-		public static void ActivateTool(Tool tool)
+	public class ToolsManager : MonoBehaviour
+	{		
+		public void ActivateTool(Tool tool)
 		{
 			tool.ChangeToolActiveState(true);
 		}
 		
-		public static void ForceSetTool(Tool tool)
+		public void ForceSetTool(Tool tool)
 		{
 			switch (tool)
 			{
@@ -29,6 +23,5 @@ namespace ToolsSystem
 					break;
 			}
 		}
-
 	}
 }

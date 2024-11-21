@@ -30,7 +30,7 @@ public sealed class TrashObject : Selectable
 			_isDestroyed = true;
 			CanInteract = false;
 			// TODO: remove
-			SConsole.Log("Tool: TrashTool", "Remove - " + gameObject.name);
+			SConsole.Log("TrashObject", $"Remove - {gameObject.name}");
 
 			return true;
 		}

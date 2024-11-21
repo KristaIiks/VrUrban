@@ -4,11 +4,9 @@ using QuickOutline;
 
 namespace ToolsSystem
 {
-	[RequireComponent(typeof(Outline))]
+	[RequireComponent(typeof(Outline), typeof(Collider))]
 	public abstract class Selectable : BaseToolObject
-	{
-		public const string OBJECT_TAG = "SelectObject";
-		
+	{		
 		public bool ObjectState { get => CanInteract || CanSelect; }
 		public bool CanInteract 
 		{
@@ -49,12 +47,11 @@ namespace ToolsSystem
 		
 		protected virtual void OnValidate()
 		{
-			gameObject.tag = OBJECT_TAG;
-			
 			if(!_outline)
 			{
 				_outline = GetComponent<Outline>();
 				_outline.OutlineWidth = 8f;
+				_outline.enabled = false;
 			}
 		}
 		
@@ -72,8 +69,8 @@ namespace ToolsSystem
 			
 			
 			_isSelected = true;
-			_outline.enabled = _isSelected;
-			OnSelectChanged?.Invoke(_isSelected);
+			_outline.enabled = true;
+			OnSelectChanged?.Invoke(true);
 		}
 		
 		public virtual void Deselect()
@@ -82,8 +79,8 @@ namespace ToolsSystem
 			
 			
 			_isSelected = false;
-			_outline.enabled = _isSelected;
-			OnSelectChanged?.Invoke(_isSelected);
+			_outline.enabled = false;
+			OnSelectChanged?.Invoke(false);
 		}
 	}
 }

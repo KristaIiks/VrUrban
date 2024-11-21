@@ -17,11 +17,7 @@ namespace ToolsSystem
 		
 		private List<SolidBlock> _blocks;
 
-		private void Awake()
-		{
-			_trigger.enabled = false;
-			_vfxObject.SetActive(false);
-		}
+		private void Awake() => Reset();
 		
 		private void Update()
 		{
@@ -49,22 +45,28 @@ namespace ToolsSystem
 			_trigger.enabled = state;
 		}
 
+		private  void Reset()
+		{
+			_trigger.enabled = false;
+			_vfxObject.SetActive(false);
+		}
+
 		private void OnTriggerEnter(Collider other)
 		{
-			if(other.CompareTag(SolidBlock.OBJECT_TAG))
+			if(other.TryGetComponent(out SolidBlock block))
 			{
 				if (_blocks.Count == 0)
 					_vfxObject.SetActive(true);
 					
-				_blocks.Add(other.GetComponent<SolidBlock>());
+				_blocks.Add(block);
 			}
 		}
 		
 		private void OnTriggerExit(Collider other)
 		{
-			if(other.CompareTag(SolidBlock.OBJECT_TAG))
+			if(other.TryGetComponent(out SolidBlock block))
 			{
-				_blocks.Remove(other.GetComponent<SolidBlock>());
+				_blocks.Remove(block);
 				
 				if (_blocks.Count == 0)
 					_vfxObject.SetActive(false);

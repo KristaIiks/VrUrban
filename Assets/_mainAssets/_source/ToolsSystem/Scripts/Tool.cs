@@ -31,13 +31,13 @@ namespace ToolsSystem
 		
 		protected virtual void SelectTool(bool state)
 		{			
-			if (ToolInfo == null) { SConsole.LogException(LOG_TAG, new Exception("ToolInfo is null"), this); return; }
+			if (ToolInfo == null) { SConsole.LogException(LOG_TAG, new NullReferenceException("ToolInfo is null"), this); return; }
 
 			AudioClip clipToPlay = state ? ToolInfo.SelectClip : ToolInfo.DeSelectClip;
 			_audio.PlayOneShot(clipToPlay);
 			OnToolSelectChanged?.Invoke(state);
 			
-			SConsole.Log(LOG_TAG, "SelectionChanged: " + state);
+			SConsole.Log(LOG_TAG, $"Selection changed: {state}");
 		}
 	}
 }

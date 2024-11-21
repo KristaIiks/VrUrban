@@ -6,7 +6,7 @@ namespace ToolsSystem
 {
 	public sealed class Changeable : Selectable
 	{
-		private const string LOG_TAG = "Tool: ChangeObject";
+		private const string LOG_TAG = "Changeable";
 		
 		[field:SerializeField] public ChangeVariant[] Variants { get; private set; }
 		[SerializeField] private GameObject _defaultObject;
@@ -23,11 +23,11 @@ namespace ToolsSystem
 			for (int i = 0; i < Variants.Length; i++)
 			{
 				Variants[i].Object.SetActive(false);
-				Variants[i]._isSelected = false;
+				Variants[i].IsSelected = false;
 			}
 			
 			Variants[id].Object.SetActive(true);
-			Variants[id]._isSelected = true;
+			Variants[id].IsSelected = true;
 			
 			SConsole.Log(LOG_TAG, $"Change [{gameObject.name}] object to [{Variants[id].Object.name}][{id}]");
 			OnObjectChanged?.Invoke(id);
@@ -43,10 +43,11 @@ namespace ToolsSystem
 				if (_defaultObject != variant.Object)
 				{
 					variant.Object.SetActive(false);
+					variant.IsSelected = false;
 				}
 				else
 				{
-					variant._isSelected = true;
+					variant.IsSelected = true;
 				}				
 			}
 			

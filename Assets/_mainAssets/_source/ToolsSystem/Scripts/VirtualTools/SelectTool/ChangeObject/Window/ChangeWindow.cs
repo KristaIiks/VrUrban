@@ -20,7 +20,7 @@ namespace ToolsSystem
 			for (int i = 0; i < variants.Length; i++)
 			{
 				BuildSlot _tmp = Instantiate(_variantPrefab, _content, false);
-				_tmp.Init(variants[i].Icon, i, variants[i]._isBlocked, variants[i]._isSelected, tool);
+				_tmp.Init(variants[i].Icon, i, variants[i].IsBlocked, variants[i].IsSelected, tool);
 			}
 			
 			SConsole.Log(LOG_TAG, "Open change window");

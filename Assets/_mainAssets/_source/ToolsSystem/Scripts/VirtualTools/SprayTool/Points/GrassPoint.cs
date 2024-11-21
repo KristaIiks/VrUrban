@@ -12,19 +12,21 @@ namespace ToolsSystem
 
 		private MeshRenderer _meshRenderer;
 		private bool _canPaint;
-		protected override void OnValidate()
+		
+		private void OnValidate()
 		{
-			base.OnValidate();
 			_meshRenderer ??= GetComponent<MeshRenderer>();
 		}
 		
-		public override void Paint()
+		public override bool Paint()
 		{
-			if (!_canPaint) { return; }
+			if (!_canPaint) { return false; }
 			
 			_meshRenderer.material = _grassMaterial;
 			_canPaint = false;
 			OnPaint?.Invoke();
+			
+			return true;
 		}
 	}
 }
