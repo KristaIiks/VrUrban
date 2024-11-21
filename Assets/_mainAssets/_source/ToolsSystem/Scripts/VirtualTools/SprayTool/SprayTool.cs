@@ -94,5 +94,18 @@ namespace ToolsSystem
 				ChangeInputState(false);
 			}
 		}
+
+		private void OnDrawGizmos()
+		{
+			if(Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, _sprayDistance))
+			{
+				Gizmos.color = Color.green;
+				Gizmos.DrawRay(transform.position, hit.point);
+				return;
+			}
+			
+			Gizmos.color = Color.red;
+			Gizmos.DrawRay(transform.position, transform.forward * _sprayDistance);
+		}
 	}
 }

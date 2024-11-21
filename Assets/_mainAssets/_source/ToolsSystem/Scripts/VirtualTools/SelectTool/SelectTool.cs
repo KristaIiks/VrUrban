@@ -168,5 +168,18 @@ namespace ToolsSystem
 			_lineRenderer.enabled = true;
 		}
 		private void InteractObject(InputAction.CallbackContext ctx) => InteractObject(RayObject);
+		
+		private void OnDrawGizmos()
+		{
+			if(Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, RayDistance, RayMask))
+			{
+				Gizmos.color = RayObject.CanSelect ? Color.green : Color.yellow;
+				Gizmos.DrawRay(transform.position, hit.point);
+				return;
+			}
+			
+			Gizmos.color = Color.red;
+			Gizmos.DrawRay(transform.position, transform.forward * RayDistance);
+		}
 	}
 }
