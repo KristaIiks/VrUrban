@@ -26,10 +26,8 @@ namespace ToolsSystem
 			int length = _blocks.Count;
 			for (int i = length; i > 0; i--)
 			{
-				if (_blocks[i].ApplyDamage(_drillSpeed * Time.deltaTime))
-				{
-					SolidBlockSettings settings = _blocks[i].Settings;
-					
+				if (_blocks[i].ApplyDamage(_drillSpeed * Time.deltaTime, out SolidBlockSettings settings))
+				{					
 					_audio.PlayRandomized(settings.BreakSound, _pitchRange);
 					
 					OnDrillObject?.Invoke(_blocks[i]);
