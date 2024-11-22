@@ -5,8 +5,10 @@ using SmartConsole;
 
 public sealed class TrashObject : Selectable
 {
-	private const float DECRIES_SPEED = .3f;
+	[SerializeField] private float _decreaseTime = 5f;
+	private Vector3 _defaultScale;
 	private bool _isDestroyed;
+	private float _percent = 1f;
 
 	protected override void OnValidate()
 	{
@@ -21,6 +23,11 @@ public sealed class TrashObject : Selectable
 		base.OnValidate();
 	}
 
+	private void Awake()
+	{
+		_defaultScale = transform.localScale;
+	}
+
 	public override bool TryInteract(out bool canSelect)
 	{
 		if (base.TryInteract(out canSelect))
@@ -29,7 +36,7 @@ public sealed class TrashObject : Selectable
 
 			_isDestroyed = true;
 			CanInteract = false;
-			// TODO: remove
+			
 			SConsole.Log("TrashObject", $"Remove - {gameObject.name}");
 
 			return true;
@@ -37,16 +44,14 @@ public sealed class TrashObject : Selectable
 		return false;
 	}
 
-	// TODO: update remove anim to percent animation
 	private void Update()
 	{
-		if (_isDestroyed)
+		if (!_isDestroyed)
 		{
-			transform.localScale = new Vector3(
-				transform.localScale.x - transform.localScale.x * DECRIES_SPEED * Time.deltaTime,
-				transform.localScale.y - transform.localScale.y * DECRIES_SPEED * Time.deltaTime,
-				transform.localScale.z - transform.localScale.z * DECRIES_SPEED * Time.deltaTime
-			);
+			_percent = Mathf.MoveTowards(_percent, 0, Time.deltaTime / _decreaseTime);
+			transform.localScale = _defaultScale * _percent;
+			
+			if(_percent == 0) { Remove(); }
 		}
 	}
 
