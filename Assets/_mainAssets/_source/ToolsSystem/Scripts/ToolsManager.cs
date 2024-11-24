@@ -15,8 +15,8 @@ namespace ToolsSystem
 		{
 			switch (tool)
 			{
-				case PhysicTool:
-					((PhysicTool)tool).ActivateAndGrabTool();
+				case PhysicTool physic:
+					physic.ActivateAndGrabTool();
 					break;
 				default:
 					ActivateTool(tool);
