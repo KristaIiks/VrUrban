@@ -109,12 +109,10 @@ namespace SmartConsole
 			
 			_smartLogger.GenerateFile();
 			
-			Log(LOG_TAG, @"Enable smart logger...");
-			
 			ChangeLogger(_smartLogger);
 			Application.quitting += DisableSmartLogger;
 			
-			Log(LOG_TAG, $"Smart logger successful enabled!");
+			Log(LOG_TAG, "Smart logger successful enabled!");
 			PrintEnablingStats();
 		}
 		
