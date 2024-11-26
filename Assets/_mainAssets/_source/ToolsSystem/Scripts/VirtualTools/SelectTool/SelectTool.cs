@@ -171,7 +171,7 @@ namespace ToolsSystem
 		
 		private void OnDrawGizmos()
 		{
-			if(Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, RayDistance, RayMask))
+			if(Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, RayDistance, RayMask) && RayObject) 
 			{
 				Gizmos.color = RayObject.CanSelect ? Color.green : Color.yellow;
 				Gizmos.DrawRay(transform.position, hit.point);

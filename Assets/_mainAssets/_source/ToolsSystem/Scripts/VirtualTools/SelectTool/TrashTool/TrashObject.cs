@@ -46,7 +46,7 @@ public sealed class TrashObject : Selectable
 
 	private void Update()
 	{
-		if (!_isDestroyed)
+		if (_isDestroyed)
 		{
 			_percent = Mathf.MoveTowards(_percent, 0, Time.deltaTime / _decreaseTime);
 			transform.localScale = _defaultScale * _percent;
