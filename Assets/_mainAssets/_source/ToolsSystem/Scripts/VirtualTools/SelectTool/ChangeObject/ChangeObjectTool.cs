@@ -8,7 +8,6 @@ namespace ToolsSystem
 	{		
 		[SerializeField] private ChangeWindow Menu;
 		[SerializeField] private AudioClip ChangeObjectClip;
-		[SerializeField] private Vector2 PitchRange;
 		
 		public event Action<Changeable, int> OnObjectChanged;
 

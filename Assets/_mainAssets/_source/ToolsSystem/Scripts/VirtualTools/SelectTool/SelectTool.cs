@@ -21,7 +21,7 @@ namespace ToolsSystem
 		[SerializeField] private AudioClip InteractionClip;
 		[SerializeField] private AudioClip SelectClip;
 		[SerializeField] private AudioClip DeSelectClip;
-		[SerializeField] private Vector2 PitchRange = new Vector2(-0.1f, .1f);
+		[SerializeField] protected Vector2 PitchRange = new Vector2(-0.1f, .1f);
 		
 		public event Action<T> OnSelect;
 		public event Action<T> OnDeselect;
