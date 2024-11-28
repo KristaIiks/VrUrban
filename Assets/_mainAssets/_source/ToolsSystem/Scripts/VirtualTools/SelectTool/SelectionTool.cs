@@ -156,7 +156,13 @@ namespace ToolsSystem
 					obj = obj.parent;
 				}
 				
-				if(obj != RayObject?.transform && obj != _lastCheckedObject)
+				if(obj == RayObject?.transform) // Object same (update position)
+				{
+					SetRayPosition(1, hit.point);
+					return;
+				}
+				
+				if(obj != _lastCheckedObject) // New object (try)
 				{
 					_lastCheckedObject = obj;
 					if (obj.TryGetComponent(out T component))
@@ -166,14 +172,11 @@ namespace ToolsSystem
 						return;
 					}
 				}
-				else if(obj == RayObject?.transform)
-				{
-					SetRayPosition(1, hit.point);
-					return;
-				}
+				
+				// If error
 			}
 			
-			if(SelectBtn.action.IsPressed() || ForceShowRay)
+			if(ForceShowRay || SelectBtn.action.IsPressed())
 			{
 				SetRayPosition(1, transform.position + transform.forward * RayDistance);
 			}
@@ -182,6 +185,7 @@ namespace ToolsSystem
 				_lineRenderer.enabled = false;
 			}
 			
+			_lastCheckedObject = null;
 			RayObject = null;
 		}
 		
@@ -199,7 +203,7 @@ namespace ToolsSystem
 			if(Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, RayDistance, RayMask) && RayObject) 
 			{
 				Gizmos.color = RayObject.CanSelect ? Color.green : Color.yellow;
-				Gizmos.DrawRay(transform.position, hit.point);
+				Gizmos.DrawLine(transform.position, hit.point);
 				return;
 			}
 			

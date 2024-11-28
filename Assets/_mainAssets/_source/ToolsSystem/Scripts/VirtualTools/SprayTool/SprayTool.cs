@@ -107,7 +107,7 @@ namespace ToolsSystem
 			if(Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, _sprayDistance))
 			{
 				Gizmos.color = Color.green;
-				Gizmos.DrawRay(transform.position, hit.point);
+				Gizmos.DrawLine(transform.position, hit.point);
 				return;
 			}
 			
