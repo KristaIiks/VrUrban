@@ -156,15 +156,20 @@ namespace ToolsSystem
 					obj = obj.parent;
 				}
 				
-				if(obj != _lastCheckedObject)
+				if(obj != RayObject?.transform && obj != _lastCheckedObject)
 				{
 					_lastCheckedObject = obj;
-					if (obj != RayObject && obj.TryGetComponent(out T component))
+					if (obj.TryGetComponent(out T component))
 					{
 						SetRayPosition(1, hit.point);
 						RayObject = component;
 						return;
 					}
+				}
+				else if(obj == RayObject?.transform)
+				{
+					SetRayPosition(1, hit.point);
+					return;
 				}
 			}
 			
