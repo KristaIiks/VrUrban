@@ -4,8 +4,9 @@ using UnityEngine;
 
 namespace ToolsSystem
 {
-	public sealed class ChangeObjectTool : SelectTool<Changeable>
+	public sealed class ChangeObjectTool : SelectionTool<Changeable>
 	{		
+		// TODO: remove and replace by zenject
 		[SerializeField] private ChangeWindow Menu;
 		[SerializeField] private AudioClip ChangeObjectClip;
 		
@@ -17,7 +18,7 @@ namespace ToolsSystem
 			OpenMenu();
 		}
 
-		public override void Deselect()
+		protected override void Deselect()
 		{
 			base.Deselect();
 			CloseMenu();

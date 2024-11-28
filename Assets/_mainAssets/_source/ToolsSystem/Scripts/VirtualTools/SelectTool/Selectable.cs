@@ -7,6 +7,8 @@ namespace ToolsSystem
 	[RequireComponent(typeof(Outline), typeof(Collider))]
 	public abstract class Selectable : BaseToolObject
 	{		
+		public const string OBJECT_TAG = "Selectable";
+		
 		public bool ObjectState { get => CanInteract || CanSelect; }
 		public bool CanInteract 
 		{
@@ -51,8 +53,10 @@ namespace ToolsSystem
 			{
 				_outline = GetComponent<Outline>();
 				_outline.OutlineWidth = 8f;
+				_outline.OutlineColor = Color.yellow;
 				_outline.enabled = false;
 			}
+			gameObject.tag = OBJECT_TAG;
 		}
 		
 		public virtual bool TryInteract(out bool canSelect)

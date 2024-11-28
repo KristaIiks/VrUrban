@@ -13,13 +13,20 @@ namespace ToolsSystem
 		[SerializeField] private InputActionReference _interactInput;
 		[SerializeField, Min(.1f)] private float _sprayDistance = 2f;
 		[SerializeField] private float _interactionDelay = .5f;
+		[SerializeField] private AudioClip _sprayClip;
 		[SerializeField] private VisualEffect _effect;
 		
 		public event Action<SprayPoint> PaintPoint;
 		
 		private float _lastTime;
 		private bool _isWork;
-		
+
+		protected override void OnValidate()
+		{
+			base.OnValidate();
+			_audio.clip = _sprayClip;
+		}
+
 		private void Update()
 		{
 			if (!IsEnabled || !_isWork) { return; }

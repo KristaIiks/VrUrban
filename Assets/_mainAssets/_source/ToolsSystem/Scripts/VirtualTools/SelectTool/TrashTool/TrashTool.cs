@@ -1,4 +1,4 @@
 namespace ToolsSystem
 {
-    public class TrashTool : SelectTool<TrashObject> {}
+    public class TrashTool : SelectionTool<TrashObject> {}
 }

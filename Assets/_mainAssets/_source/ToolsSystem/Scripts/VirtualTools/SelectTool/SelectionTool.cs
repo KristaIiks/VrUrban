@@ -7,7 +7,7 @@ using Extensions.Audio;
 namespace ToolsSystem
 {
 	[RequireComponent(typeof(LineRenderer))]
-	public abstract class SelectTool<T> : VirtualTool where T : Selectable
+	public abstract class SelectionTool<T> : VirtualTool where T : Selectable
 	{
 		[SerializeField, Min(0.1f)] private float RayDistance = 10f;
 		[SerializeField] private LayerMask RayMask;
@@ -52,6 +52,7 @@ namespace ToolsSystem
 			}
 		}
 		private T _rayObject;
+		private Transform _lastCheckedObject;
 		
 		protected override void OnValidate()
 		{
@@ -71,10 +72,18 @@ namespace ToolsSystem
 		protected virtual void OnDisable()
 		{
 			SelectBtn.action.performed -= InteractObject;
-			Deselect();
 		}
 		
 		protected virtual void Update() => CalculateRay();
+
+		protected override void SelectTool(bool state)
+		{
+			if(!state)
+			{
+				DeselectWithSound();
+			}
+			base.SelectTool(state);
+		}
 
 		public virtual void InteractObject(T obj)
 		{
@@ -115,7 +124,7 @@ namespace ToolsSystem
 			OnSelect?.Invoke(obj);
 		}
 		
-		public virtual void Deselect()
+		protected virtual void Deselect()
 		{			
 			_selectedObject?.Deselect();			
 			OnDeselect?.Invoke(_selectedObject);
@@ -126,6 +135,8 @@ namespace ToolsSystem
 		
 		protected void DeselectWithSound()
 		{
+			if (!_selectedObject) { return; }
+			
 			_audio.PlayRandomized(DeSelectClip, PitchRange);
 			Deselect();
 		}
@@ -138,13 +149,20 @@ namespace ToolsSystem
 						
 			if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, RayDistance, RayMask))
 			{
-				SetRayPosition(1, hit.point); 
-				
-				Transform obj = hit.transform.root;
-				if (obj != RayObject && obj.TryGetComponent(out T selectable))
+				Transform obj = hit.transform;
+
+				while (obj.parent != null && !obj.CompareTag(Selectable.OBJECT_TAG)) // Find selectable object
 				{
-					RayObject = selectable;
+					obj = obj.parent;
 				}
+				
+				if (obj != _lastCheckedObject && obj != RayObject && obj.TryGetComponent(out T component))
+				{
+					SetRayPosition(1, hit.point);
+					RayObject = component;
+				}
+				
+				_lastCheckedObject = obj;
 				return;
 			}
 			

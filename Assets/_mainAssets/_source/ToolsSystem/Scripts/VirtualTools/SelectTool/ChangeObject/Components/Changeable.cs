@@ -20,6 +20,7 @@ namespace ToolsSystem
 			
 			id = Mathf.Clamp(id, 0, Variants.Length);
 			
+			_defaultObject.SetActive(false);
 			for (int i = 0; i < Variants.Length; i++)
 			{
 				Variants[i].Object.SetActive(false);
