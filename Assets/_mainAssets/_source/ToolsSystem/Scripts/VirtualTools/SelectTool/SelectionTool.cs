@@ -156,14 +156,16 @@ namespace ToolsSystem
 					obj = obj.parent;
 				}
 				
-				if (obj != _lastCheckedObject && obj != RayObject && obj.TryGetComponent(out T component))
+				if(obj != _lastCheckedObject)
 				{
-					SetRayPosition(1, hit.point);
-					RayObject = component;
+					_lastCheckedObject = obj;
+					if (obj != RayObject && obj.TryGetComponent(out T component))
+					{
+						SetRayPosition(1, hit.point);
+						RayObject = component;
+						return;
+					}
 				}
-				
-				_lastCheckedObject = obj;
-				return;
 			}
 			
 			if(SelectBtn.action.IsPressed() || ForceShowRay)
