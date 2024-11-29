@@ -62,7 +62,7 @@ namespace ToolsSystem
 		public virtual bool TryInteract(out bool canSelect)
 		{
 			if (CanInteract) { OnInteract?.Invoke(); }
-			canSelect = CanSelect;
+			canSelect = CanSelect && !_isSelected;
 			
 			return CanInteract;
 		}
