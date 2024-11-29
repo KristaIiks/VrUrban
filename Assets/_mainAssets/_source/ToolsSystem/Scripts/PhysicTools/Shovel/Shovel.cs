@@ -58,7 +58,6 @@ namespace ToolsSystem
 		
 		private void Reset()
 		{
-			_isFilled = false;
 			ActivateHill(false);
 			_collider.isTrigger = false;
 		}

@@ -156,22 +156,23 @@ namespace ToolsSystem
 					obj = obj.parent;
 				}
 				
-				if (!obj.CompareTag(Selectable.OBJECT_TAG)) { return; }
-				
-				if(obj == RayObject?.transform) // Object same (update position)
+				if (!obj.CompareTag(Selectable.OBJECT_TAG)) 
 				{
-					SetRayPosition(1, hit.point);
-					return;
-				}
-				
-				if(obj != _lastCheckedObject) // New object (try)
-				{
-					_lastCheckedObject = obj;
-					if (obj.TryGetComponent(out T component))
+					if(obj == RayObject?.transform) // Object same (update position)
 					{
 						SetRayPosition(1, hit.point);
-						RayObject = component;
 						return;
+					}
+					
+					if(obj != _lastCheckedObject) // New object (try)
+					{
+						_lastCheckedObject = obj;
+						if (obj.TryGetComponent(out T component))
+						{
+							SetRayPosition(1, hit.point);
+							RayObject = component;
+							return;
+						}
 					}
 				}
 				
