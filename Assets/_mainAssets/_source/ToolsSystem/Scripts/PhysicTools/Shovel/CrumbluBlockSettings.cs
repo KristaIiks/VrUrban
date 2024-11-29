@@ -3,7 +3,7 @@ using UnityEngine.VFX;
 
 namespace ToolsSystem
 {
-	[CreateAssetMenu(fileName = "CrumblyBlockSettings", menuName = "Tools/Objects/Settings", order = 0)]
+	[CreateAssetMenu(fileName = "CrumblyBlockSettings", menuName = "Tools/Objects/Settings/CrumblyBlock", order = 0)]
 	public sealed class CrumblyBlockSettings : ScriptableObject
 	{
 		[field: SerializeField] public Material Material { get; private set;}
