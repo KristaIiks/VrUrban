@@ -17,7 +17,7 @@ public sealed class TrashObject : Selectable
 			_outline = GetComponent<Outline>();
 			_outline.enabled = false;
 			_outline.OutlineWidth = 10f;
-			_outline.OutlineColor = Color.yellow;
+			_outline.OutlineColor = Color.red;
 		}
 		CanSelect = false;
 		base.OnValidate();
@@ -32,8 +32,8 @@ public sealed class TrashObject : Selectable
 	{
 		if (base.TryInteract(out canSelect))
 		{
-			_outline.OutlineColor = Color.red;
-
+			_outline.enabled = true;
+			
 			_isDestroyed = true;
 			CanInteract = false;
 			

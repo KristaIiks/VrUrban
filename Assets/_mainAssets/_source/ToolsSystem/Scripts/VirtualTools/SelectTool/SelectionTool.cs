@@ -156,7 +156,7 @@ namespace ToolsSystem
 					obj = obj.parent;
 				}
 				
-				if (!obj.CompareTag(Selectable.OBJECT_TAG)) 
+				if (obj.CompareTag(Selectable.OBJECT_TAG)) 
 				{
 					if(obj == RayObject?.transform) // Object same (update position)
 					{
