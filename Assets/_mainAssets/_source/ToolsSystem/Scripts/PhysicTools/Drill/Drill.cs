@@ -15,7 +15,7 @@ namespace ToolsSystem
 		public event Action Performed;
 		public event Action<SolidBlock> OnDrillObject;
 		
-		private List<SolidBlock> _blocks;
+		private List<SolidBlock> _blocks = new List<SolidBlock>();
 
 		private void Awake() => Reset();
 		
@@ -23,8 +23,8 @@ namespace ToolsSystem
 		{
 			if (!_isGrabbed && _blocks.Count != 0) { return; }
 			
-			int length = _blocks.Count;
-			for (int i = length; i > 0; i--)
+			int length = _blocks.Count - 1;
+			for (int i = length; i >= 0; i--)
 			{
 				if (_blocks[i].ApplyDamage(_drillSpeed * Time.deltaTime, out SolidBlockSettings settings))
 				{					
@@ -40,12 +40,12 @@ namespace ToolsSystem
 		protected override void SelectTool(bool state)
 		{
 			base.SelectTool(state);
-			_trigger.enabled = state;
+			_trigger.isTrigger = state;
 		}
 
 		private  void Reset()
 		{
-			_trigger.enabled = false;
+			_trigger.isTrigger = false;
 			_vfxObject.SetActive(false);
 		}
 

@@ -8,7 +8,6 @@ namespace ToolsSystem
 	{
 		private const string LOG_TAG = "SolidBlock";
 		
-		[SerializeField] private float _health;
 		[SerializeField] private GameObject[] _blockStages;
 		[SerializeField] private SolidBlockSettings _settings;
 		
@@ -16,6 +15,7 @@ namespace ToolsSystem
 		public event Action OnDestroy;
 		
 		private float _stageHealth { get => _settings.Health / _blockStages.Length; }
+		private float _health;
 		
 		private void Awake()
 		{
