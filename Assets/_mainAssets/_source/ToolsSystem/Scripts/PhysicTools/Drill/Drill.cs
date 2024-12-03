@@ -54,7 +54,10 @@ namespace ToolsSystem
 			if(other.TryGetComponent(out SolidBlock block))
 			{
 				if (_blocks.Count == 0)
+				{
 					_vfxObject.SetActive(true);
+					_audio.Play();
+				}
 					
 				_blocks.Add(block);
 			}
@@ -67,7 +70,10 @@ namespace ToolsSystem
 				_blocks.Remove(block);
 				
 				if (_blocks.Count == 0)
+				{
 					_vfxObject.SetActive(false);
+					_audio.Stop();
+				}
 			}
 		}
 	}
