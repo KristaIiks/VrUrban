@@ -5,7 +5,6 @@ using SmartConsole;
 
 namespace ToolsSystem
 {
-    // TODO: сбросить кучку
     public sealed class Shovel : PhysicTool
     {
         [SerializeField] private Collider _collider;
@@ -27,7 +26,6 @@ namespace ToolsSystem
 			}
 		}
         
-
         protected override void SelectTool(bool state)
         {
             base.SelectTool(state);
@@ -38,7 +36,7 @@ namespace ToolsSystem
         {
             if (block == null && CheckRotation(_angle)) { return; }
             
-            SConsole.Log(LOG_TAG, $"Попытка копать - {block.gameObject.name}");
+            SConsole.Log(LOG_TAG, $"Попытка вскопать - {block.gameObject.name}");
             if(block.Dig(out CrumblyBlockSettings settings))
             {
                 _audio.PlayOneShot(settings.DigSound ?? _defaultSettings.DigSound);
@@ -55,7 +53,7 @@ namespace ToolsSystem
                 ActivateHill(true);
                 
                 OnDig?.Invoke(block);
-                SConsole.Log(LOG_TAG, $"Успешное копание");
+                SConsole.Log(LOG_TAG, $"Успешное вскопано");
             }
         }
 
