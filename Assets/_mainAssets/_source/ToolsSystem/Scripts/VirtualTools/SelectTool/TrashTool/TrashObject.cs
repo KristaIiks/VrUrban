@@ -28,9 +28,9 @@ public sealed class TrashObject : Selectable
 		_defaultScale = transform.localScale;
 	}
 
-	public override bool TryInteract(out bool canSelect)
+	public override bool TryInteract(out bool canSelect, SelectFilter filter)
 	{
-		if (base.TryInteract(out canSelect))
+		if (base.TryInteract(out canSelect, filter))
 		{
 			_outline.enabled = true;
 			

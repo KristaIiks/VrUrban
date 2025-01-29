@@ -1,5 +1,6 @@
 using UnityEngine;
 using SmartConsole;
+using System.Collections.Generic;
 
 namespace ToolsSystem
 {
@@ -10,26 +11,35 @@ namespace ToolsSystem
 		[SerializeField] private BuildSlot _variantPrefab;
 		[SerializeField] private Transform _content;
 
-		public void Open(ChangeVariant[] variants, ChangeObjectTool tool)
+		public void Open(List<ChangeVariant> variants, Vector3 UIPosition, ChangeObjectTool tool)
 		{
 			foreach (Transform item in _content)
 			{
 				Destroy(item.gameObject);
 			}
 
-			for (int i = 0; i < variants.Length; i++)
+			for (int i = 0; i < variants.Count - 1; i++)
 			{
-				BuildSlot _tmp = Instantiate(_variantPrefab, _content, false);
-				_tmp.Init(variants[i].Icon, i, variants[i].IsBlocked, variants[i].IsSelected, tool);
+				Instantiate(_variantPrefab, _content, false).Init(
+					variants[i].Icon, 
+					i, 
+					variants[i].IsBlocked, 
+					variants[i].IsSelected, 
+					tool
+				);
 			}
 			
 			SConsole.Log(LOG_TAG, "Open change window");
+			
+			transform.position = UIPosition;
 			gameObject.SetActive(true);
 		}
 
 		public void Close()
 		{
 			SConsole.Log(LOG_TAG, "Close change window");
+			
+			transform.position = Vector3.zero;
 			gameObject.SetActive(false);
 		}
 	}

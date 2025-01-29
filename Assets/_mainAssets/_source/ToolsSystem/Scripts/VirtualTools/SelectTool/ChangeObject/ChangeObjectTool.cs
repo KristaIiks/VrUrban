@@ -12,10 +12,10 @@ namespace ToolsSystem
 		
 		public event Action<Changeable, int> OnObjectChanged;
 
-		public override void Select(Changeable obj)
+		public override void Select(Changeable obj, SelectFilter filter)
 		{
-			base.Select(obj);
-			OpenMenu();
+			base.Select(obj, filter);
+			OpenMenu(filter);
 		}
 
 		protected override void Deselect()
@@ -36,7 +36,15 @@ namespace ToolsSystem
 			OnObjectChanged?.Invoke(_selectedObject, id);
 		}
 
-		private void OpenMenu() => Menu.Open(_selectedObject.Variants, this);
+		private void OpenMenu(SelectFilter filter)
+		{
+			if (filter == SelectFilter.Zone)
+			{
+				Menu.Open(_selectedObject.Variants, _selectedObject.UIPosition.position, this);
+				return;
+			}
+			Menu.Open(_selectedObject.Variants, Vector3.zero, this);			
+		}
 		private void CloseMenu() => Menu.Close();
 	}
 }

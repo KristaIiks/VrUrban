@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [System.Serializable]
-public struct ChangeVariant
+public class ChangeVariant
 {
 	public Sprite Icon;
 	public GameObject Object;

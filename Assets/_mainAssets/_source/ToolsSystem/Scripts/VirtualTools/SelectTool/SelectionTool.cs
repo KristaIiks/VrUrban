@@ -3,10 +3,11 @@ using SmartConsole;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Extensions.Audio;
+using System.Collections.Generic;
 
 namespace ToolsSystem
 {
-	[RequireComponent(typeof(LineRenderer))]
+	[RequireComponent(typeof(LineRenderer), typeof(SphereCollider))]
 	public abstract class SelectionTool<T> : VirtualTool where T : Selectable
 	{
 		[SerializeField, Min(0.1f)] private float RayDistance = 10f;
@@ -28,7 +29,7 @@ namespace ToolsSystem
 		public event Action<T> OnHover;
 		
 		protected LineRenderer _lineRenderer;
-		protected T _selectedObject;		
+		protected T _selectedObject;
 
 		private T RayObject
 		{
@@ -53,6 +54,7 @@ namespace ToolsSystem
 		}
 		private T _rayObject;
 		private Transform _lastCheckedObject;
+		private SphereCollider _collider;
 		
 		protected override void OnValidate()
 		{
@@ -61,6 +63,12 @@ namespace ToolsSystem
 			{
 				_lineRenderer = GetComponent<LineRenderer>();
 				_lineRenderer.enabled = false;
+			}
+			
+			if (!_collider)
+			{
+				_collider = GetComponent<SphereCollider>();
+				_collider.radius = 1f;
 			}
 		}
 		
@@ -85,20 +93,20 @@ namespace ToolsSystem
 			base.SelectTool(state);
 		}
 
-		public virtual void InteractObject(T obj)
+		public virtual void InteractObject(T obj, SelectFilter filter)
 		{
 			if (!IsEnabled || !obj) { return; }
 			
 			SConsole.Log(LOG_TAG, "Try interact with - " + obj.gameObject.name);
-			bool interactionResult = obj.TryInteract(out bool canSelect);
+			bool interactionResult = obj.TryInteract(out bool canSelect, filter);
 			
 			if (canSelect)
-				Select(obj);
+				Select(obj, filter);
 			if (interactionResult)
 				_audio.PlayRandomized(InteractionClip, PitchRange);
 		}
 		
-		public virtual void Select(T obj)
+		public virtual void Select(T obj, SelectFilter filter)
 		{	
 			if(!IsEnabled) { return; }
 			
@@ -116,7 +124,7 @@ namespace ToolsSystem
 			}
 			
 			_selectedObject = obj;
-			_selectedObject.Select();
+			_selectedObject.Select(filter);
 		
 			_audio.PlayRandomized(SelectClip, PitchRange);
 			SConsole.Log(LOG_TAG, "Select object - " + obj.gameObject.name);
@@ -199,8 +207,15 @@ namespace ToolsSystem
 			_lineRenderer.SetPosition(id, pos);
 			_lineRenderer.enabled = true;
 		}
-		private void InteractObject(InputAction.CallbackContext ctx) => InteractObject(RayObject);
-		
+		private void InteractObject(InputAction.CallbackContext ctx) => InteractObject(RayObject, SelectFilter.Ray);
+		private void OnTriggerEnter(Collider other)
+		{
+			if (other.TryGetComponent(out T obj))
+			{
+				InteractObject(obj, SelectFilter.Zone);
+			}
+		}
+
 		private void OnDrawGizmos()
 		{
 			if(Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, RayDistance, RayMask) && RayObject) 

@@ -9,6 +9,9 @@ namespace ToolsSystem
 	{		
 		public const string OBJECT_TAG = "Selectable";
 		
+		[SerializeField] private VisualMode VisualMode;
+		[SerializeField] private SelectFilter SelectFilter;
+		
 		public bool ObjectState { get => CanInteract || CanSelect; }
 		public bool CanInteract 
 		{
@@ -59,21 +62,24 @@ namespace ToolsSystem
 			gameObject.tag = OBJECT_TAG;
 		}
 		
-		public virtual bool TryInteract(out bool canSelect)
+		public virtual bool TryInteract(out bool canSelect, SelectFilter filter)
 		{
 			if (CanInteract) { OnInteract?.Invoke(); }
-			canSelect = CanSelect && !_isSelected;
+			canSelect = CanSelect && !_isSelected && CompareFilter(filter);
 			
 			return CanInteract;
 		}
 		
-		public virtual void Select()
+		public virtual void Select(SelectFilter filter)
 		{
-			if (!CanSelect || _isSelected) { return; }
+			if (!CanSelect || _isSelected || !CompareFilter(filter)) { return; }
 			
 			
 			_isSelected = true;
-			_outline.enabled = true;
+			
+			_outline.enabled = VisualMode == VisualMode.Outline;
+			// TODO: add zone
+			
 			OnSelectChanged?.Invoke(true);
 		}
 		
@@ -85,6 +91,13 @@ namespace ToolsSystem
 			_isSelected = false;
 			_outline.enabled = false;
 			OnSelectChanged?.Invoke(false);
+		}
+		
+		protected bool CompareFilter(SelectFilter filter)
+		{
+			if (SelectFilter == SelectFilter.All) { return true; } // Can interact with any types
+			
+			return filter == SelectFilter;
 		}
 	}
 }

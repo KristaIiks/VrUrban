@@ -1,27 +1,29 @@
 using System;
 using UnityEngine;
 using SmartConsole;
+using System.Collections.Generic;
 
 namespace ToolsSystem
 {
-	public sealed class Changeable : Selectable
+	public class Changeable : Selectable
 	{
 		private const string LOG_TAG = "Changeable";
 		
-		[field:SerializeField] public ChangeVariant[] Variants { get; private set; }
+		[field:SerializeField] public List<ChangeVariant> Variants { get; protected set; }
+		[field:SerializeField] public Transform UIPosition { get; private set; }
 		[SerializeField] private GameObject _defaultObject;
 		
 		public event Action<int> OnObjectChanged;
 		
-		private void Awake() => Reset();
-		public void ChangeBuild(int id)
+		protected virtual void Awake() => Reset();
+		public virtual void ChangeBuild(int id)
 		{
 			if (!_isSelected) { return; }
 			
-			id = Mathf.Clamp(id, 0, Variants.Length);
+			id = Mathf.Clamp(id, 0, Variants.Count - 1);
 			
 			_defaultObject.SetActive(false);
-			for (int i = 0; i < Variants.Length; i++)
+			for (int i = 0; i < Variants.Count - 1; i++)
 			{
 				Variants[i].Object.SetActive(false);
 				Variants[i].IsSelected = false;
@@ -37,7 +39,7 @@ namespace ToolsSystem
 		{
 			_defaultObject.SetActive(true);
 			
-			for(int i = 0; i < Variants.Length; i++)
+			for(int i = 0; i < Variants.Count - 1; i++)
 			{
 				ChangeVariant variant = Variants[i];
 				
