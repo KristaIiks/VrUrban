@@ -10,7 +10,7 @@ namespace StudySystem
 		[SerializeField] private Image Image;
 		[SerializeField] private TMP_Text NameText;
 		[SerializeField] private TMP_Text DescriptionText;
-		[SerializeField] private TMP_Text RewardText;
+		[SerializeField] private TMP_Text TimeText;
 		[SerializeField] private Button Button;
 		
 		public void Init(Action cardAction, Action disableWindow, CardSO info)
@@ -18,9 +18,7 @@ namespace StudySystem
 			Image.sprite = info.Icon;
 			NameText.text = info.Name;
 			DescriptionText.text = info.Description;
-			
-			//RewardText.text = $"Комфортность: {info.}";
-			
+			TimeText.text = $"Проходить ≈ {info.TimeToComplete} минут";			
 			
 			Button.onClick.AddListener(() => cardAction?.Invoke());
 			Button.onClick.AddListener(() => disableWindow?.Invoke());
