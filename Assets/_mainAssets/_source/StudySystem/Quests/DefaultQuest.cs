@@ -16,7 +16,7 @@ namespace StudySystem
 			base.StartQuest(obj);
 			
 			_studyObject = obj.GetComponent<IStudyObject>();
-			_studyObject.Start(() => CompleteQuest());
+			_studyObject.StartDefaultStudy(() => CompleteQuest());
 		}
 		
 		public override void Restart(bool canContinue)

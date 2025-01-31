@@ -2,10 +2,15 @@ using UnityEngine;
 using ToolsSystem;
 using QuickOutline;
 using SmartConsole;
+using System;
 
 public sealed class TrashObject : Selectable
 {
 	[SerializeField] private float _decreaseTime = 5f;
+	
+	public event Action OnRemove;
+	public event Action _studyEvent;
+	
 	private Vector3 _defaultScale;
 	private bool _isDestroyed;
 	private float _percent = 1f;
@@ -23,10 +28,7 @@ public sealed class TrashObject : Selectable
 		base.OnValidate();
 	}
 
-	private void Awake()
-	{
-		_defaultScale = transform.localScale;
-	}
+	private void Awake() => Restart(false);
 
 	public override bool TryInteract(out bool canSelect, SelectFilter filter)
 	{
@@ -58,5 +60,22 @@ public sealed class TrashObject : Selectable
 	private void Remove()
 	{
 		gameObject.SetActive(false);
+		OnRemove?.Invoke();
+	}
+
+	public override void StartDefaultStudy(Action OnComplete)
+	{
+		Restart(true);
+		
+		_studyEvent = () => { OnComplete.Invoke(); OnInteract -= _studyEvent; };
+		OnInteract += _studyEvent;
+	}
+
+	public override void Restart(bool canContinue = true)
+	{
+		_isDestroyed = false;
+		CanInteract = canContinue;
+		
+		transform.localScale = _defaultScale;
 	}
 }

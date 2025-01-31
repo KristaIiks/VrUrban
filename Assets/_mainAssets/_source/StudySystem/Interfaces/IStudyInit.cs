@@ -3,9 +3,9 @@ using System;
 
 namespace StudySystem
 {
-	public interface IStudyStart
+	public interface IStudyInit
 	{
 		[ContextMenu("Start study")]
-		void Start(Action OnComplete = null);
+		void InitStudy() { }
 	}
 }

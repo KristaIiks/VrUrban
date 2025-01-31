@@ -9,6 +9,7 @@ namespace ToolsSystem
 		[SerializeField] private CrumblyBlockSettings _blockSettings;
 		
 		public event Action OnDig;
+		private event Action _studyEvent;
 		
 		private bool _canDig;
 		
@@ -21,6 +22,20 @@ namespace ToolsSystem
 			
 			settings = _blockSettings;
 			return true;
+		}
+
+		public override void StartDefaultStudy(Action OnComplete = null)
+		{
+			Restart(true);
+			
+			_studyEvent = () => { OnComplete?.Invoke(); OnDig -= _studyEvent; };
+			OnDig += _studyEvent;
+		}
+
+		public override void Restart(bool canContinue = true)
+		{
+			_canDig = canContinue;
+			gameObject.SetActive(true);
 		}
 	}
 }

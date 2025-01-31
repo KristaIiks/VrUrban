@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace StudySystem
 {
@@ -9,7 +10,7 @@ namespace StudySystem
 		[field:SerializeField, Interface(typeof(IStudyObject))] public GameObject Object { get; private set; }
 		[SerializeField] private QuestSO Info;
 		
-		public event Action<QuestResult> OnComplete;
+		[HideInInspector] public UnityEvent<QuestResult> OnComplete;
 		public bool IsCompleted { get; private set; }
 		private QuestResult _result;
 		
@@ -37,6 +38,7 @@ namespace StudySystem
 			_result = result;
 			
 			OnComplete?.Invoke(result);
+			OnComplete.RemoveAllListeners();
 		}
 
 		public QuestResult GetResult() => _result;
