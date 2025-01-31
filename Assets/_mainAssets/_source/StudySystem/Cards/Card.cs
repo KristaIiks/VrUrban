@@ -14,7 +14,8 @@ namespace StudySystem
 		private static string LOG_TAG = "Study";
 		
 		[SerializeField] protected PlayableDirector Cutscene;
-		[SerializeField] public CardSO CardInfo { get; private set; }
+		[field:SerializeField] public CardSO CardInfo { get; private set; }
+		[field:SerializeField] public CardView CustomView { get; private set; }
 		[SerializeField] protected UnityEvent OnStart;
 		[SerializeField] protected List<QuestStatus> Quests;
 		[SerializeField] protected UnityEvent OnComplete;
