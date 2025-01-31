@@ -19,7 +19,7 @@ namespace StudySystem
 		[SerializeField] protected List<QuestStatus> Quests;
 		[SerializeField] protected UnityEvent OnComplete;
 		[field:SerializeField] public bool IsCompleted { get; protected set; }
-		[Interface(typeof(IStudyStart), typeof(IStudyComplete)), SerializeField] private GameObject[] InitObjects;
+		[Interface(typeof(IStudyInit), typeof(IStudyComplete)), SerializeField] private GameObject[] InitObjects;
 				
 		protected List<Card> _allCards;
 		protected AudioSource _audio; // TODO: move to bot audio
@@ -42,6 +42,7 @@ namespace StudySystem
 					continue;
 				}
 				
+				OnStart.AddListener(() => component.InitStudy());
 				OnComplete.AddListener(() => component.OnStudyComplete());
 			}
 			
@@ -49,9 +50,9 @@ namespace StudySystem
 			{
 				if (obj == null) { SConsole.Log(LOG_TAG, "Can't init null object", LogType.Warning); continue; }
 				
-				if (obj.TryGetComponent(out IStudyStart start))
+				if (obj.TryGetComponent(out IStudyInit start))
 				{
-					OnStart.AddListener(() => start.Start());
+					OnStart.AddListener(() => start.InitStudy());
 				}
 				
 				if (obj.TryGetComponent(out IStudyComplete complete))
@@ -69,11 +70,10 @@ namespace StudySystem
 			
 			OnStart?.Invoke();
 			
-			//? Cutscene before starting quests
 			foreach (QuestStatus status in Quests)
 			{
 				status.StartQuest();
-				status.OnComplete += QuestCompleted;
+				status.OnComplete.AddListener(QuestCompleted);
 			}
 			
 			Cutscene.Play();

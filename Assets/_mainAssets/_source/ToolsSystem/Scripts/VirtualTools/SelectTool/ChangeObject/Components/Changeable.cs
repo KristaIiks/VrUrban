@@ -15,7 +15,8 @@ namespace ToolsSystem
 		
 		public event Action<int> OnObjectChanged;
 		
-		protected virtual void Awake() => Reset();
+		protected virtual void Awake() => Restart(false);
+		
 		public virtual void ChangeBuild(int id)
 		{
 			if (!_isSelected) { return; }
@@ -35,6 +36,7 @@ namespace ToolsSystem
 			SConsole.Log(LOG_TAG, $"Change [{gameObject.name}] object to [{Variants[id].Object.name}][{id}]");
 			OnObjectChanged?.Invoke(id);
 		}
+		
 		private void Reset()
 		{
 			_defaultObject.SetActive(true);
@@ -55,6 +57,18 @@ namespace ToolsSystem
 			}
 			
 			SConsole.Log(LOG_TAG, $"Reset {gameObject.name}");
+		}
+		
+		public override void StartDefaultStudy(Action OnComplete = null)
+		{
+			Restart(true);
+			//
+		}
+
+		public override void Restart(bool canContinue = true)
+		{
+			Reset();
+			CanSelect = canContinue;
 		}
 	}
 }

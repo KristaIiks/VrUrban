@@ -4,9 +4,8 @@ using SmartConsole;
 
 namespace ToolsSystem
 {
-	// TODO: implement study start/end interface
 	[RequireComponent(typeof(AudioSource))]
-	public abstract class Tool : MonoBehaviour//, I... 
+	public abstract class Tool : MonoBehaviour
 	{
 		[field:SerializeField] public ToolInfo ToolInfo { get; private set; }
 		public bool IsEnabled { get; private set; }
@@ -38,6 +37,7 @@ namespace ToolsSystem
 			OnToolSelectChanged?.Invoke(state);
 			
 			SConsole.Log(LOG_TAG, $"Selection changed: {state}");
+		
 		}
-	}
+    }
 }
