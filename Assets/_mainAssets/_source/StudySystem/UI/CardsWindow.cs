@@ -6,7 +6,6 @@ namespace StudySystem
 	public class CardsWindow : MonoBehaviour
 	{
 		[SerializeField] private GameObject Window;
-		[SerializeField] private CardView CardPrefab;
 		[SerializeField] private Transform Content;
 		
 		public void DisplayCards(Action previousCard, Action<Card> updateBranch, Card[] cards)
@@ -17,7 +16,7 @@ namespace StudySystem
 			{
 				if (card.IsCompleted) { continue; }
 				
-				CardView view = Instantiate(CardPrefab, Content, false);
+				CardView view = Instantiate(card.CardInfo.View, Content, false);
 				view.Init(() => card.StartCard(previousCard, updateBranch), () => HideCards(), card.CardInfo);
 			}
 			
