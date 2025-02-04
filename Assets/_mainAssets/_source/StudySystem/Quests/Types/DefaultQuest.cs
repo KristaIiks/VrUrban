@@ -19,6 +19,11 @@ namespace StudySystem
 			_studyObject.StartDefaultStudy(() => CompleteQuest());
 		}
 		
+		public override void Skip(bool result)
+		{
+			_studyObject.Skip();
+		}
+		
 		public override void Restart(bool canContinue)
 		{
 			if(canContinue)
@@ -39,6 +44,5 @@ namespace StudySystem
 			(DateTime.UtcNow - Time).TotalSeconds
 		   ));
 		}
-
 	}
 }

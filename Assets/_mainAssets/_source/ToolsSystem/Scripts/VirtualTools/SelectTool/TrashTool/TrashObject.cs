@@ -1,8 +1,8 @@
-using UnityEngine;
-using ToolsSystem;
+using System;
 using QuickOutline;
 using SmartConsole;
-using System;
+using ToolsSystem;
+using UnityEngine;
 
 public sealed class TrashObject : Selectable
 {
@@ -38,8 +38,6 @@ public sealed class TrashObject : Selectable
 			
 			_isDestroyed = true;
 			CanInteract = false;
-			
-			SConsole.Log("TrashObject", $"Remove - {gameObject.name}");
 
 			return true;
 		}
@@ -59,6 +57,8 @@ public sealed class TrashObject : Selectable
 
 	private void Remove()
 	{
+		SConsole.Log("TrashObject", $"Remove - {gameObject.name}");
+		
 		gameObject.SetActive(false);
 		OnRemove?.Invoke();
 	}
@@ -67,8 +67,14 @@ public sealed class TrashObject : Selectable
 	{
 		Restart(true);
 		
-		_studyEvent = () => { OnComplete.Invoke(); OnInteract -= _studyEvent; };
-		OnInteract += _studyEvent;
+		_studyEvent = () => { OnComplete.Invoke(); OnRemove -= _studyEvent; };
+		OnRemove += _studyEvent;
+	}
+
+	public override void Skip()
+	{
+		Restart();
+		Remove();
 	}
 
 	public override void Restart(bool canContinue = true)

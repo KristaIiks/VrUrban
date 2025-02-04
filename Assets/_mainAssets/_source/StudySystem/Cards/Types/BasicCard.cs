@@ -4,22 +4,29 @@ using UnityEngine;
 
 namespace StudySystem
 {
-	public class BasicCard : Card
+	public class BasicCard : QuestCard
 	{
-		[SerializeField] private List<Card> Cards => _allCards;
+		[Space(25), Header("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"), Space(25)]
+		[SerializeField] private List<Card> Cards;
+		protected override List<Card> _allCards { get => Cards; set => Cards = value; }
 		
 		protected override void Continue()
 		{
 			base.Continue();
 			
-			// Cards completed => return back
 			if (Cards.All((card) => card.IsCompleted))
 			{
 				m_previousCard?.Invoke();
 				return;
 			}
 			
-			// TODO: draw if cards > 1
+			CardsWindow.Instance.DisplayCards(() => Continue(), updateBranch, Cards.ToArray());
+		}
+
+		public override void SkipAll()
+		{
+			Quests.ForEach((quest) => quest.Skip());
+			Cards.ForEach((card) => card.SkipAll());
 		}
 	}
 }

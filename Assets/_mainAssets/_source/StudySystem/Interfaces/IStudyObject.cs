@@ -9,6 +9,8 @@ namespace StudySystem
 		void StartDefaultStudy(Action OnComplete);
 		
 		[ContextMenu("Restart")]
+		void Skip();
+		[ContextMenu("Restart")]
 		void Restart(bool canContinue = true);
 	}
 }

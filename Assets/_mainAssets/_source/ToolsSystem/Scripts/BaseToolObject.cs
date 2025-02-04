@@ -7,6 +7,7 @@ namespace ToolsSystem
     public abstract class BaseToolObject : MonoBehaviour, IStudyObject
     {
         public abstract void StartDefaultStudy(Action OnComplete = null);
+        public abstract void Skip();
         public abstract void Restart(bool canContinue = true);
     }
 }

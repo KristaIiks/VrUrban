@@ -1,6 +1,6 @@
 using System;
-using UnityEngine;
 using SmartConsole;
+using UnityEngine;
 
 namespace ToolsSystem
 {
@@ -78,8 +78,14 @@ namespace ToolsSystem
 			OnDestroy += _studyEvent;
 		}
 
-		public override void Restart(bool canContinue = true)
+		public override void Skip()
 		{
+			Restart();
+			Destroy();
+		}
+		
+		public override void Restart(bool canContinue = true)
+		{			
 			_canInteract = canContinue;
 			
 			gameObject.SetActive(true);

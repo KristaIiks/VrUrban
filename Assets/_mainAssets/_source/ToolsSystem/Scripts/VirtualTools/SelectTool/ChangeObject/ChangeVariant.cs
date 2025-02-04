@@ -7,5 +7,6 @@ public class ChangeVariant
 	public GameObject Object;
 
 	public bool IsBlocked;
+	public bool IsHidden;
 	public bool IsSelected;
 }

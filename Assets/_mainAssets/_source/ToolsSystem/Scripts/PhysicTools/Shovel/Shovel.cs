@@ -1,7 +1,6 @@
 using System;
 using UnityEngine;
 using UnityEngine.VFX;
-using SmartConsole;
 
 namespace ToolsSystem
 {
@@ -36,7 +35,6 @@ namespace ToolsSystem
         {
             if (block == null && CheckRotation(_angle)) { return; }
             
-            SConsole.Log(LOG_TAG, $"Try dig - {block.gameObject.name}");
             if(block.Dig(out CrumblyBlockSettings settings))
             {
                 _audio.PlayOneShot(settings.DigSound ?? _defaultSettings.DigSound);
@@ -53,7 +51,6 @@ namespace ToolsSystem
                 ActivateHill(true);
                 
                 OnDig?.Invoke(block);
-                SConsole.Log(LOG_TAG, $"Successful dig");
             }
         }
 

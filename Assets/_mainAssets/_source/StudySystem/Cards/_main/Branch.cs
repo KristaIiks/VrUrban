@@ -9,11 +9,11 @@ namespace StudySystem
 {
 	public sealed class Branch : MonoBehaviour
 	{
-		private const string LOG_TAG = "Study";
-		
+		private const string LOG_TAG = "Study";		
 		[SerializeField] private Card FirstCard;
 #if UNITY_EDITOR
 		[SerializeField] private Card DebugSkip;
+		[Space(25)]
 #endif
 		[SerializeField] private UnityEvent OnBranchComplete;
 		
@@ -29,25 +29,36 @@ namespace StudySystem
 			if(DebugSkip)
 			{
 				List<Card> listToSkip = FindPath(new List<Card>(){FirstCard}, FirstCard, DebugSkip);
-				if(listToSkip.Count == 0)
+				if(listToSkip == null)
 				{
 					SConsole.Log(LOG_TAG, "Cant find path to card!", LogType.Warning);
 				}
 				else
 				{
-					listToSkip.Add(DebugSkip);
-					SConsole.Log(LOG_TAG, listToSkip.Count, 2);
+					listToSkip[0].StartCard(() => OnBranchComplete?.Invoke(), (card) => _currentCard = card);
+					
 					for (int i = 0; i < listToSkip.Count - 1; i++)
 					{
-						SConsole.Log(LOG_TAG, listToSkip[i].name, 2);
 						listToSkip[i].Skip(listToSkip[i + 1]);
 					}
-					FirstCard = DebugSkip;
 					SConsole.Log(LOG_TAG, "Skip successful!", 2);
 				}
 			}
+			#else
+			if (FirstCard.Info != null)
+			{
+				CardsWindow.Instance.DisplayCards(
+					() => OnBranchComplete?.Invoke(), 
+					(card) => _currentCard = card, 
+					new Card[] { FirstCard }
+				);
+			}
+			else
+			{
+				FirstCard.StartCard(() => OnBranchComplete?.Invoke(), (card) => _currentCard = card);
+			}
 			#endif
-			FirstCard.StartCard(() => OnBranchComplete?.Invoke(), (card) => _currentCard = card);
+			
 			SConsole.Log(LOG_TAG, $"Start study branch #{gameObject.name}", 2, gameObject);
 		}
 		
@@ -71,7 +82,7 @@ namespace StudySystem
 		
 		private List<Card> FindPath(List<Card> path, Card card, Card find)
 		{	
-			if(card.GetCards().Contains(find)) { path.Add(card); return path; }
+			if(card.GetCards().Contains(find)) { path.Add(find); return path; }
 			
 			foreach (var item in card.GetCards())
 			{

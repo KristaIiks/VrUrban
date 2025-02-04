@@ -7,17 +7,22 @@ namespace ToolsSystem
 	{
 		[SerializeField] private MultipleChanges[] Objects;
 		
-		protected override void Awake()
+		private void OnEnable()
 		{
-			base.Awake();
 			if (Variants.Count < Objects.Length + 1) { SConsole.Log("Tool: Change tool", "Need more build variants for multiple change"); return; }
 			
 			foreach (var obj in Objects)
 			{
-				obj.OnObjectChanged += RemoveVariant;
+				obj.OnObjectChanged += HideVariant;
 			}
 		}
 		
-		public void RemoveVariant(int id) => Variants.RemoveAt(id);
+		private void OnDisable()
+		{
+			foreach (var obj in Objects)
+			{
+				obj.OnObjectChanged -= HideVariant;
+			}
+		}
 	}
 }

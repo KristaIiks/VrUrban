@@ -11,8 +11,9 @@ namespace StudySystem
 		[SerializeField] private QuestSO Info;
 		
 		[HideInInspector] public UnityEvent<QuestResult> OnComplete;
+		
+		public QuestResult Result { get; private set; }
 		public bool IsCompleted { get; private set; }
-		private QuestResult _result;
 		
 		public void StartQuest()
 		{
@@ -20,27 +21,34 @@ namespace StudySystem
 			Info.OnQuestComplete += CompleteQuest;
 		}
 		
+		public void Skip(bool result = true)
+		{
+			OnComplete.RemoveAllListeners();
+			Info.Skip(result);			
+		}
+		
 		public void Restart(bool canContinue)
 		{
-			Info.Restart(canContinue);
-			
 			if(!canContinue)
 			{
 				IsCompleted = false;
+				
+				OnComplete.RemoveAllListeners();
+				Info.OnQuestComplete -= CompleteQuest;
 			}
+			
+			Info.Restart(canContinue);
 		}
 		
-		public void CompleteQuest(QuestResult result)
+		private void CompleteQuest(QuestResult result)
 		{
 			Info.OnQuestComplete -= CompleteQuest;
 			
 			IsCompleted = true;
-			_result = result;
+			Result = result;
 			
 			OnComplete?.Invoke(result);
 			OnComplete.RemoveAllListeners();
 		}
-
-		public QuestResult GetResult() => _result;
 	}
 }

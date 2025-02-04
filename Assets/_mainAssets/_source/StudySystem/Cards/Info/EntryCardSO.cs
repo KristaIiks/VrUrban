@@ -2,9 +2,10 @@ using UnityEngine;
 
 namespace StudySystem
 {
-	[CreateAssetMenu(menuName = "Study", fileName = "Card Info", order = 0)]
+	[CreateAssetMenu(menuName = "Study/Card/Entry", fileName = "Card Info", order = 1)]
 	public class EntryCardSO : CardSO
 	{
+		[field:Space(25)]
 		[field:SerializeField] public EntryCardStats Stats { get; private set; }
 	}
 	

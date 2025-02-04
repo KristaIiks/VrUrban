@@ -5,21 +5,23 @@ using UnityEngine.Events;
 
 namespace StudySystem
 {
-	public sealed class ConditionalCard : Card
+	public sealed class ConditionalCard : QuestCard
 	{
-		[SerializeField] private List<Card> CorrectCards;
-		[SerializeField] private List<Card> WrongCards;
+		[Space(25), Header("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"), Space(25)]
+		[SerializeField] private List<Card> CorrectCards = new List<Card>();
+		[SerializeField] private List<Card> WrongCards = new List<Card>();
 		[SerializeField] private ConditionalType ConditionalType;
 		
+		
+		[Space(25), Header("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"), Space(25)]
 		[SerializeField] private UnityEvent OnCorrectEvent;
 		[SerializeField] private UnityEvent OnWrongEvent;
 		
+		protected override List<Card> _allCards { get; set; }
 		private bool _conditional;
 
-		protected override void OnValidate()
-		{
-			base.OnValidate();
-			
+		private void OnValidate()
+		{			
 			List<Card> cards = new List<Card>();
 			cards.AddRange(CorrectCards);
 			cards.AddRange(WrongCards);
@@ -35,16 +37,16 @@ namespace StudySystem
 				switch (ConditionalType)
 				{
 					case ConditionalType.AllCorrect:
-						_conditional = Quests.All((quest) => quest.GetResult().IsCorrect);
+						_conditional = Quests.All((quest) => quest.Result.IsCorrect);
 						break;
 					case ConditionalType.AllWrong:
-						_conditional = Quests.All((quest) => !quest.GetResult().IsCorrect);
+						_conditional = Quests.All((quest) => !quest.Result.IsCorrect);
 						break;
 					case ConditionalType.AnyCorrect:
-						_conditional = Quests.Any((quest) => quest.GetResult().IsCorrect);
+						_conditional = Quests.Any((quest) => quest.Result.IsCorrect);
 						break;
 					case ConditionalType.AnyWrong:
-						_conditional = Quests.Any((quest) => !quest.GetResult().IsCorrect);
+						_conditional = Quests.Any((quest) => !quest.Result.IsCorrect);
 						break;
 				}
 				
@@ -53,25 +55,62 @@ namespace StudySystem
 			}
 		}
 
+		public override void SkipAll()
+		{
+			Quests.ForEach((quest) => quest.Skip());
+			OnCorrectEvent?.Invoke();
+			
+			CorrectCards.ForEach((card) => card.SkipAll());
+		}
 		public override void Skip(Card to)
 		{
 			base.Skip(to);
 			
 			if(CorrectCards.Contains(to))
+			{
+				switch (ConditionalType)
+				{
+					case ConditionalType.AllCorrect:
+					case ConditionalType.AnyCorrect:
+						Quests.ForEach((quest) => quest.Skip());
+						break;
+					case ConditionalType.AllWrong:
+					case ConditionalType.AnyWrong:
+						Quests.ForEach((quest) => quest.Skip(false));
+						break;
+				}
 				OnCorrectEvent?.Invoke();
+			}
 			else
+			{
+				switch (ConditionalType)
+				{
+					case ConditionalType.AllCorrect:
+					case ConditionalType.AnyCorrect:
+						Quests.ForEach((quest) => quest.Skip(false));
+						break;
+					case ConditionalType.AllWrong:
+					case ConditionalType.AnyWrong:
+						Quests.ForEach((quest) => quest.Skip());
+						break;
+				}
 				OnWrongEvent?.Invoke();
+			}
 		}
 
 		protected override void Continue()
 		{
 			base.Continue();
-			// TODO: show cards if conditional
+			
 			if (_conditional)
 			{
-				// Draw correct cards
+				OnCorrectEvent?.Invoke();
+				CardsWindow.Instance.DisplayCards(() => Continue(), updateBranch, CorrectCards.ToArray());
 				return;
 			}
+			
+			OnWrongEvent?.Invoke();
+			CardsWindow.Instance.DisplayCards(() => Continue(), updateBranch, WrongCards.ToArray());
 			// Draw wrong cards
 		}
 	}

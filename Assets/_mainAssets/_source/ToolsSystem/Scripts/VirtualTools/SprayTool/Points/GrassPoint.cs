@@ -39,8 +39,14 @@ namespace ToolsSystem
 			OnPaint += _studyEvent;
 		}
 
-		public override void Restart(bool canContinue = true)
+		public override void Skip()
 		{
+			Restart();
+			Paint();
+		}
+
+		public override void Restart(bool canContinue = true)
+		{			
 			_canPaint = canContinue;
 			_meshRenderer.material = GroundMaterial;
 		}

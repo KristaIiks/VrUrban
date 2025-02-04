@@ -1,4 +1,5 @@
 using System;
+using SmartConsole;
 using UnityEngine;
 
 namespace ToolsSystem
@@ -15,11 +16,15 @@ namespace ToolsSystem
 		
 		public bool Dig(out CrumblyBlockSettings settings)
 		{
+			SConsole.Log("Tool: Shovel", $"Try dig - {gameObject.name}");
 			if (!_canDig) { settings = null; return false; }
 			
 			gameObject.SetActive(false);
+			_canDig = false;
+			
 			OnDig?.Invoke(); 
 			
+			SConsole.Log("Tool: Shovel", $"Successful dig");
 			settings = _blockSettings;
 			return true;
 		}
@@ -30,6 +35,12 @@ namespace ToolsSystem
 			
 			_studyEvent = () => { OnComplete?.Invoke(); OnDig -= _studyEvent; };
 			OnDig += _studyEvent;
+		}
+
+		public override void Skip()
+		{
+			Restart();
+			Dig(out _);
 		}
 
 		public override void Restart(bool canContinue = true)

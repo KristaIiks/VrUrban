@@ -1,7 +1,7 @@
 using System;
-using UnityEngine;
-using SmartConsole;
 using System.Collections.Generic;
+using SmartConsole;
+using UnityEngine;
 
 namespace ToolsSystem
 {
@@ -14,6 +14,7 @@ namespace ToolsSystem
 		[SerializeField] private GameObject _defaultObject;
 		
 		public event Action<int> OnObjectChanged;
+		private event Action<int> _studyEvent;
 		
 		protected virtual void Awake() => Restart(false);
 		
@@ -37,7 +38,29 @@ namespace ToolsSystem
 			OnObjectChanged?.Invoke(id);
 		}
 		
-		private void Reset()
+		public void HideVariant(int id) => HideVariant(id, true);
+		public void HideVariant(int id, bool value)
+		{
+			if (id >= Variants.Count) { return; }
+			
+			Variants[id].IsHidden = value;
+		}
+		
+		public override void StartDefaultStudy(Action OnComplete = null)
+		{
+			Restart(true);
+			
+			_studyEvent = (id) => { OnComplete?.Invoke(); OnObjectChanged -= _studyEvent; };
+			OnObjectChanged += _studyEvent;
+		}
+
+		public override void Skip()
+		{
+			Restart();
+			ChangeBuild(UnityEngine.Random.Range(0, Variants.Count - 1));
+		}
+
+		public override void Restart(bool canContinue = true)
 		{
 			_defaultObject.SetActive(true);
 			
@@ -53,22 +76,12 @@ namespace ToolsSystem
 				else
 				{
 					variant.IsSelected = true;
-				}				
+				}
+				variant.IsHidden = false;
 			}
 			
-			SConsole.Log(LOG_TAG, $"Reset {gameObject.name}");
-		}
-		
-		public override void StartDefaultStudy(Action OnComplete = null)
-		{
-			Restart(true);
-			//
-		}
-
-		public override void Restart(bool canContinue = true)
-		{
-			Reset();
 			CanSelect = canContinue;
+			SConsole.Log(LOG_TAG, $"Reset {gameObject.name}");
 		}
 	}
 }
