@@ -50,6 +50,11 @@ namespace StudySystem
 						break;
 				}
 				
+				if (_conditional)
+					OnCorrectEvent?.Invoke();
+				else
+					OnWrongEvent?.Invoke();
+				
 				// TODO: reward
 				Continue();
 			}
@@ -102,16 +107,14 @@ namespace StudySystem
 		{
 			base.Continue();
 			
-			if (_conditional)
-			{
-				OnCorrectEvent?.Invoke();
-				CardsWindow.Instance.DisplayCards(() => Continue(), updateBranch, CorrectCards.ToArray());
-				return;
-			}
+			IsCompleted = _conditional ? CorrectCards.All((card) => card.IsCompleted) : WrongCards.All((card) => card.IsCompleted);
+			if (IsCompleted) { m_previousCard.Invoke(); return; }
 			
-			OnWrongEvent?.Invoke();
-			CardsWindow.Instance.DisplayCards(() => Continue(), updateBranch, WrongCards.ToArray());
-			// Draw wrong cards
+			CardsWindow.Instance.DisplayCards(
+				() => Continue(), 
+				updateBranch, 
+				_conditional ? CorrectCards.ToArray() : WrongCards.ToArray()
+			);
 		}
 	}
 }

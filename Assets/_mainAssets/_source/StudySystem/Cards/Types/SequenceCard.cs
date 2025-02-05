@@ -49,6 +49,7 @@ namespace StudySystem
 				}
 			}
 			
+			IsCompleted = true;
 			m_previousCard.Invoke();
 		}
 	}

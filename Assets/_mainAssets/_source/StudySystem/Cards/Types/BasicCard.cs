@@ -7,15 +7,17 @@ namespace StudySystem
 	public class BasicCard : QuestCard
 	{
 		[Space(25), Header("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"), Space(25)]
-		[SerializeField] private List<Card> Cards;
+		[SerializeField] private List<Card> Cards = new List<Card>();
 		protected override List<Card> _allCards { get => Cards; set => Cards = value; }
 		
 		protected override void Continue()
 		{
 			base.Continue();
 			
-			if (Cards.All((card) => card.IsCompleted))
+			if (Cards.Count == 0 || Cards.All((card) => card.IsCompleted))
 			{
+				IsCompleted = true;
+				
 				m_previousCard?.Invoke();
 				return;
 			}
