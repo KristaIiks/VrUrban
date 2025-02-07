@@ -156,7 +156,7 @@
                 {
                     "name": "",
                     "id": "a48967a4-7d4e-4094-be8a-019890160ebf",
-                    "path": "<XRController>{RightHand}/trigger",
+                    "path": "<XRController>{LeftHand}/trigger",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -178,7 +178,7 @@
                 {
                     "name": "",
                     "id": "b0b7b382-2e83-44f9-9eee-f50eca14ee8b",
-                    "path": "<XRController>{RightHand}/primaryTouched",
+                    "path": "<XRController>{LeftHand}/primaryTouched",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
