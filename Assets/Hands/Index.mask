@@ -24,25 +24,25 @@ AvatarMask:
   - m_Path: Armature/Bone/Bone.001/Bone.002/Bone.007/Bone.007_end
     m_Weight: 0
   - m_Path: Armature/Bone/Bone.003
-    m_Weight: 0
+    m_Weight: 1
   - m_Path: Armature/Bone/Bone.003/Bone.008
-    m_Weight: 0
+    m_Weight: 1
   - m_Path: Armature/Bone/Bone.003/Bone.008/Bone.009
-    m_Weight: 0
+    m_Weight: 1
   - m_Path: Armature/Bone/Bone.003/Bone.008/Bone.009/Bone.010
-    m_Weight: 0
+    m_Weight: 1
   - m_Path: Armature/Bone/Bone.003/Bone.008/Bone.009/Bone.010/Bone.010_end
-    m_Weight: 0
+    m_Weight: 1
   - m_Path: Armature/Bone/Bone.004
-    m_Weight: 1
+    m_Weight: 0
   - m_Path: Armature/Bone/Bone.004/Bone.011
-    m_Weight: 1
+    m_Weight: 0
   - m_Path: Armature/Bone/Bone.004/Bone.011/Bone.012
-    m_Weight: 1
+    m_Weight: 0
   - m_Path: Armature/Bone/Bone.004/Bone.011/Bone.012/Bone.013
-    m_Weight: 1
+    m_Weight: 0
   - m_Path: Armature/Bone/Bone.004/Bone.011/Bone.012/Bone.013/Bone.013_end
-    m_Weight: 1
+    m_Weight: 0
   - m_Path: Armature/Bone/Bone.005
     m_Weight: 0
   - m_Path: Armature/Bone/Bone.005/Bone.014
