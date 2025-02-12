@@ -23,7 +23,11 @@ public sealed class TrashObject : Selectable
 			_outline.enabled = false;
 			_outline.OutlineWidth = 10f;
 			_outline.OutlineColor = Color.red;
+			_outline.BakeOutline = true;
+			
+			if (!gameObject.CompareTag(OBJECT_TAG)) { gameObject.tag = OBJECT_TAG; }
 		}
+		
 		CanSelect = false;
 		base.OnValidate();
 	}

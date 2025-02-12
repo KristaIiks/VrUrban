@@ -11,8 +11,12 @@ namespace ToolsSystem
 	public sealed class SprayTool : VirtualTool
 	{
 		[SerializeField] private InputActionReference _interactInput;
+		
+		[Space(25)]
 		[SerializeField, Min(.1f)] private float _sprayDistance = 2f;
 		[SerializeField] private float _interactionDelay = .5f;
+		
+		[Space(25)]
 		[SerializeField] private AudioClip _sprayClip;
 		[SerializeField] private VisualEffect _effect;
 		
@@ -104,7 +108,8 @@ namespace ToolsSystem
 
 		private void OnDrawGizmos()
 		{
-			if(Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, _sprayDistance))
+			if(Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, _sprayDistance)
+			&& hit.collider.TryGetComponent(out SprayPoint sprayPoint))
 			{
 				Gizmos.color = Color.green;
 				Gizmos.DrawLine(transform.position, hit.point);

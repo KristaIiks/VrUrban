@@ -6,11 +6,11 @@ namespace ToolsSystem
 	public class ToolInfo : ScriptableObject
 	{
 		[field:SerializeField] public string ToolName { get; private set; }
-		[field:SerializeField] public string ToolDescription { get; private set; }
+		[field:SerializeField, TextArea(1, 2)] public string ToolDescription { get; private set; }
 		[field:SerializeField] public ToolMode ToolMode { get; private set; }
 		
 		// TODO: make this fields custom variants and make default clips for all standard tools
-		[field:SerializeField] public AudioClip SelectClip { get; private set; }
-		[field:SerializeField] public AudioClip DeSelectClip { get; private set; }
+		[field:SerializeField] public AudioClip SelectToolClip { get; private set; }
+		[field:SerializeField] public AudioClip DeSelectToolClip { get; private set; }
 	}
 }

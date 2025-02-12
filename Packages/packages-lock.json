@@ -1,5 +1,12 @@
 {
   "dependencies": {
+    "com.microsoft.mixedreality.visualprofiler": {
+      "version": "https://github.com/microsoft/VisualProfiler-Unity.git?path=/com.microsoft.mixedreality.visualprofiler#v3.3.0",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "57efb164c9064fb572b4633fbe825b279913a15d"
+    },
     "com.unity.2d.sprite": {
       "version": "1.0.0",
       "depth": 0,

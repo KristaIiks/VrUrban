@@ -20,11 +20,13 @@ namespace StudySystem
 		{
 			foreach (QuestStatus quest in Quests)
 			{
-				if(!quest.Object.TryGetComponent(out IStudyObject component))
+				if (quest.Object == null)
 				{
 					SConsole.Log(LOG_TAG, "Quest is null", LogType.Warning);
 					continue;
 				}
+				
+				IStudyObject component = quest.Object.GetComponent<IStudyObject>();
 				
 				OnStart.AddListener(() => component.InitStudy());
 				OnComplete.AddListener(() => component.OnStudyComplete());

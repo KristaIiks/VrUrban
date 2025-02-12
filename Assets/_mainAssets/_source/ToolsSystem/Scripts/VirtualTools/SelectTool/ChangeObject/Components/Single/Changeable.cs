@@ -9,9 +9,12 @@ namespace ToolsSystem
 	{
 		private const string LOG_TAG = "Changeable";
 		
+		[field:Space(25)]
 		[field:SerializeField] public List<ChangeVariant> Variants { get; protected set; }
-		[field:SerializeField] public Transform UIPosition { get; private set; }
 		[SerializeField] private GameObject _defaultObject;
+		
+		[field:Space(25)]
+		[field:SerializeField] public Transform UIPosition { get; private set; }
 		
 		public event Action<int> OnObjectChanged;
 		private event Action<int> _studyEvent;
@@ -27,11 +30,11 @@ namespace ToolsSystem
 			_defaultObject.SetActive(false);
 			for (int i = 0; i < Variants.Count - 1; i++)
 			{
-				Variants[i].Object.SetActive(false);
+				Variants[i].Object?.SetActive(false);
 				Variants[i].IsSelected = false;
 			}
 			
-			Variants[id].Object.SetActive(true);
+			Variants[id].Object?.SetActive(true);
 			Variants[id].IsSelected = true;
 			
 			SConsole.Log(LOG_TAG, $"Change [{gameObject.name}] object to [{Variants[id].Object.name}][{id}]");

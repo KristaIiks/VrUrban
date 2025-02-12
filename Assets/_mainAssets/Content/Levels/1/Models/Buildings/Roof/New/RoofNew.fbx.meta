@@ -1,11 +1,17 @@
 fileFormatVersion: 2
-guid: c71ee9713d1e1f44eb2a93b19f5169c6
+guid: 0bddfffa78dad1648a08dd37948366df
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Vertex
+    second: {fileID: -876546973899608171, guid: 583fa6850f3a64d4188c9f46552bb3c8,
+      type: 3}
   materials:
-    materialImportMode: 0
+    materialImportMode: 2
     materialName: 0
     materialSearch: 1
     materialLocation: 1

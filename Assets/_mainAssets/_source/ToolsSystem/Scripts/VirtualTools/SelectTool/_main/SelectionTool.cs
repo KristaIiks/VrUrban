@@ -1,27 +1,31 @@
 using System;
+using Extensions.Audio;
 using SmartConsole;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using Extensions.Audio;
-using System.Collections.Generic;
 
 namespace ToolsSystem
 {
 	[RequireComponent(typeof(LineRenderer), typeof(SphereCollider))]
 	public abstract class SelectionTool<T> : VirtualTool where T : Selectable
 	{
+		[Space(25)]
 		[SerializeField, Min(0.1f)] private float RayDistance = 10f;
 		[SerializeField] private LayerMask RayMask;
 		[SerializeField] private bool ForceShowRay;
 		
+		[Space(25)]
 		[SerializeField] private Gradient CanSelectGradient;
 		[SerializeField] private Gradient NoAvailableGradient;
 		[SerializeField] private Gradient ErrorSelectGradient;
 		
+		[Space(25)]
 		[SerializeField] private InputActionReference SelectBtn;
+		
+		[Space(25)]
 		[SerializeField] private AudioClip InteractionClip;
-		[SerializeField] private AudioClip SelectClip;
-		[SerializeField] private AudioClip DeSelectClip;
+		[SerializeField] private AudioClip SelectObjectClip;
+		[SerializeField] private AudioClip DeSelectObjectClip;
 		[SerializeField] protected Vector2 PitchRange = new Vector2(-0.1f, .1f);
 		
 		public event Action<T> OnSelect;
@@ -68,6 +72,7 @@ namespace ToolsSystem
 			if (!_collider)
 			{
 				_collider = GetComponent<SphereCollider>();
+				_collider.isTrigger = true;
 				_collider.radius = 1f;
 			}
 		}
@@ -105,8 +110,9 @@ namespace ToolsSystem
 			if (interactionResult)
 				_audio.PlayRandomized(InteractionClip, PitchRange);
 		}
+		public void InteractObject(T obj) => InteractObject(obj, SelectFilter.Script);
 		
-		public virtual void Select(T obj, SelectFilter filter)
+		protected virtual void Select(T obj, SelectFilter filter)
 		{	
 			if(!IsEnabled) { return; }
 			
@@ -126,7 +132,7 @@ namespace ToolsSystem
 			_selectedObject = obj;
 			_selectedObject.Select(filter);
 		
-			_audio.PlayRandomized(SelectClip, PitchRange);
+			_audio.PlayRandomized(SelectObjectClip, PitchRange);
 			SConsole.Log(LOG_TAG, "Select object - " + obj.gameObject.name);
 			
 			OnSelect?.Invoke(obj);
@@ -145,7 +151,7 @@ namespace ToolsSystem
 		{
 			if (!_selectedObject) { return; }
 			
-			_audio.PlayRandomized(DeSelectClip, PitchRange);
+			_audio.PlayRandomized(DeSelectObjectClip, PitchRange);
 			Deselect();
 		}
 		

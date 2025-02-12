@@ -8,6 +8,7 @@ namespace ToolsSystem
 	public abstract class PhysicTool : Tool
 	{
 		// TODO: realize permanent grab if (maybe create my own interactor)
+		[SerializeField] private HandGrabType GrabType;
 		[SerializeField] private bool _forceInteract;
 		
 		protected XRGrabInteractable _grabInteractable;
@@ -43,6 +44,19 @@ namespace ToolsSystem
 
 		protected override void SelectTool(bool state)
 		{
+			if (_isGrabbed == state) { return; }
+			
+			if (GrabType != HandGrabType.Any)
+			{
+				int handsCount = _grabInteractable.interactorsSelecting.Count;
+				if (GrabType == HandGrabType.Both && handsCount < 2) { return; }
+				
+				bool selectLeftHand = _grabInteractable.IsSelectedByLeft();
+				
+				if (GrabType == HandGrabType.Left && !selectLeftHand) { return; }
+				if (GrabType == HandGrabType.Right && selectLeftHand) { return; }
+			}
+			
 			base.SelectTool(state);
 			_isGrabbed = state;
 		}

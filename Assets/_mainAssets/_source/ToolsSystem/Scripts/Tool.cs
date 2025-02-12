@@ -32,7 +32,7 @@ namespace ToolsSystem
 		{			
 			if (ToolInfo == null) { SConsole.LogException(LOG_TAG, new NullReferenceException("ToolInfo is null"), this); return; }
 
-			AudioClip clipToPlay = state ? ToolInfo.SelectClip : ToolInfo.DeSelectClip;
+			AudioClip clipToPlay = state ? ToolInfo.SelectToolClip : ToolInfo.DeSelectToolClip;
 			_audio.PlayOneShot(clipToPlay);
 			OnToolSelectChanged?.Invoke(state);
 			

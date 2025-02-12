@@ -1,16 +1,17 @@
 using System;
-using UnityEngine;
 using QuickOutline;
+using SmartConsole;
+using UnityEngine;
 
 namespace ToolsSystem
 {
-	[RequireComponent(typeof(Outline), typeof(Collider))]
+	[RequireComponent(typeof(Outline))]
 	public abstract class Selectable : BaseToolObject
 	{		
 		public const string OBJECT_TAG = "Selectable";
 		
-		[SerializeField] private VisualMode VisualMode;
-		[SerializeField] private SelectFilter SelectFilter;
+		[SerializeField] private VisualMode VisualMode = VisualMode.Outline;
+		[SerializeField] private SelectFilter SelectFilter = SelectFilter.Ray;
 		
 		public bool ObjectState { get => CanInteract || CanSelect; }
 		public bool CanInteract 
@@ -57,9 +58,14 @@ namespace ToolsSystem
 				_outline = GetComponent<Outline>();
 				_outline.OutlineWidth = 8f;
 				_outline.OutlineColor = Color.yellow;
+				_outline.BakeOutline = true;
+				
 				_outline.enabled = false;
+				
+				 if (!gameObject.CompareTag(OBJECT_TAG)) { gameObject.tag = OBJECT_TAG; }
 			}
-			gameObject.tag = OBJECT_TAG;
+			
+			if (transform.GetComponentsInChildren<Collider>().Length == 0) { SConsole.Log("Selectable", "Object doesn't have colliders."); }
 		}
 		
 		public virtual bool TryInteract(out bool canSelect, SelectFilter filter)
@@ -93,11 +99,6 @@ namespace ToolsSystem
 			OnSelectChanged?.Invoke(false);
 		}
 		
-		protected bool CompareFilter(SelectFilter filter)
-		{
-			if (SelectFilter == SelectFilter.All) { return true; } // Can interact with any types
-			
-			return filter == SelectFilter;
-		}
+		protected bool CompareFilter(SelectFilter filter) => SelectFilter.HasFlag(filter);
 	}
 }

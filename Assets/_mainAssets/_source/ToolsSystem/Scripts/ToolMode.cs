@@ -2,11 +2,11 @@ using System;
 
 namespace ToolsSystem
 {
-	[Serializable, Flags]
+	[Flags]
 	public enum ToolMode
 	{
-		Teleport,
-		Grab,
-		UI
+		Teleport = 1,
+		Grab = 2,
+		UI = 4
 	}
 }

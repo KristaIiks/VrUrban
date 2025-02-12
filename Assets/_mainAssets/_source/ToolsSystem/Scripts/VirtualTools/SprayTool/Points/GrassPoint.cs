@@ -1,4 +1,7 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace ToolsSystem
@@ -8,27 +11,43 @@ namespace ToolsSystem
 	{
 		[SerializeField] private Material GroundMaterial;
 		[SerializeField] private Material GrassMaterial;
+		[SerializeField] GrassPoint[] NearPoints;
+		[HideInInspector] public bool CanPaint { get; private set; }
 
 		public override event Action OnPaint;
 		private event Action _studyEvent;
 
 		private MeshRenderer _meshRenderer;
-		private bool _canPaint;
 		
 		private void OnValidate()
 		{
 			_meshRenderer ??= GetComponent<MeshRenderer>();
 		}
 		
+		private void Awake() => Restart();
+		
 		public override bool Paint()
 		{
-			if (!_canPaint) { return false; }
+			if (!CanPaint) { return false; }
 			
 			_meshRenderer.material = GrassMaterial;
-			_canPaint = false;
+			CanPaint = false;
 			OnPaint?.Invoke();
+			StartCoroutine(Expansion());
 			
 			return true;
+		}
+		private IEnumerator Expansion()
+		{
+			while (true)
+			{
+				yield return new WaitForSeconds(2f);
+				
+				if (NearPoints.All((point) => !point.CanPaint)) { yield break; }
+				
+				List<GrassPoint> points = NearPoints.Where((point) => point.CanPaint).ToList();
+				points[UnityEngine.Random.Range(0, points.Count - 1)].Paint();
+			}
 		}
 
 		public override void StartDefaultStudy(Action OnComplete = null)
@@ -47,7 +66,7 @@ namespace ToolsSystem
 
 		public override void Restart(bool canContinue = true)
 		{			
-			_canPaint = canContinue;
+			CanPaint = canContinue;
 			_meshRenderer.material = GroundMaterial;
 		}
 	}
