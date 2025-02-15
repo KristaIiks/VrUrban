@@ -5,13 +5,12 @@ using UnityEngine;
 
 namespace ToolsSystem
 {
-	[RequireComponent(typeof(Outline))]
 	public abstract class Selectable : BaseToolObject
 	{		
 		public const string OBJECT_TAG = "Selectable";
 		
-		[SerializeField] private VisualMode VisualMode = VisualMode.Outline;
 		[SerializeField] private SelectFilter SelectFilter = SelectFilter.Ray;
+		[SerializeField] protected Outline SelectOutline;
 		
 		public bool ObjectState { get => CanInteract || CanSelect; }
 		public bool CanInteract 
@@ -45,7 +44,6 @@ namespace ToolsSystem
 		public event Action<bool> OnSelectChanged;
 		public event Action<bool> OnStateChanged;
 		
-		protected Outline _outline;
 		protected bool _isSelected;
 		
 		private bool _canInteract;
@@ -53,19 +51,17 @@ namespace ToolsSystem
 		
 		protected virtual void OnValidate()
 		{
-			if(!_outline)
+			if(!SelectOutline && TryGetComponent(out SelectOutline))
 			{
-				_outline = GetComponent<Outline>();
-				_outline.OutlineWidth = 8f;
-				_outline.OutlineColor = Color.yellow;
-				_outline.BakeOutline = true;
+				SelectOutline.OutlineWidth = 8f;
+				SelectOutline.OutlineColor = Color.yellow;
+				SelectOutline.BakeOutline = true;
 				
-				_outline.enabled = false;
-				
-				 if (!gameObject.CompareTag(OBJECT_TAG)) { gameObject.tag = OBJECT_TAG; }
+				SelectOutline.enabled = false;				
 			}
 			
-			if (transform.GetComponentsInChildren<Collider>().Length == 0) { SConsole.Log("Selectable", "Object doesn't have colliders."); }
+			if (!gameObject.CompareTag(OBJECT_TAG)) { gameObject.tag = OBJECT_TAG; }
+			if (transform.GetComponentsInChildren<Collider>(true).Length == 0) { SConsole.Log("Selectable", "Object doesn't have colliders."); }
 		}
 		
 		public virtual bool TryInteract(out bool canSelect, SelectFilter filter)
@@ -80,11 +76,8 @@ namespace ToolsSystem
 		{
 			if (!CanSelect || _isSelected || !CompareFilter(filter)) { return; }
 			
-			
 			_isSelected = true;
-			
-			_outline.enabled = VisualMode == VisualMode.Outline;
-			// TODO: add zone
+			if (SelectOutline) { SelectOutline.enabled = true; }
 			
 			OnSelectChanged?.Invoke(true);
 		}
@@ -95,7 +88,7 @@ namespace ToolsSystem
 			
 			
 			_isSelected = false;
-			_outline.enabled = false;
+			SelectOutline.enabled = false;
 			OnSelectChanged?.Invoke(false);
 		}
 		

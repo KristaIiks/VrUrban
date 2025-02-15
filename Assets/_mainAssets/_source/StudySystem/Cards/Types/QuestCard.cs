@@ -13,28 +13,36 @@ namespace StudySystem
 		[SerializeField] protected PlayableDirector Cutscene;
 		
 		[Space(10)]
-		[SerializeField] protected List<QuestStatus> Quests;
+		[SerializeField] protected List<QuestStatus> Quests = new List<QuestStatus>();
 		[Interface(typeof(IStudyInit), typeof(IStudyComplete)), SerializeField] private GameObject[] InitObjects;
 		
 		protected virtual void Awake()
 		{
 			foreach (QuestStatus quest in Quests)
 			{
-				if (quest.Object == null)
+				if (quest.Objects.Length == 0)
 				{
-					SConsole.Log(LOG_TAG, "Quest is null", LogType.Warning);
+					SConsole.Log(LOG_TAG, "Quest objects are empty", LogType.Warning, gameObject);
 					continue;
 				}
 				
-				IStudyObject component = quest.Object.GetComponent<IStudyObject>();
-				
-				OnStart.AddListener(() => component.InitStudy());
-				OnComplete.AddListener(() => component.OnStudyComplete());
+				foreach (GameObject obj in quest.Objects)
+				{
+					if(obj.TryGetComponent(out IStudyObject component))
+					{
+						OnStart.AddListener(() => component.InitStudy());
+						OnComplete.AddListener(() => component.OnStudyComplete());
+					}
+					else
+					{
+						SConsole.Log(LOG_TAG, "Quest object is null", LogType.Warning, gameObject);
+					}
+				}
 			}
 			
 			foreach (GameObject obj in InitObjects)
 			{
-				if (obj == null) { SConsole.Log(LOG_TAG, "Can't init null object", LogType.Warning); continue; }
+				if (obj == null) { SConsole.Log(LOG_TAG, "Can't init null object", LogType.Warning, gameObject); continue; }
 				
 				if (obj.TryGetComponent(out IStudyInit start))
 				{
@@ -66,6 +74,7 @@ namespace StudySystem
 			base.Skip(to);
 			
 			Quests.ForEach((quest) => quest.Skip());
+			to.StartCard(() => Continue(), updateBranch);
 		}
 
 		protected virtual void QuestCompleted(QuestResult result)
@@ -73,6 +82,7 @@ namespace StudySystem
 			if (Quests.All((quest) => quest.IsCompleted))
 			{
 				// TODO: card reward
+				OnComplete?.Invoke();
 				Continue();
 			}
 		}

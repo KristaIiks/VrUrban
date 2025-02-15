@@ -16,4 +16,4 @@ MonoBehaviour:
     type: 2}
   <DigEffect>k__BackingField: {fileID: 0}
   <DigSound>k__BackingField: {fileID: 0}
-  <PitchRange>k__BackingField: {x: -1, y: 1}
+  <PitchRange>k__BackingField: {x: 1, y: 1.1}

@@ -15,7 +15,7 @@ namespace ToolsSystem
 		public void ActivateTool(Tool tool)
 		{
 			if (_selectedTool == tool) { return; }
-			DeactivateTool(_selectedTool);
+			DeactivateTool();
 			
 			if (tool == null) { return; }
 			
@@ -28,11 +28,12 @@ namespace ToolsSystem
 			UIRay.enabled = _canUI;
 			
 			tool.ChangeToolActiveState(true);
+			_selectedTool = tool;
 		}
 		
-		public void DeactivateTool(Tool tool = null)
+		public void DeactivateTool()
 		{
-			if (tool == null)
+			if (_selectedTool == null)
 			{
 				TeleportRay.enabled = true;
 				GrabHand.enabled = true;
@@ -40,7 +41,8 @@ namespace ToolsSystem
 				return;
 			}
 			
-			tool?.ChangeToolActiveState(false);
+			_selectedTool?.ChangeToolActiveState(false);
+			_selectedTool = null;
 		}
 		
 		public void ForceSetTool(Tool tool)

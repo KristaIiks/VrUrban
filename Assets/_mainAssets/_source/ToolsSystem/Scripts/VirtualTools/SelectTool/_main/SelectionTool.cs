@@ -107,7 +107,7 @@ namespace ToolsSystem
 			
 			if (canSelect)
 				Select(obj, filter);
-			if (interactionResult)
+			if (interactionResult && InteractionClip)
 				_audio.PlayRandomized(InteractionClip, PitchRange);
 		}
 		public void InteractObject(T obj) => InteractObject(obj, SelectFilter.Script);
@@ -132,7 +132,9 @@ namespace ToolsSystem
 			_selectedObject = obj;
 			_selectedObject.Select(filter);
 		
-			_audio.PlayRandomized(SelectObjectClip, PitchRange);
+			if (SelectObjectClip)
+				_audio.PlayRandomized(SelectObjectClip, PitchRange);
+			
 			SConsole.Log(LOG_TAG, "Select object - " + obj.gameObject.name);
 			
 			OnSelect?.Invoke(obj);
@@ -151,7 +153,9 @@ namespace ToolsSystem
 		{
 			if (!_selectedObject) { return; }
 			
-			_audio.PlayRandomized(DeSelectObjectClip, PitchRange);
+			if (DeSelectObjectClip)
+				_audio.PlayRandomized(DeSelectObjectClip, PitchRange);
+			
 			Deselect();
 		}
 		
@@ -163,13 +167,8 @@ namespace ToolsSystem
 						
 			if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, RayDistance, RayMask))
 			{
-				Transform obj = hit.transform;
+				Transform obj = GetParentObject(hit.transform);
 
-				while (obj.parent != null && !obj.CompareTag(Selectable.OBJECT_TAG)) // Find selectable object
-				{
-					obj = obj.parent;
-				}
-				
 				if (obj.CompareTag(Selectable.OBJECT_TAG)) 
 				{
 					if(obj == RayObject?.transform) // Object same (update position)
@@ -189,8 +188,6 @@ namespace ToolsSystem
 						}
 					}
 				}
-				
-				// If error
 			}
 			
 			if(ForceShowRay || SelectBtn.action.IsPressed())
@@ -206,6 +203,15 @@ namespace ToolsSystem
 			RayObject = null;
 		}
 		
+		private Transform GetParentObject(Transform obj)
+		{
+			while (obj.parent != null && !obj.CompareTag(Selectable.OBJECT_TAG)) // Find selectable object
+			{
+				obj = obj.parent;
+			}
+			return obj;
+		}
+		
 		private void SetRayColor(Gradient _gradient) => _lineRenderer.colorGradient = _gradient;
 		private void SetRayColor(bool state) => SetRayColor(state ? CanSelectGradient : NoAvailableGradient);
 		private void SetRayPosition(int id, Vector3 pos)
@@ -214,15 +220,27 @@ namespace ToolsSystem
 			_lineRenderer.enabled = true;
 		}
 		private void InteractObject(InputAction.CallbackContext ctx) => InteractObject(RayObject, SelectFilter.Ray);
+		
 		private void OnTriggerEnter(Collider other)
 		{
-			if (other.TryGetComponent(out T obj))
+			Transform obj = GetParentObject(other.transform);
+			
+			if (obj.CompareTag(Selectable.OBJECT_TAG) && obj.TryGetComponent(out T component))
 			{
-				InteractObject(obj, SelectFilter.Zone);
+				InteractObject(component, SelectFilter.Zone);
+			}
+		}
+		private void OnTriggerExit(Collider other)
+		{
+			Transform obj = GetParentObject(other.transform);
+			
+			if (obj == _selectedObject?.transform) 
+			{
+				DeselectWithSound();
 			}
 		}
 
-		private void OnDrawGizmos()
+		private void OnDrawGizmosSelected()
 		{
 			if(Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, RayDistance, RayMask) && RayObject) 
 			{

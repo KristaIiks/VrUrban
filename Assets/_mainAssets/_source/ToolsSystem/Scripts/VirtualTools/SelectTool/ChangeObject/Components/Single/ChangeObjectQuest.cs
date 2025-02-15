@@ -19,11 +19,11 @@ namespace ToolsSystem
 		private Changeable _changeable;
 		private int _currentObjectId = -1;
 
-		public override void StartQuest(GameObject obj)
+		public override void StartQuest(GameObject[] objs)
 		{
-			base.StartQuest(obj);
+			base.StartQuest(objs);
 			
-			if (!obj.TryGetComponent(out Changeable component))
+			if (!objs[0].TryGetComponent(out Changeable component))
 			{
 				SConsole.LogException("ChangeQuest", new MissingComponentException());
 				return;
@@ -51,7 +51,7 @@ namespace ToolsSystem
 			
 			if (result)
 			{
-				_changeable.ChangeBuild(UnityEngine.Random.Range(0, CorrectObjectsId.Length));
+				_changeable.ChangeBuild(CorrectObjectsId[UnityEngine.Random.Range(0, CorrectObjectsId.Length)]);
 			}
 			else
 			{
@@ -91,11 +91,11 @@ namespace ToolsSystem
 			if (CorrectObjectsId.All((correct) => correct != id))
 			{
 				_mistakesCount++;
-			}
-			
-			if (RemoveOnMistake)
-			{
-				RemoveMistake();
+				
+				if (RemoveOnMistake)
+				{
+					RemoveMistake();
+				}
 			}
 			
 			CompleteQuest();

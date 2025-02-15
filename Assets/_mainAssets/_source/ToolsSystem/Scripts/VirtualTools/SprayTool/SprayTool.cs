@@ -81,13 +81,13 @@ namespace ToolsSystem
 		{
 			if (state)
 			{
-				_effect.Play();
+				//_effect.Play();
 				_audio.Play();
 				_isWork = true;
 			}
 			else
 			{
-				_effect.Stop();
+				//_effect.Stop();
 				_audio.Stop();
 				_lastTime = 0f;
 				_isWork = false;
@@ -106,7 +106,7 @@ namespace ToolsSystem
 			}
 		}
 
-		private void OnDrawGizmos()
+		private void OnDrawGizmosSelected()
 		{
 			if(Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, _sprayDistance)
 			&& hit.collider.TryGetComponent(out SprayPoint sprayPoint))

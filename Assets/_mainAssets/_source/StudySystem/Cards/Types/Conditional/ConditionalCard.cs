@@ -50,6 +50,8 @@ namespace StudySystem
 						break;
 				}
 				
+				OnComplete?.Invoke();
+				
 				if (_conditional)
 					OnCorrectEvent?.Invoke();
 				else
@@ -62,7 +64,9 @@ namespace StudySystem
 
 		public override void SkipAll()
 		{
+			OnStart?.Invoke();
 			Quests.ForEach((quest) => quest.Skip());
+			OnComplete?.Invoke();
 			OnCorrectEvent?.Invoke();
 			
 			CorrectCards.ForEach((card) => card.SkipAll());

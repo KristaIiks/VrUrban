@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace StudySystem
@@ -9,19 +10,26 @@ namespace StudySystem
 		public override event Action<QuestResult> OnQuestComplete;
 		protected override DateTime Time { get; set; }
 		
-		private IStudyObject _studyObject;
+		private List<IStudyObject> _studyObjects = new List<IStudyObject>();
+		private int _questsCompleted;
 
-		public override void StartQuest(GameObject obj)
+		public override void StartQuest(GameObject[] objs)
 		{
-			base.StartQuest(obj);
+			base.StartQuest(objs);
 			
-			_studyObject = obj.GetComponent<IStudyObject>();
-			_studyObject.StartDefaultStudy(() => CompleteQuest());
+			foreach (GameObject obj in objs)
+			{
+				if (obj.TryGetComponent(out IStudyObject component))
+				{
+					_studyObjects.Add(component);
+					component.StartDefaultStudy(() => CompleteQuest());
+				}
+			}
 		}
 		
 		public override void Skip(bool result)
 		{
-			_studyObject.Skip();
+			_studyObjects.ForEach((obj) => obj.Skip());
 		}
 		
 		public override void Restart(bool canContinue)
@@ -29,20 +37,21 @@ namespace StudySystem
 			if(canContinue)
 			{
 				Time = DateTime.UtcNow;
-				_studyObject.Restart(canContinue);
-				return;
 			}
 			
-			_studyObject.Restart(canContinue);
+			_studyObjects.ForEach((obj) => obj.Restart(canContinue));
 		}
 		
 		public override void CompleteQuest()
 		{
-		   OnQuestComplete?.Invoke(new QuestResult(
-			this,
-			true,
-			(DateTime.UtcNow - Time).TotalSeconds
-		   ));
+			_questsCompleted++;
+			if (_questsCompleted != _studyObjects.Count) { return; }
+			
+			OnQuestComplete?.Invoke(new QuestResult(
+				this,
+				true,
+				(DateTime.UtcNow - Time).TotalSeconds
+			));
 		}
 	}
 }

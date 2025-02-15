@@ -51,7 +51,7 @@ MonoBehaviour:
     type: 3}
   _sprayDistance: 2
   _interactionDelay: 1
-  _sprayClip: {fileID: 0}
+  _sprayClip: {fileID: 8300000, guid: 784f1f77e28024240ac5268561581957, type: 3}
   _effect: {fileID: 0}
 --- !u!82 &4522297882300151388
 AudioSource:
@@ -63,9 +63,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 8300000, guid: 784f1f77e28024240ac5268561581957, type: 3}
+  m_Resource: {fileID: 8300000, guid: 784f1f77e28024240ac5268561581957, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0

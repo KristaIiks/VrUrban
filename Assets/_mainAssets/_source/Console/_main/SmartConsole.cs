@@ -10,7 +10,7 @@ namespace SmartConsole
 	public class SConsole
 	{
 		private const string LOG_TAG = "<color=#ffff00ff>Console</color>";
-		private const int DISPLAY_NUM = 2;
+		private const int DISPLAY_NUM = 3;
 		
 		private static Logger _unityLogger = new Logger(Debug.unityLogger);
 		private static SmartLogger _smartLogger = SmartLogger.Instance(_unityLogger, DISPLAY_NUM);

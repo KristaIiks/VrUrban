@@ -1,5 +1,4 @@
 using System;
-using QuickOutline;
 using SmartConsole;
 using ToolsSystem;
 using UnityEngine;
@@ -17,18 +16,17 @@ public sealed class TrashObject : Selectable
 
 	protected override void OnValidate()
 	{
-		if (!_outline)
+		if (!SelectOutline && TryGetComponent(out SelectOutline))
 		{
-			_outline = GetComponent<Outline>();
-			_outline.enabled = false;
-			_outline.OutlineWidth = 10f;
-			_outline.OutlineColor = Color.red;
-			_outline.BakeOutline = true;
-			
-			if (!gameObject.CompareTag(OBJECT_TAG)) { gameObject.tag = OBJECT_TAG; }
+			SelectOutline.enabled = false;
+			SelectOutline.OutlineWidth = 10f;
+			SelectOutline.OutlineColor = Color.red;
+			SelectOutline.BakeOutline = true;
 		}
 		
 		CanSelect = false;
+		_defaultScale = transform.localScale;
+		
 		base.OnValidate();
 	}
 
@@ -38,10 +36,10 @@ public sealed class TrashObject : Selectable
 	{
 		if (base.TryInteract(out canSelect, filter))
 		{
-			_outline.enabled = true;
-			
-			_isDestroyed = true;
 			CanInteract = false;
+			
+			if (SelectOutline) { SelectOutline.OutlineColor = Color.red; }
+			_isDestroyed = true;
 
 			return true;
 		}
