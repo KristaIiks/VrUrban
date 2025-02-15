@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-using UnityEngine.VFX;
 
 namespace ToolsSystem
 {
@@ -28,7 +27,7 @@ namespace ToolsSystem
         protected override void SelectTool(bool state)
         {
             base.SelectTool(state);
-            _collider.isTrigger = state;
+            _collider.enabled = state;
         }
 
         private void DigObject(CrumblyBlock block)
@@ -39,7 +38,7 @@ namespace ToolsSystem
             {
                 _audio.PlayOneShot(settings.DigSound ?? _defaultSettings.DigSound);
             
-                VisualEffect vfx = Instantiate(
+                ParticleSystem vfx = Instantiate(
                     settings.DigEffect ?? _defaultSettings.DigEffect,
                     _effectsTransform.position, 
                     Quaternion.identity, 
@@ -63,7 +62,7 @@ namespace ToolsSystem
         private void Reset()
         {
             ActivateHill(false);
-            _collider.isTrigger = false;
+            _collider.enabled = false;
         }
 
         private void OnTriggerEnter(Collider other)

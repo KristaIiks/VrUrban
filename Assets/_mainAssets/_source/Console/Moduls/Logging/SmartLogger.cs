@@ -206,20 +206,20 @@ namespace SmartConsole
 			
 			if(lines.Length > 1)
 			{
-				text += Regex.Replace(string.Format(FILE_LOG_FORMAT, tag, DateTime.Now.ToString("HH:mm:ss"), _collapseCount), "<.*?>", String.Empty).PadRight(26, ' ') + $"⋘{logLevel}⋙     ▼" + Environment.NewLine;
-				text += "".PadRight(37, ' ') + "┓" + Environment.NewLine;
+				text += Regex.Replace(string.Format(FILE_LOG_FORMAT, tag, DateTime.Now.ToString("HH:mm:ss"), _collapseCount), "<.*?>", String.Empty).PadRight(35, ' ') + $"⋘{logLevel}⋙     ▼" + Environment.NewLine;
+				text += "".PadRight(50, ' ') + "┓" + Environment.NewLine;
 				
 				for (int i = 0; i < lines.Length; i++)
 				{
 					
-					text += Regex.Replace("".PadRight(37, ' ') + $"┃ {lines[i]}", "<.*?>", String.Empty) + Environment.NewLine;
+					text += Regex.Replace("".PadRight(50, ' ') + $"┃ {lines[i]}", "<.*?>", String.Empty) + Environment.NewLine;
 					
 				}
-				text += "".PadRight(37, ' ') + "┛";
+				text += "".PadRight(50, ' ') + "┛";
 			}
 			else
 			{
-				text = Regex.Replace(string.Format(FILE_LOG_FORMAT, tag, DateTime.Now.ToString("HH:mm:ss"), _collapseCount), "<.*?>", String.Empty).PadRight(26, ' ') + $"⋘{logLevel}⋙     │ {lines[0]}";
+				text = Regex.Replace(string.Format(FILE_LOG_FORMAT, tag, DateTime.Now.ToString("HH:mm:ss"), _collapseCount), "<.*?>", String.Empty).PadRight(35, ' ') + $"⋘{logLevel}⋙     │ {lines[0]}";
 			}
 		}
 	}

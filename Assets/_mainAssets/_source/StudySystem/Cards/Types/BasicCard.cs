@@ -27,7 +27,10 @@ namespace StudySystem
 
 		public override void SkipAll()
 		{
+			OnStart?.Invoke();
 			Quests.ForEach((quest) => quest.Skip());
+			OnComplete?.Invoke();
+			
 			Cards.ForEach((card) => card.SkipAll());
 		}
 	}

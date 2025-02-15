@@ -1,9 +1,12 @@
+using System;
+
 namespace ToolsSystem
 {
+	[Flags]
 	public enum SelectFilter
 	{
-		Ray,
-		Zone,
-		All
+		Ray = 1,
+		Zone = 2,
+		Script = 4
 	}
 }

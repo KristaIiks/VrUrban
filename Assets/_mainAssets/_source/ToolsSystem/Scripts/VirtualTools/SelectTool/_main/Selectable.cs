@@ -1,16 +1,16 @@
 using System;
-using UnityEngine;
 using QuickOutline;
+using SmartConsole;
+using UnityEngine;
 
 namespace ToolsSystem
 {
-	[RequireComponent(typeof(Outline), typeof(Collider))]
 	public abstract class Selectable : BaseToolObject
 	{		
 		public const string OBJECT_TAG = "Selectable";
 		
-		[SerializeField] private VisualMode VisualMode;
-		[SerializeField] private SelectFilter SelectFilter;
+		[SerializeField] private SelectFilter SelectFilter = SelectFilter.Ray;
+		[SerializeField] protected Outline SelectOutline;
 		
 		public bool ObjectState { get => CanInteract || CanSelect; }
 		public bool CanInteract 
@@ -44,7 +44,6 @@ namespace ToolsSystem
 		public event Action<bool> OnSelectChanged;
 		public event Action<bool> OnStateChanged;
 		
-		protected Outline _outline;
 		protected bool _isSelected;
 		
 		private bool _canInteract;
@@ -52,14 +51,17 @@ namespace ToolsSystem
 		
 		protected virtual void OnValidate()
 		{
-			if(!_outline)
+			if(!SelectOutline && TryGetComponent(out SelectOutline))
 			{
-				_outline = GetComponent<Outline>();
-				_outline.OutlineWidth = 8f;
-				_outline.OutlineColor = Color.yellow;
-				_outline.enabled = false;
+				SelectOutline.OutlineWidth = 8f;
+				SelectOutline.OutlineColor = Color.yellow;
+				SelectOutline.BakeOutline = true;
+				
+				SelectOutline.enabled = false;				
 			}
-			gameObject.tag = OBJECT_TAG;
+			
+			if (!gameObject.CompareTag(OBJECT_TAG)) { gameObject.tag = OBJECT_TAG; }
+			if (transform.GetComponentsInChildren<Collider>(true).Length == 0) { SConsole.Log("Selectable", "Object doesn't have colliders."); }
 		}
 		
 		public virtual bool TryInteract(out bool canSelect, SelectFilter filter)
@@ -74,11 +76,8 @@ namespace ToolsSystem
 		{
 			if (!CanSelect || _isSelected || !CompareFilter(filter)) { return; }
 			
-			
 			_isSelected = true;
-			
-			_outline.enabled = VisualMode == VisualMode.Outline;
-			// TODO: add zone
+			if (SelectOutline) { SelectOutline.enabled = true; }
 			
 			OnSelectChanged?.Invoke(true);
 		}
@@ -89,15 +88,10 @@ namespace ToolsSystem
 			
 			
 			_isSelected = false;
-			_outline.enabled = false;
+			SelectOutline.enabled = false;
 			OnSelectChanged?.Invoke(false);
 		}
 		
-		protected bool CompareFilter(SelectFilter filter)
-		{
-			if (SelectFilter == SelectFilter.All) { return true; } // Can interact with any types
-			
-			return filter == SelectFilter;
-		}
+		protected bool CompareFilter(SelectFilter filter) => SelectFilter.HasFlag(filter);
 	}
 }

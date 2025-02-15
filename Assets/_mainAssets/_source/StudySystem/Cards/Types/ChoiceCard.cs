@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -9,6 +10,12 @@ namespace StudySystem
 		[Space(25), Header("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"), Space(25)]
 		[SerializeField] private List<Card> Cards = new List<Card>();
 		protected override List<Card> _allCards { get => Cards; set => Cards = value; }
+
+		public override void StartCard(Action previousCard, Action<Card> updateBranch)
+		{
+			base.StartCard(previousCard, updateBranch);
+			OnComplete?.Invoke();
+		}
 
 		protected override void Continue()
 		{
@@ -24,6 +31,17 @@ namespace StudySystem
 			);
 		}
 
-		public override void SkipAll() => Cards.ForEach((card) => card.SkipAll());
+		public override void SkipAll()
+		{
+			OnStart?.Invoke();
+			OnComplete?.Invoke();
+			
+			Cards.ForEach((card) => card.SkipAll());
+		}
+		public override void Skip(Card to)
+		{
+			base.Skip(to);
+			to.StartCard(() => Continue(), updateBranch);
+		}
 	}
 }

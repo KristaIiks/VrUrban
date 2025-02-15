@@ -7,12 +7,13 @@ namespace ToolsSystem
 	public sealed class ChangeObjectTool : SelectionTool<Changeable>
 	{		
 		// TODO: remove and replace by zenject
+		[Space(25)]
 		[SerializeField] private ChangeWindow Menu;
 		[SerializeField] private AudioClip ChangeObjectClip;
 		
 		public event Action<Changeable, int> OnObjectChanged;
 
-		public override void Select(Changeable obj, SelectFilter filter)
+		protected override void Select(Changeable obj, SelectFilter filter)
 		{
 			base.Select(obj, filter);
 			OpenMenu(filter);

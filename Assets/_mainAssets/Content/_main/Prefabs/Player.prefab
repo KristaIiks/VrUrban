@@ -171,6 +171,7 @@ GameObject:
   - component: {fileID: 462199243856711749}
   - component: {fileID: 2574026642452145575}
   - component: {fileID: 2846970180431371846}
+  - component: {fileID: 162210799336196522}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -414,6 +415,23 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+--- !u!114 &162210799336196522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2687506965865777164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IsGlobal: 1
+  priority: 0
+  blendDistance: 0
+  weight: 1
+  sharedProfile: {fileID: 11400000, guid: 7db8e5aac434c0548bb657689a3c3a58, type: 2}
 --- !u!1 &4403802536160890149
 GameObject:
   m_ObjectHideFlags: 0
@@ -445,55 +463,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2338524923824304141}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &5194279540192657477
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4735907472417533570}
-  - component: {fileID: 8119706324282694361}
-  m_Layer: 5
-  m_Name: UI_Volume
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4735907472417533570
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5194279540192657477}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 6060852148886042234}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8119706324282694361
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5194279540192657477}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_IsGlobal: 1
-  priority: 0
-  blendDistance: 0
-  weight: 1
-  sharedProfile: {fileID: 11400000, guid: 524d6c3b294ec044d92091df529fd88a, type: 2}
 --- !u!1 &5444376854764605206
 GameObject:
   m_ObjectHideFlags: 0
@@ -822,7 +791,7 @@ Transform:
   m_GameObject: {fileID: 7340293408813891008}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.36144, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -864,7 +833,6 @@ Transform:
   m_Children:
   - {fileID: 4759620375742426776}
   - {fileID: 6643273030605984525}
-  - {fileID: 4735907472417533570}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2289330730653680126
@@ -1142,7 +1110,8 @@ GameObject:
   - component: {fileID: 3546577195948596901}
   - component: {fileID: 6625299741706294732}
   - component: {fileID: 5518108125607681115}
-  m_Layer: 0
+  - component: {fileID: 1346485733012761860}
+  m_Layer: 5
   m_Name: UI_Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1259,6 +1228,23 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+--- !u!114 &1346485733012761860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8636839730220337656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IsGlobal: 1
+  priority: 0
+  blendDistance: 0
+  weight: 1
+  sharedProfile: {fileID: 11400000, guid: 524d6c3b294ec044d92091df529fd88a, type: 2}
 --- !u!1001 &1175299169559952052
 PrefabInstance:
   m_ObjectHideFlags: 0

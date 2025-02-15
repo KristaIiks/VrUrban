@@ -7,24 +7,38 @@ namespace StudySystem
 	[Serializable]
 	public struct QuestStatus
 	{
-		[field:SerializeField, Interface(typeof(IStudyObject))] public GameObject Object { get; private set; }
+		[field:SerializeField, Interface(typeof(IStudyObject))] public GameObject[] Objects { get; private set; }
 		[SerializeField] private QuestSO Info;
 		
 		[HideInInspector] public UnityEvent<QuestResult> OnComplete;
 		
 		public QuestResult Result { get; private set; }
-		public bool IsCompleted { get; private set; }
+		
+		public bool IsCompleted
+		{ 
+			get => m_isCompleted; 
+			private set { m_isCompleted = value; _inProgress = !value; } 
+		}
+		
+		private bool m_isCompleted;
+		private bool _inProgress;
 		
 		public void StartQuest()
 		{
-			Info.StartQuest(Object);
+			IsCompleted = false;
+			Info.StartQuest(Objects);
+			
 			Info.OnQuestComplete += CompleteQuest;
 		}
 		
 		public void Skip(bool result = true)
 		{
 			OnComplete.RemoveAllListeners();
-			Info.Skip(result);			
+			
+			Info.StartQuest(Objects);
+			Info.Skip(result);
+			
+			IsCompleted = true;
 		}
 		
 		public void Restart(bool canContinue)
@@ -32,6 +46,7 @@ namespace StudySystem
 			if(!canContinue)
 			{
 				IsCompleted = false;
+				_inProgress = false;
 				
 				OnComplete.RemoveAllListeners();
 				Info.OnQuestComplete -= CompleteQuest;
