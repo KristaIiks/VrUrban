@@ -4233,6 +4233,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 230c9a773204dc3499dc578bf86fc193,
+        type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: b352a4e87841c1d4cafb0b09d441bca1, type: 2}
     - target: {fileID: 919132149155446097, guid: 230c9a773204dc3499dc578bf86fc193,
         type: 3}
       propertyPath: m_Name
@@ -4241,7 +4246,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 230c9a773204dc3499dc578bf86fc193,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4251,6 +4256,10 @@ PrefabInstance:
         type: 3}
       insertIndex: 3
       addedObject: {fileID: 8842670946439175760}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 230c9a773204dc3499dc578bf86fc193,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7652254574319811395}
   m_SourcePrefab: {fileID: 100100000, guid: 230c9a773204dc3499dc578bf86fc193, type: 3}
 --- !u!1 &5808247849639987285 stripped
 GameObject:
@@ -4265,17 +4274,44 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5808247849639987285}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  outlineMode: 3
+  outlineMode: 1
   outlineColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   outlineWidth: 8
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+--- !u!54 &7652254574319811395
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5808247849639987285}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!4 &6616027588278588143 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 230c9a773204dc3499dc578bf86fc193,

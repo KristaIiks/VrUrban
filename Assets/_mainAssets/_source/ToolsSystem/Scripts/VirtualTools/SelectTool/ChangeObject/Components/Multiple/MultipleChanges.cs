@@ -10,7 +10,7 @@ namespace ToolsSystem
 		
 		private void OnEnable()
 		{
-			if (Variants.Count < Objects.Length + 2) { SConsole.Log("Tool: Change tool", "Need more build variants for multiple change"); return; }
+			if (Variants.Count < Objects.Length + 1) { SConsole.Log("Tool: Change tool", "Need more build variants for multiple change"); return; }
 			
 			foreach (var obj in Objects)
 			{

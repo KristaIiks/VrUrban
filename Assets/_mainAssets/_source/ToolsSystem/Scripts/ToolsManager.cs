@@ -8,7 +8,6 @@ namespace ToolsSystem
 	{
 		[SerializeField] private NearFarInteractor GrabHand;
 		[SerializeField] private XRRayInteractor TeleportRay;
-		[SerializeField] private XRRayInteractor UIRay;
 		
 		private Tool _selectedTool;
 		
@@ -25,7 +24,7 @@ namespace ToolsSystem
 			
 			TeleportRay.enabled = _canTeleport;
 			GrabHand.enabled = _canGrab;
-			UIRay.enabled = _canUI;
+			GrabHand.enableUIInteraction = _canUI;
 			
 			tool.ChangeToolActiveState(true);
 			_selectedTool = tool;
@@ -37,7 +36,7 @@ namespace ToolsSystem
 			{
 				TeleportRay.enabled = true;
 				GrabHand.enabled = true;
-				UIRay.enabled = true;
+				GrabHand.enableUIInteraction = true;
 				return;
 			}
 			

@@ -47,7 +47,7 @@ namespace ToolsSystem
 
 		public override void Skip(bool result)
 		{
-			_changeable.Restart();
+			_changeable.Restart(false);
 			
 			if (result)
 			{

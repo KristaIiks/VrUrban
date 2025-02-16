@@ -905,6 +905,24 @@
                     "initialStateCheck": true
                 },
                 {
+                    "name": "Index Touch",
+                    "type": "Value",
+                    "id": "265c5038-fd16-4cc4-b2f4-d8adc0e6bb65",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Thumb Touch",
+                    "type": "Value",
+                    "id": "175986c2-55f0-4af6-9f4b-5c9f16eb3fc4",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
                     "name": "UI Press",
                     "type": "Button",
                     "id": "7e1eced7-c774-4fe5-be8f-d8711f646d9e",
@@ -1261,6 +1279,39 @@
                     "processors": "ScaleVector2(x=0),StickDeadzone",
                     "groups": "",
                     "action": "Translate Manipulation",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a537d59b-50bf-45be-b3ea-f8e71c1dad4a",
+                    "path": "<XRController>{LeftHand}/triggerTouched",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Index Touch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0f1a8232-410f-46ec-9a20-2042407da958",
+                    "path": "<XRController>{LeftHand}/primaryTouched",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Thumb Touch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "95395f31-c752-4267-9507-5dac8491b455",
+                    "path": "<XRController>{LeftHand}/secondaryTouched",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Thumb Touch",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -1976,6 +2027,24 @@
                     "initialStateCheck": true
                 },
                 {
+                    "name": "Index Touch",
+                    "type": "Value",
+                    "id": "e50c3e2f-919a-46bc-8d4a-ae36e2c17017",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Thumb Touch",
+                    "type": "Value",
+                    "id": "1483bcf3-fa89-4f94-aadd-bca69be13ee4",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
                     "name": "UI Press",
                     "type": "Button",
                     "id": "65174b45-c2ee-4f90-93bb-fb4084eaaab3",
@@ -2101,6 +2170,39 @@
                     "processors": "",
                     "groups": "",
                     "action": "Select",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0f318981-5ad3-4f04-88d1-93ccf55b14e0",
+                    "path": "<XRController>{RightHand}/triggerTouched",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Index Touch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b7ec1b92-7990-4d9d-85da-4eedab357b88",
+                    "path": "<XRController>{RightHand}/primaryTouched",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Thumb Touch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "765d5aa9-e443-4ef1-b26e-48866a38dd04",
+                    "path": "<XRController>{RightHand}/secondaryTouched",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Thumb Touch",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

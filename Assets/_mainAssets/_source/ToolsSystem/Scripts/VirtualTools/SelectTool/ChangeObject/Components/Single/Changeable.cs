@@ -56,11 +56,11 @@ namespace ToolsSystem
 
 		public override void Skip()
 		{
-			Restart();
+			Restart(false);
 			ChangeBuild(UnityEngine.Random.Range(0, Variants.Count - 1));
 		}
 
-		public override void Restart(bool canContinue = true)
+		public override void Restart(bool canContinue)
 		{
 			if (_defaultObject) { _defaultObject.SetActive(true); }
 			
