@@ -1,11 +1,10 @@
-using System;
 using UnityEngine;
 using UnityEngine.Events;
 
 namespace StudySystem
 {
-	[Serializable]
-	public struct QuestStatus
+	[System.Serializable]
+	public class QuestStatus
 	{
 		[field:SerializeField, Interface(typeof(IStudyObject))] public GameObject[] Objects { get; private set; }
 		[SerializeField] private QuestSO Info;

@@ -20,24 +20,26 @@ namespace StudySystem
 				
 		protected abstract List<Card> _allCards { get; set; }
 		
-		protected Action<Card> updateBranch;
+		protected Branch m_branch;
 		protected Action m_previousCard;
 		
-		public virtual void StartCard(Action previousCard, Action<Card> updateBranch)
+		public virtual void StartCard(Action previousCard, Branch branch)
 		{
 			m_previousCard = previousCard;
-			this.updateBranch = updateBranch;
-			updateBranch.Invoke(this);
+			m_branch = branch;
 			
+			m_branch._currentCard = this;
+			
+			SConsole.Log(LOG_TAG, $"Card {gameObject.name} started", 2);
 			OnStart?.Invoke();
 		}
 		
 		protected virtual void Continue()
 		{
 			// if has only 1 card force start next without drawing
-			if (_allCards.Count == 1 || !_allCards[0].IsCompleted)
+			if (_allCards.Count == 1 && !_allCards[0].IsCompleted)
 			{
-				_allCards[0].StartCard(() => Continue(), updateBranch);
+				_allCards[0].StartCard(() => Continue(), m_branch);
 				return;
 			}
 		}

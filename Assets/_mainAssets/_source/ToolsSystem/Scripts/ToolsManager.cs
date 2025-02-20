@@ -19,11 +19,14 @@ namespace ToolsSystem
 			if (tool == null) { return; }
 			
 			bool _canTeleport = tool.ToolInfo.ToolMode.HasFlag(ToolMode.Teleport);
-			bool _canGrab = !(tool is PhysicTool || !tool.ToolInfo.ToolMode.HasFlag(ToolMode.Grab));
+			bool _canGrab = tool.ToolInfo.ToolMode.HasFlag(ToolMode.Grab);
 			bool _canUI = tool.ToolInfo.ToolMode.HasFlag(ToolMode.UI);
 			
 			TeleportRay.enabled = _canTeleport;
-			GrabHand.enabled = _canGrab;
+			
+			GrabHand.enableNearCasting = _canGrab;
+			GrabHand.enableFarCasting = _canGrab;
+			
 			GrabHand.enableUIInteraction = _canUI;
 			
 			tool.ChangeToolActiveState(true);

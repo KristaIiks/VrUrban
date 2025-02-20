@@ -31,10 +31,14 @@ namespace ToolsSystem
 				Variants[i].IsSelected = false;
 			}
 			
-			Variants[id].Object?.SetActive(true);
+			if (Variants[id].Object != null) { Variants[id].Object.SetActive(true); }
 			Variants[id].IsSelected = true;
 			
-			SConsole.Log(LOG_TAG, $"Change [{gameObject.name}] object to [{Variants[id].Object.name}][{id}]");
+			if (Variants[id].Object != null)
+				SConsole.Log(LOG_TAG, $"Change [{gameObject.name}] object to [{Variants[id].Object.name}][{id}]");
+			else
+				SConsole.Log(LOG_TAG, $"Change [{gameObject.name}] object to [Nothing][{id}]");
+			
 			OnObjectChanged?.Invoke(id);
 		}
 		
@@ -48,7 +52,7 @@ namespace ToolsSystem
 		
 		public override void StartDefaultStudy(Action OnComplete = null)
 		{
-			Restart(true);
+			CanSelect = true;
 			
 			_studyEvent = (id) => { OnComplete?.Invoke(); OnObjectChanged -= _studyEvent; };
 			OnObjectChanged += _studyEvent;

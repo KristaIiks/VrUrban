@@ -1,9 +1,11 @@
 using System;
+using QuickOutline;
 using SmartConsole;
 using UnityEngine;
 
 namespace ToolsSystem
 {
+	[RequireComponent(typeof(Outline))]
 	public sealed class SolidBlock : BaseToolObject
 	{
 		private const string LOG_TAG = "SolidBlock";
@@ -19,6 +21,20 @@ namespace ToolsSystem
 		private float _health;
 		
 		private bool _canInteract;
+		
+		private Outline _outline;
+		
+		private void OnValidate()
+		{
+			if(!_outline)
+			{
+				_outline = GetComponent<Outline>();
+				_outline.OutlineWidth = 8f;
+				_outline.OutlineColor = Color.yellow;
+				
+				_outline.enabled = false;				
+			}
+		}
 		
 		private void Awake()
 		{
@@ -87,6 +103,7 @@ namespace ToolsSystem
 		public override void Restart(bool canContinue = true)
 		{			
 			_canInteract = canContinue;
+			_outline.enabled = canContinue;
 			
 			gameObject.SetActive(true);
 			_health = _settings.Health;

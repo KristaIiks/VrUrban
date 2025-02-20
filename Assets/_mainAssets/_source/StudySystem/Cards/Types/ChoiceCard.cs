@@ -11,22 +11,24 @@ namespace StudySystem
 		[SerializeField] private List<Card> Cards = new List<Card>();
 		protected override List<Card> _allCards { get => Cards; set => Cards = value; }
 
-		public override void StartCard(Action previousCard, Action<Card> updateBranch)
+		public override void StartCard(Action previousCard, Branch branch)
 		{
-			base.StartCard(previousCard, updateBranch);
+			base.StartCard(previousCard, branch);
+			IsCompleted = true;
 			OnComplete?.Invoke();
+			
+			Continue();
 		}
 
 		protected override void Continue()
 		{
 			base.Continue();
 			
-			IsCompleted = Cards.All((card) => card.IsCompleted);
-			if (IsCompleted) { m_previousCard.Invoke(); return; }
+			if (Cards.All((card) => card.IsCompleted)) { m_previousCard.Invoke(); return; }
 			
 			CardsWindow.Instance.DisplayCards(
 				() => Continue(), 
-				updateBranch, 
+				m_branch, 
 				Cards.ToArray()
 			);
 		}
@@ -41,7 +43,7 @@ namespace StudySystem
 		public override void Skip(Card to)
 		{
 			base.Skip(to);
-			to.StartCard(() => Continue(), updateBranch);
+			to.StartCard(() => Continue(), m_branch);
 		}
 	}
 }

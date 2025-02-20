@@ -29,7 +29,7 @@ namespace ToolsSystem
 		public bool CanSelect
 		{
 			get => _canSelect;
-			protected set
+			set
 			{
 				bool lastState = ObjectState;
 				

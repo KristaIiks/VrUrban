@@ -9,6 +9,7 @@ namespace ToolsSystem
 		// TODO: remove and replace by zenject
 		[Space(25)]
 		[SerializeField] private ChangeWindow Menu;
+		[SerializeField] private Transform RayMenuPos;
 		[SerializeField] private AudioClip ChangeObjectClip;
 		
 		public event Action<Changeable, int> OnObjectChanged;
@@ -29,22 +30,23 @@ namespace ToolsSystem
 		{
 			if (!_selectedObject) { return; }
 			
-			_selectedObject.ChangeBuild(id);
-			
 			_audio.PlayRandomized(ChangeObjectClip, PitchRange);
+			
+			Changeable obj = _selectedObject;
 			Deselect();
 			
-			OnObjectChanged?.Invoke(_selectedObject, id);
+			obj.ChangeBuild(id);
+			OnObjectChanged?.Invoke(obj, id);
 		}
 
 		private void OpenMenu(SelectFilter filter)
 		{
 			if (filter == SelectFilter.Zone)
 			{
-				Menu.Open(_selectedObject.Variants, _selectedObject.UIPosition.position, this);
+				Menu.Open(_selectedObject.Variants, _selectedObject.UIPosition, this);
 				return;
 			}
-			Menu.Open(_selectedObject.Variants, Vector3.zero, this);			
+			Menu.Open(_selectedObject.Variants, RayMenuPos, this);			
 		}
 		private void CloseMenu() => Menu.Close();
 	}

@@ -22,13 +22,14 @@ namespace StudySystem
 				return;
 			}
 			
-			CardsWindow.Instance.DisplayCards(() => Continue(), updateBranch, Cards.ToArray());
+			CardsWindow.Instance.DisplayCards(() => Continue(), m_branch, Cards.ToArray());
 		}
 
 		public override void SkipAll()
 		{
 			OnStart?.Invoke();
 			Quests.ForEach((quest) => quest.Skip());
+			IsCompleted = true;
 			OnComplete?.Invoke();
 			
 			Cards.ForEach((card) => card.SkipAll());

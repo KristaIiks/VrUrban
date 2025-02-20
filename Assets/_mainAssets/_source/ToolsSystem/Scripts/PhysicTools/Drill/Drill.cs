@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
-using UnityEngine;
 using Extensions.Audio;
+using UnityEngine;
 
 namespace ToolsSystem
 {
@@ -27,11 +27,18 @@ namespace ToolsSystem
 			for (int i = length; i >= 0; i--)
 			{
 				if (_blocks[i].ApplyDamage(_drillSpeed * Time.deltaTime, out SolidBlockSettings settings))
-				{					
-					_audio.PlayRandomized(settings.BreakSound, _pitchRange);
+				{
+					if (settings.BreakSound)
+						_audio.PlayRandomized(settings.BreakSound, _pitchRange);
 					
 					OnDrillObject?.Invoke(_blocks[i]);
 					_blocks.RemoveAt(i);
+					
+					if (_blocks.Count == 0)
+					{
+						_vfxObject.SetActive(false);
+						_audio.Stop();
+					}
 				}					
 			}
 			Performed?.Invoke();

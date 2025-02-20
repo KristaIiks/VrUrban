@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Material>k__BackingField: {fileID: 2100000, guid: feaef991a96f4e649aaae5628ebb8307,
     type: 2}
-  <DigEffect>k__BackingField: {fileID: 0}
-  <DigSound>k__BackingField: {fileID: 0}
+  <DigEffect>k__BackingField: {fileID: 6710944556907608751, guid: f60a78587489d374eaaa6f17dcdbd342,
+    type: 3}
+  <DigSound>k__BackingField: {fileID: 8300000, guid: 3fb5f3f747588734dbad170f32d0c321,
+    type: 3}
   <PitchRange>k__BackingField: {x: 1, y: 1.1}

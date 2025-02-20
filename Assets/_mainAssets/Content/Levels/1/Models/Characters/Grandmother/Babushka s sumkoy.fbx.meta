@@ -17,15 +17,7 @@ ModelImporter:
     removeConstantScaleCurves: 0
     motionNodeName: 
     animationImportErrors: 
-    animationImportWarnings: "\nClip 'Take 001' has import animation warnings that
-      might lower retargeting quality:\nNote: Activate translation DOF on avatar
-      to improve retargeting quality.\n\t'CC_Base_Pelvis' is inbetween humanoid transforms
-      and has rotation animation that will be discarded.\n\t'CC_Base_L_Thigh' has
-      translation animation that will be discarded.\n\t'CC_Base_L_Calf' has translation
-      animation that will be discarded.\n\t'CC_Base_R_Thigh' has translation animation
-      that will be discarded.\n\t'CC_Base_R_Calf' has translation animation that
-      will be discarded.\n\t'CC_Base_Waist' has translation animation that will be
-      discarded.\n"
+    animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
@@ -38,7 +30,7 @@ ModelImporter:
     extraExposedTransformPaths: []
     extraUserProperties: []
     clipAnimations: []
-    isReadable: 0
+    isReadable: 1
   meshes:
     lODScreenPercentages: []
     globalScale: 1

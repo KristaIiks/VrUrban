@@ -6,17 +6,21 @@ namespace StudySystem
 	public class EntryCardSO : CardSO
 	{
 		[field:Space(25)]
-		[field:SerializeField] public EntryCardStats Stats { get; private set; }
+		[field:SerializeField] public Sprite Icon { get; private set; }
+		[field:SerializeField] public int MeterPrice { get; private set; }
+		[field:SerializeField] public RewardStats Stats { get; private set; }
 	}
 	
 	[System.Serializable]
-	public struct EntryCardStats
+	public struct RewardStats
 	{
-		public int MeterPrice;
-		[Range(0, 100)] public int Comfort;
-		[Range(0, 100)] public int Ecology;
-		[Range(0, 100)] public int Security;
-		[Range(0, 100)] public int Price;
-		[Range(0, 100)] public int Beauty;
+		public int Comfort;
+		public int Ecology;
+		public int Security;
+		public int HousePrice;
+		public int Beauty;
+		
+		[Space(25)]
+		public int Money;
 	}
 }

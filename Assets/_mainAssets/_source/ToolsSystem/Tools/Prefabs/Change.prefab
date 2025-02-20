@@ -13,13 +13,14 @@ GameObject:
   - component: {fileID: 7116614045524597283}
   - component: {fileID: 4377591927184432523}
   - component: {fileID: 8583829877025514121}
-  m_Layer: 0
+  - component: {fileID: 3884397479142009519}
+  m_Layer: 5
   m_Name: Change
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6191018126052823685
 Transform:
   m_ObjectHideFlags: 0
@@ -151,6 +152,7 @@ MonoBehaviour:
   DeSelectObjectClip: {fileID: 8300000, guid: 392549cbdb9dd9f4b830f06b0da4fc5a, type: 3}
   PitchRange: {x: 0.8, y: 1.4}
   Menu: {fileID: 0}
+  RayMenuPos: {fileID: 0}
   ChangeObjectClip: {fileID: 8300000, guid: 15cd0ca2a937e6443a7b278ffcfbbab7, type: 3}
 --- !u!82 &7116614045524597283
 AudioSource:
@@ -294,7 +296,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -326,7 +328,7 @@ LineRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 1
+        value: 0.02
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -377,3 +379,15 @@ LineRenderer:
   m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
+--- !u!210 &3884397479142009519
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5569594617716589057}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 30005
+  m_SortAtRoot: 0
