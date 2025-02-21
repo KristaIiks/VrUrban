@@ -2,12 +2,14 @@ Shader "Custom/StencilShader"
 {
     SubShader
     {
-        Tags { "Queue"="Transparent-1" }
+        Tags { "Queue"="Geometry-1" "RenderType"="Opaque" }
         
+        Cull Front
+        Blend Zero One
+
         Pass
         {
-            Cull Front
-            Blend Zero One
+            
         }
     }
 }

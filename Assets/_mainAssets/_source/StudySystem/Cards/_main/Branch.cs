@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using SmartConsole;
+using StudySystem;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -17,8 +18,12 @@ namespace StudySystem
 #endif
 		[SerializeField] private UnityEvent OnBranchComplete;
 		
-		private Card _currentCard;
+		public Card _currentCard;
 		private bool _isStarted;
+		
+		private BranchResult _result = new BranchResult();
+		
+		public void Start() => StartBranch();
 		
 		[ContextMenu("Start study")]
 		public void StartBranch()
@@ -26,6 +31,7 @@ namespace StudySystem
 			if(_isStarted) { return; }
 			
 			#if UNITY_EDITOR
+			
 			if(DebugSkip)
 			{
 				List<Card> listToSkip = FindPath(new List<Card>(){FirstCard}, FirstCard, DebugSkip);
@@ -35,7 +41,7 @@ namespace StudySystem
 				}
 				else
 				{
-					listToSkip[0].StartCard(() => OnBranchComplete?.Invoke(), (card) => _currentCard = card);
+					listToSkip[0].StartCard(() => OnBranchComplete?.Invoke(), this);
 					
 					for (int i = 0; i < listToSkip.Count - 1; i++)
 					{
@@ -44,6 +50,22 @@ namespace StudySystem
 					SConsole.Log(LOG_TAG, "Skip successful!", 2);
 				}
 			}
+			else
+			{
+				if (FirstCard.Info != null)
+				{
+					CardsWindow.Instance.DisplayCards(
+						() => OnBranchComplete?.Invoke(), 
+						this, 
+						new Card[] { FirstCard }
+					);
+				}
+				else
+				{
+					FirstCard.StartCard(() => OnBranchComplete?.Invoke(), this);
+				}
+			}
+			
 			#else
 			if (FirstCard.Info != null)
 			{
@@ -55,7 +77,7 @@ namespace StudySystem
 			}
 			else
 			{
-				FirstCard.StartCard(() => OnBranchComplete?.Invoke(), (card) => _currentCard = card);
+				FirstCard.StartCard(() => OnBranchComplete?.Invoke(), this);
 			}
 			#endif
 			
@@ -80,6 +102,31 @@ namespace StudySystem
 			StartBranch();
 		}
 		
+		public void CompleteCard(List <QuestResult> results, RewardStats? cardStats = null)
+		{
+			foreach (QuestResult result in results)
+			{
+				_result.Mistakes += result.WrongAnswers;
+				_result.Time += result.Time;
+				
+				// adding rewards
+				ChangeStats(result.Reward);
+			}
+			
+			ChangeStats(cardStats);
+		}
+		
+		private void ChangeStats(RewardStats? stats)
+		{
+			if (stats == null) { return; }
+			
+			_result.Stats.HousePrice += stats.Value.HousePrice;
+			_result.Stats.Beauty += stats.Value.Beauty;
+			_result.Stats.Comfort += stats.Value.Comfort;
+			_result.Stats.Ecology += stats.Value.Ecology;
+			_result.Stats.Security += stats.Value.Security;
+		}
+		
 		private List<Card> FindPath(List<Card> path, Card card, Card find)
 		{	
 			if(card.GetCards().Contains(find)) { path.Add(find); return path; }
@@ -97,4 +144,14 @@ namespace StudySystem
 			return null;
 		}
 	}
+}
+
+
+public class BranchResult
+{
+	public uint Mistakes;
+	public double Time;
+	public int Money;
+	
+	public RewardStats Stats;
 }

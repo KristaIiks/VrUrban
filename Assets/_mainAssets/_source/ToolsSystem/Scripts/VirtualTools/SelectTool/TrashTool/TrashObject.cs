@@ -20,7 +20,7 @@ public sealed class TrashObject : Selectable
 		{
 			SelectOutline.enabled = false;
 			SelectOutline.OutlineWidth = 10f;
-			SelectOutline.OutlineColor = Color.red;
+			SelectOutline.OutlineColor = Color.yellow;
 			SelectOutline.BakeOutline = true;
 		}
 		
@@ -83,6 +83,9 @@ public sealed class TrashObject : Selectable
 	{
 		_isDestroyed = false;
 		CanInteract = canContinue;
+		
+		SelectOutline.OutlineColor = Color.yellow;
+		SelectOutline.enabled = canContinue;
 		
 		transform.localScale = _defaultScale;
 	}

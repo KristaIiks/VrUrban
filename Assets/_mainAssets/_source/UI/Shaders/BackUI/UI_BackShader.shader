@@ -56,6 +56,8 @@ Shader "UI/DefaultNoBackface"
 				float4 vertex   : POSITION;
 				float4 color    : COLOR;
 				float2 texcoord : TEXCOORD0;
+
+				UNITY_VERTEX_INPUT_INSTANCE_ID
 			};
 
 			struct v2f
@@ -63,6 +65,8 @@ Shader "UI/DefaultNoBackface"
 				float4 vertex   : SV_POSITION;
 				fixed4 color    : COLOR;
 				half2 texcoord  : TEXCOORD0;
+
+				UNITY_VERTEX_OUTPUT_STEREO
 			};
 			
 			fixed4 _Color;
@@ -70,6 +74,11 @@ Shader "UI/DefaultNoBackface"
 			v2f vert(appdata_t IN)
 			{
 				v2f OUT;
+				
+				UNITY_SETUP_INSTANCE_ID(IN); //Insert
+				UNITY_INITIALIZE_OUTPUT(v2f, OUT); //Insert
+				UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(OUT); //Insert
+
 				OUT.vertex = UnityObjectToClipPos(IN.vertex);
 				OUT.texcoord = IN.texcoord;
 #ifdef UNITY_HALF_TEXEL_OFFSET
@@ -83,6 +92,8 @@ Shader "UI/DefaultNoBackface"
 
 			fixed4 frag(v2f IN) : SV_Target
 			{
+				// UNITY_SETUP_STEREO_EYE_INDEX_POST_VERTEX(IN); //Insert
+
 				half4 color = tex2D(_MainTex, IN.texcoord) * IN.color;
 				clip (color.a - 0.01);
 				return color;

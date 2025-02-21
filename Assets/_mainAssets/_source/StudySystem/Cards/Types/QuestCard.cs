@@ -56,9 +56,9 @@ namespace StudySystem
 			}
 		}
 
-		public override void StartCard(Action previousCard, Action<Card> updateBranch)
+		public override void StartCard(Action previousCard, Branch branch)
 		{
-			base.StartCard(previousCard, updateBranch);
+			base.StartCard(previousCard, branch);
 			
 			// TODO: Cutscene?.Play();
 			
@@ -74,14 +74,18 @@ namespace StudySystem
 			base.Skip(to);
 			
 			Quests.ForEach((quest) => quest.Skip());
-			to.StartCard(() => Continue(), updateBranch);
+			to.StartCard(() => Continue(), m_branch);
 		}
 
 		protected virtual void QuestCompleted(QuestResult result)
 		{			
 			if (Quests.All((quest) => quest.IsCompleted))
 			{
-				// TODO: card reward
+				List<QuestResult> res = new List<QuestResult>();
+				res.AddRange(Quests.Select((quest) => quest.Result));
+				
+				m_branch.CompleteCard(res);
+				
 				OnComplete?.Invoke();
 				Continue();
 			}

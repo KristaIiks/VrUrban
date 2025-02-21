@@ -16,6 +16,7 @@ namespace StudySystem
 		public override void StartQuest(GameObject[] objs)
 		{
 			base.StartQuest(objs);
+			_questsCompleted = 0;
 			
 			foreach (GameObject obj in objs)
 			{
@@ -45,7 +46,7 @@ namespace StudySystem
 		public override void CompleteQuest()
 		{
 			_questsCompleted++;
-			if (_questsCompleted != _studyObjects.Count) { return; }
+			if (_questsCompleted < _studyObjects.Count) { return; }
 			
 			OnQuestComplete?.Invoke(new QuestResult(
 				this,

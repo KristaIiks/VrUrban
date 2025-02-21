@@ -10,10 +10,13 @@ namespace StudySystem
 		[SerializeField] private List<Card> CardsOrder = new List<Card>();
 		protected override List<Card> _allCards { get => CardsOrder; set => CardsOrder = value; }
 
-		public override void StartCard(Action previousCard, Action<Card> updateBranch)
+		public override void StartCard(Action previousCard, Branch branch)
 		{
-			base.StartCard(previousCard, updateBranch);
+			base.StartCard(previousCard, branch);
+			IsCompleted = true;
 			OnComplete?.Invoke();
+			
+			Continue();
 		}
 
 		public override void SkipAll()
@@ -32,13 +35,11 @@ namespace StudySystem
 				card.SkipAll();
 			}
 			
-			to.StartCard(() => Continue(), updateBranch);
+			to.StartCard(() => Continue(), m_branch);
 		}
 
 		protected override void Continue()
-		{
-			base.Continue();
-			
+		{			
 			foreach (Card card in CardsOrder)
 			{
 				if (!card.IsCompleted)
@@ -47,20 +48,19 @@ namespace StudySystem
 					{
 						CardsWindow.Instance.DisplayCards(
 							() => Continue(), 
-							updateBranch, 
+							m_branch, 
 							new Card[] { card }
 						); 
 					}
 					else
 					{
-						card.StartCard(() => Continue(), updateBranch);
+						card.StartCard(() => Continue(), m_branch);
 					}
 					
-					return; 
+					return;
 				}
 			}
 			
-			IsCompleted = true;
 			m_previousCard.Invoke();
 		}
 	}

@@ -57,7 +57,11 @@ namespace StudySystem
 				else
 					OnWrongEvent?.Invoke();
 				
-				// TODO: reward
+				List<QuestResult> res = new List<QuestResult>();
+				res.AddRange(Quests.Select((quest) => quest.Result));
+				
+				m_branch.CompleteCard(res);				
+				
 				Continue();
 			}
 		}
@@ -108,15 +112,21 @@ namespace StudySystem
 		}
 
 		protected override void Continue()
-		{
-			base.Continue();
-			
+		{			
 			IsCompleted = _conditional ? CorrectCards.All((card) => card.IsCompleted) : WrongCards.All((card) => card.IsCompleted);
 			if (IsCompleted) { m_previousCard.Invoke(); return; }
 			
+			List<Card> cards = _conditional ? CorrectCards : WrongCards;
+			
+			if (cards.Count == 1)
+			{				
+				cards[0].StartCard(() => Continue(), m_branch);
+				return;
+			}
+			
 			CardsWindow.Instance.DisplayCards(
 				() => Continue(), 
-				updateBranch, 
+				m_branch, 
 				_conditional ? CorrectCards.ToArray() : WrongCards.ToArray()
 			);
 		}

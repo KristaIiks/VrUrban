@@ -31,17 +31,21 @@ namespace ToolsSystem
 			
 			_changeable = component;
 			_changeable.OnObjectChanged += CheckId;
+			
+			_changeable.CanSelect = true;
 		}
 
 		public override void CompleteQuest()
 		{
 			_changeable.OnObjectChanged -= CheckId;
+			_changeable.CanSelect = false;
 			
 			OnQuestComplete?.Invoke(new QuestResult(
-			this,
-			CorrectObjectsId.Any((correct) => correct == _currentObjectId),
-			(DateTime.UtcNow - Time).TotalSeconds,
-			_mistakesCount
+				this,
+				CorrectObjectsId.Any((correct) => correct == _currentObjectId),
+				(DateTime.UtcNow - Time).TotalSeconds,
+				_changeable.Variants[_currentObjectId].Rewards,
+				_mistakesCount
 		   ));
 		}
 

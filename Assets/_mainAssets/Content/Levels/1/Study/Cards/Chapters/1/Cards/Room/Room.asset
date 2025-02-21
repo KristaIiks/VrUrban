@@ -17,5 +17,6 @@ MonoBehaviour:
     \u0441\u0435\u043C\u044C\u0435 \u043F\u043E\u0432\u044B\u0441\u0438\u0442\u044C
     \u0443\u0440\u043E\u0432\u0435\u043D\u044C \u043E\u0441\u0432\u0435\u0449\u0435\u043D\u0438\u044F
     \u0432 \u043A\u0432\u0430\u0440\u0442\u0438\u0440\u0435"
-  <Icon>k__BackingField: {fileID: 0}
+  <Icon>k__BackingField: {fileID: 21300000, guid: 88591d0892ee8bf4fb9920cd07f04b38,
+    type: 3}
   <TimeToComplete>k__BackingField: 5

@@ -4,14 +4,16 @@ namespace StudySystem
 	{
 		public QuestSO Quest;
 		public bool IsCorrect;
-		public int WrongAnswers;
+		public uint WrongAnswers;
 		public double Time;
+		public RewardStats? Reward;
 		
-		public QuestResult(QuestSO quest, bool correct, double time, int errors = 0)
+		public QuestResult(QuestSO quest, bool correct, double time, RewardStats? reward = null, uint errors = 0)
 		{
 			Quest = quest;
 			IsCorrect = correct;
 			Time = time;
+			Reward = reward;
 			WrongAnswers = errors;
 		}
 	}

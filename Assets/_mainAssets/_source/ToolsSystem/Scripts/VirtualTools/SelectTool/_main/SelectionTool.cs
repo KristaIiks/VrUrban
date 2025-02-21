@@ -69,11 +69,10 @@ namespace ToolsSystem
 				_lineRenderer.enabled = false;
 			}
 			
-			if (!_collider)
+			if (_collider == null)
 			{
 				_collider = GetComponent<SphereCollider>();
 				_collider.isTrigger = true;
-				_collider.radius = 1f;
 			}
 		}
 		
@@ -131,6 +130,7 @@ namespace ToolsSystem
 			
 			_selectedObject = obj;
 			_selectedObject.Select(filter);
+			_lineRenderer.enabled = false;
 		
 			if (SelectObjectClip)
 				_audio.PlayRandomized(SelectObjectClip, PitchRange);
@@ -168,39 +168,27 @@ namespace ToolsSystem
 			if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, RayDistance, RayMask))
 			{
 				Transform obj = GetParentObject(hit.transform);
-
-				if (obj.CompareTag(Selectable.OBJECT_TAG)) 
+				T component = obj.GetComponent<T>();
+				
+				_lineRenderer.SetPosition(1, hit.point);
+				_lineRenderer.enabled = ForceShowRay || SelectBtn.action.IsPressed() ||
+					(obj != _selectedObject?.transform && (component?.CanSelect ?? false)
+				);
+				
+				if(obj != _lastCheckedObject && obj != _selectedObject?.transform)
 				{
-					if(obj == RayObject?.transform) // Object same (update position)
-					{
-						SetRayPosition(1, hit.point);
-						return;
-					}
-					
-					if(obj != _lastCheckedObject) // New object (try)
-					{
-						_lastCheckedObject = obj;
-						if (obj.TryGetComponent(out T component))
-						{
-							SetRayPosition(1, hit.point);
-							RayObject = component;
-							return;
-						}
-					}
+					_lastCheckedObject = obj;
+					RayObject = component;
 				}
-			}
-			
-			if(ForceShowRay || SelectBtn.action.IsPressed())
-			{
-				SetRayPosition(1, transform.position + transform.forward * RayDistance);
 			}
 			else
 			{
-				_lineRenderer.enabled = false;
+				_lineRenderer.SetPosition(1, transform.position + transform.forward * RayDistance);
+				_lineRenderer.enabled = ForceShowRay || SelectBtn.action.IsPressed();
+				
+				RayObject = null;
+				_lastCheckedObject = null;
 			}
-			
-			_lastCheckedObject = null;
-			RayObject = null;
 		}
 		
 		private Transform GetParentObject(Transform obj)
@@ -214,11 +202,6 @@ namespace ToolsSystem
 		
 		private void SetRayColor(Gradient _gradient) => _lineRenderer.colorGradient = _gradient;
 		private void SetRayColor(bool state) => SetRayColor(state ? CanSelectGradient : NoAvailableGradient);
-		private void SetRayPosition(int id, Vector3 pos)
-		{
-			_lineRenderer.SetPosition(id, pos);
-			_lineRenderer.enabled = true;
-		}
 		private void InteractObject(InputAction.CallbackContext ctx) => InteractObject(RayObject, SelectFilter.Ray);
 		
 		private void OnTriggerEnter(Collider other)
@@ -228,15 +211,6 @@ namespace ToolsSystem
 			if (obj.CompareTag(Selectable.OBJECT_TAG) && obj.TryGetComponent(out T component))
 			{
 				InteractObject(component, SelectFilter.Zone);
-			}
-		}
-		private void OnTriggerExit(Collider other)
-		{
-			Transform obj = GetParentObject(other.transform);
-			
-			if (obj == _selectedObject?.transform) 
-			{
-				DeselectWithSound();
 			}
 		}
 

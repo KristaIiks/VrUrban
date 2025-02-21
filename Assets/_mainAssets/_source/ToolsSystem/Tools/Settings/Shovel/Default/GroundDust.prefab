@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5852165658366221262}
   - component: {fileID: 6710944556907608751}
   - component: {fileID: 6629949448979073344}
+  - component: {fileID: 3131232312982355162}
   m_Layer: 0
   m_Name: GroundDust
   m_TagString: Untagged
@@ -4833,3 +4834,15 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!210 &3131232312982355162
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 160948307782140581}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 4000
+  m_SortAtRoot: 0

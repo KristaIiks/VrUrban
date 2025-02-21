@@ -1,10 +1,11 @@
 using System;
+using QuickOutline;
 using SmartConsole;
 using UnityEngine;
 
 namespace ToolsSystem
 {
-	[RequireComponent(typeof(Collider))]
+	[RequireComponent(typeof(Collider), typeof(Outline))]
 	public sealed class CrumblyBlock : BaseToolObject
 	{
 		[SerializeField] private CrumblyBlockSettings _blockSettings;
@@ -13,6 +14,19 @@ namespace ToolsSystem
 		private event Action _studyEvent;
 		
 		private bool _canDig;
+		private Outline _outline;
+		
+		private void OnValidate()
+		{
+			if(!_outline)
+			{
+				_outline = GetComponent<Outline>();
+				_outline.OutlineWidth = 8f;
+				_outline.OutlineColor = Color.yellow;
+				
+				_outline.enabled = false;				
+			}
+		}
 		
 		public bool Dig(out CrumblyBlockSettings settings)
 		{
@@ -46,6 +60,7 @@ namespace ToolsSystem
 		public override void Restart(bool canContinue = true)
 		{
 			_canDig = canContinue;
+			_outline.enabled = canContinue;
 			gameObject.SetActive(true);
 		}
 	}

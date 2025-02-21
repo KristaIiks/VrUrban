@@ -15,7 +15,7 @@ namespace Extensions.Audio
 			AudioSource _newSource = CreateAndAssign(source, clip, settings);
 			_newSource.Play();
 			
-			Object.Destroy(_newSource, clip.length);
+			Object.Destroy(_newSource.gameObject, clip.length);
 		}
 		
 		/// <summary>
@@ -40,7 +40,9 @@ namespace Extensions.Audio
 		/// <returns></returns>
 		private static AudioSource CreateAndAssign(AudioSource source, AudioClip clip, StartupAudioSettings settings)
 		{
-			AudioSource _newAudioSource = GameObject.Instantiate(new GameObject("[Audio System] OneShot Audio"), source.transform).AddComponent<AudioSource>();
+			AudioSource _newAudioSource = new GameObject(
+				"[Audio System] OneShot Audio"
+			).AddComponent<AudioSource>();
 			
 			_newAudioSource.outputAudioMixerGroup = settings.audioGroup ?? source.outputAudioMixerGroup;
 			_newAudioSource.volume = settings.volume ?? source.volume;

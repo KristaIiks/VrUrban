@@ -1,4 +1,5 @@
 using System;
+using SmartConsole;
 using UnityEngine;
 
 namespace StudySystem
@@ -8,33 +9,43 @@ namespace StudySystem
 		public static CardsWindow Instance;
 		
 		[SerializeField] private GameObject Window;
-		
-		[SerializeField] private CardView DefaultView;
-		[SerializeField] private EntryCardView EntryCardView;
+		[SerializeField] private CardView[] Views;
 		
 		[SerializeField] private Transform Content;
 		
 		private void Awake()
 		{
 			Instance = this;
+			HideCards();
 		}
 		
-		public void DisplayCards(Action previousCard, Action<Card> updateBranch, Card[] cards)
+		public void DisplayCards(Action previousCard, Branch branch, Card[] cards)
 		{
-			Debug.LogWarning("Display new");
-			// ClearViewCards();
+			ClearViewCards();
 			
-			// foreach (Card card in cards)
-			// {
-			// 	if (card.IsCompleted) { continue; }
+			foreach (Card card in cards)
+			{
+				if (card.IsCompleted) { continue; }
+				if (!card.Info) { SConsole.LogException("Display", new NullReferenceException(), card); }
 				
-			// 	CardView type = card.Info is EntryCardSO ? EntryCardView : DefaultView;
-				
-			// 	CardView view = Instantiate(type, Content, false);
-			// 	view.Init(() => card.StartCard(previousCard, updateBranch), () => HideCards(), card.Info);
-			// }
+				foreach (CardView view in Views)
+				{
+					if (view.GetCardsType() == card.Info.GetType())
+					{
+						CardView template = Instantiate(view, Content, false);
+						
+						template.Init(
+							() => card.StartCard(previousCard, branch), 
+							() => HideCards(), 
+							card.Info
+						);
+						
+						break;
+					}
+				}
+			}
 			
-			// Window.SetActive(true);
+			Window.SetActive(true);
 		}
 		
 		public void HideCards() => Window.SetActive(false);
