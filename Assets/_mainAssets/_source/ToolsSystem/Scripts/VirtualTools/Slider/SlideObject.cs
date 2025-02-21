@@ -10,7 +10,7 @@ namespace ToolsSystem
 		public void Select(bool first)
 		{
 			FirstObject.SetActive(first);
-			SecondObject.SetActive(first);
+			SecondObject.SetActive(!first);
 		}
 		
 		public void Reset()
