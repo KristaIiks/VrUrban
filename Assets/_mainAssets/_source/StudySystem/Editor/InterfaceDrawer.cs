@@ -1,5 +1,5 @@
-using UnityEngine;
 using UnityEditor;
+using UnityEngine;
 
 namespace StudySystem
 {
@@ -16,7 +16,7 @@ namespace StudySystem
 		}
 		private System.Type[] m_types;
 	}
-
+	#if UNITY_EDITOR
 	[CustomPropertyDrawer(typeof(InterfaceAttribute))]
 	public class InterfaceDrawer : PropertyDrawer
 	{
@@ -63,4 +63,5 @@ namespace StudySystem
 			return false;
 		}
 	}
+	#endif
 }

@@ -71,7 +71,7 @@ namespace StudySystem
 			{
 				CardsWindow.Instance.DisplayCards(
 					() => OnBranchComplete?.Invoke(), 
-					(card) => _currentCard = card, 
+					this, 
 					new Card[] { FirstCard }
 				);
 			}
