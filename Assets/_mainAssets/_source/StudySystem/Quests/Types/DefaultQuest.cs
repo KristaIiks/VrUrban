@@ -16,7 +16,9 @@ namespace StudySystem
 		public override void StartQuest(GameObject[] objs)
 		{
 			base.StartQuest(objs);
+			
 			_questsCompleted = 0;
+			_studyObjects.Clear();
 			
 			foreach (GameObject obj in objs)
 			{

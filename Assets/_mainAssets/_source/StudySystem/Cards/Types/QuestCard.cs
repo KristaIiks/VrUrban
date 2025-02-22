@@ -3,16 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using SmartConsole;
 using UnityEngine;
-using UnityEngine.Playables;
 
 namespace StudySystem
 {
 	public abstract class QuestCard : Card
 	{
 		[Space(25), Header("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"), Space(25)]
-		[SerializeField] protected PlayableDirector Cutscene;
 		
-		[Space(10)]
 		[SerializeField] protected List<QuestStatus> Quests = new List<QuestStatus>();
 		[Interface(typeof(IStudyInit), typeof(IStudyComplete)), SerializeField] private GameObject[] InitObjects;
 		
@@ -59,8 +56,6 @@ namespace StudySystem
 		public override void StartCard(Action previousCard, Branch branch)
 		{
 			base.StartCard(previousCard, branch);
-			
-			// TODO: Cutscene?.Play();
 			
 			foreach (QuestStatus status in Quests)
 			{

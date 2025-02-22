@@ -60,7 +60,7 @@ namespace ToolsSystem
 			else
 			{
 				List<int> mistakesId = new List<int>();
-				for (int i = 0; i < _changeable.Variants.Count - 1; i++)
+				for (int i = 0; i < _changeable.Variants.Count; i++)
 				{
 					if (!CorrectObjectsId.Contains(i))
 					{
@@ -70,7 +70,7 @@ namespace ToolsSystem
 				
 				if (mistakesId.Count == 0) { SConsole.LogException("Skipping", new IndexOutOfRangeException()); return; }
 				
-				_changeable.ChangeBuild(UnityEngine.Random.Range(0, mistakesId.Count - 1));
+				_changeable.ChangeBuild(mistakesId[UnityEngine.Random.Range(0, mistakesId.Count)]);
 			}
 		}
 		

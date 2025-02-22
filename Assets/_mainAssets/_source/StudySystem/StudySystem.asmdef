@@ -3,7 +3,8 @@
     "rootNamespace": "StudySystem",
     "references": [
         "GUID:9963c0212690cdc4a9a38cfcdc0d220a",
-        "GUID:6055be8ebefd69e48b49212b09b47b2f"
+        "GUID:6055be8ebefd69e48b49212b09b47b2f",
+        "GUID:f06555f75b070af458a003d92f9efb00"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

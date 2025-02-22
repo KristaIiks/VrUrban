@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using SmartConsole;
 using UnityEngine;
 
@@ -24,6 +25,20 @@ namespace ToolsSystem
 			{
 				obj.OnObjectChanged -= HideVariant;
 			}
+		}
+
+		public override void Skip()
+		{			
+			List<int> variants = new List<int>();
+			for (int i = 0; i < Variants.Count; i++)
+			{
+				if (!Variants[i].IsHidden)
+				{
+					variants.Add(i);
+				}
+			}
+			
+			ChangeBuild(variants[UnityEngine.Random.Range(0, variants.Count)]);
 		}
 	}
 }

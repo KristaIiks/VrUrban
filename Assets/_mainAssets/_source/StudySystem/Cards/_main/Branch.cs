@@ -18,7 +18,7 @@ namespace StudySystem
 #endif
 		[SerializeField] private UnityEvent OnBranchComplete;
 		
-		public Card _currentCard;
+		[HideInInspector] public Card _currentCard;
 		private bool _isStarted;
 		
 		private BranchResult _result = new BranchResult();

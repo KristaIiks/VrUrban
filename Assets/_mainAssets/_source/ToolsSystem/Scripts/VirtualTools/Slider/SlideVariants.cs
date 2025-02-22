@@ -23,7 +23,7 @@ namespace ToolsSystem
 			
 			for (int i = 0; i < Objects.Length; i++)
 			{
-				Objects[i].Select(i / Objects.Length <= percent);
+				Objects[i].Select((float)i / Objects.Length <= percent);
 			}
 		}
 		
@@ -34,7 +34,7 @@ namespace ToolsSystem
 		
 		public void Skip()
 		{
-			UpdateModels(PercentSlider.maxValue);
+			UpdateModels(UnityEngine.Random.Range(0, PercentSlider.maxValue));
 		}
 		
 		public void Restart(bool canContinue = true)
