@@ -242,7 +242,7 @@ MonoBehaviour:
   m_Children: []
   m_Clips:
   - m_Version: 1
-    m_Start: 0
+    m_Start: 1.1333333333333333
     m_ClipIn: 0
     m_Asset: {fileID: -2175742518343672528}
     m_Duration: 0.8125
@@ -272,10 +272,10 @@ MonoBehaviour:
     m_PostExtrapolationMode: 1
     m_PreExtrapolationMode: 1
     m_PostExtrapolationTime: 0
-    m_PreExtrapolationTime: 0
+    m_PreExtrapolationTime: 1.1333333333333333
     m_DisplayName: Varlik|Blinking
   - m_Version: 1
-    m_Start: 0.8125
+    m_Start: 1.9458333333333335
     m_ClipIn: 0
     m_Asset: {fileID: 4055771668824176372}
     m_Duration: 1.970844671201815
@@ -284,7 +284,7 @@ MonoBehaviour:
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
     m_BlendInDuration: -1
-    m_BlendOutDuration: -1
+    m_BlendOutDuration: 0
     m_MixInCurve:
       serializedVersion: 2
       m_Curve: []
@@ -308,7 +308,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: Varlik|Idle
   - m_Version: 1
-    m_Start: 2.783344671201815
+    m_Start: 3.9166780045351457
     m_ClipIn: 0
     m_Asset: {fileID: 2562916722886615114}
     m_Duration: 0.8125
@@ -316,7 +316,7 @@ MonoBehaviour:
     m_ParentTrack: {fileID: -2446786612154833299}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
-    m_BlendInDuration: -1
+    m_BlendInDuration: 0
     m_BlendOutDuration: -1
     m_MixInCurve:
       serializedVersion: 2
@@ -341,7 +341,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: Varlik|Blinking
   - m_Version: 1
-    m_Start: 11.400011337868483
+    m_Start: 12.533344671201817
     m_ClipIn: 0.3250000000000002
     m_Asset: {fileID: 6215955322060078092}
     m_Duration: 0.9749999999999979
@@ -374,7 +374,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: Varlik|Idle
   - m_Version: 1
-    m_Start: 3.595844671201815
+    m_Start: 4.729178004535146
     m_ClipIn: 0.3250000000000002
     m_Asset: {fileID: 2203729993061874121}
     m_Duration: 1.2999999999999998
@@ -383,7 +383,7 @@ MonoBehaviour:
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
     m_BlendInDuration: -1
-    m_BlendOutDuration: -1
+    m_BlendOutDuration: 0
     m_MixInCurve:
       serializedVersion: 2
       m_Curve: []
@@ -407,7 +407,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: Varlik|Idle
   - m_Version: 1
-    m_Start: 4.895844671201814
+    m_Start: 6.029178004535145
     m_ClipIn: 0
     m_Asset: {fileID: -28578458923969204}
     m_Duration: 0.8125
@@ -415,7 +415,7 @@ MonoBehaviour:
     m_ParentTrack: {fileID: -2446786612154833299}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
-    m_BlendInDuration: -1
+    m_BlendInDuration: 0
     m_BlendOutDuration: -1
     m_MixInCurve:
       serializedVersion: 2
@@ -440,7 +440,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: Varlik|Blinking
   - m_Version: 1
-    m_Start: 5.708344671201814
+    m_Start: 6.841678004535145
     m_ClipIn: 0.3250000000000002
     m_Asset: {fileID: 6533124179432359632}
     m_Duration: 1.316655328798185
@@ -473,7 +473,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: Varlik|Idle
   - m_Version: 1
-    m_Start: 7.025
+    m_Start: 8.158333333333333
     m_ClipIn: 0.3250000000000002
     m_Asset: {fileID: 4325081470269549883}
     m_Duration: 1.2999999999999998
@@ -506,7 +506,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: Varlik|Idle
   - m_Version: 1
-    m_Start: 8.325000000000001
+    m_Start: 9.458333333333336
     m_ClipIn: 0
     m_Asset: {fileID: 4903013939768204111}
     m_Duration: 0.8125
@@ -539,7 +539,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: Varlik|Blinking
   - m_Version: 1
-    m_Start: 9.137500000000001
+    m_Start: 10.270833333333336
     m_ClipIn: 0.3250000000000002
     m_Asset: {fileID: 6628098792721284094}
     m_Duration: 1.4500113378684798
@@ -572,7 +572,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: Varlik|Idle
   - m_Version: 1
-    m_Start: 10.587511337868483
+    m_Start: 11.720844671201817
     m_ClipIn: 0
     m_Asset: {fileID: -8058593544661585576}
     m_Duration: 0.8125
@@ -623,7 +623,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: Varlik|Blinking
   - m_Version: 1
-    m_Start: 12.37501133786848
+    m_Start: 13.508344671201815
     m_ClipIn: 0
     m_Asset: {fileID: 3186402812034375856}
     m_Duration: 0.8125
@@ -656,7 +656,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: Varlik|Blinking
   - m_Version: 1
-    m_Start: 13.18751133786848
+    m_Start: 14.320844671201815
     m_ClipIn: 0
     m_Asset: {fileID: -5320180442430273313}
     m_Duration: 0.9791780045351466
@@ -707,44 +707,11 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: Varlik|Idle
   - m_Version: 1
-    m_Start: 14.166689342403627
+    m_Start: 15.300022675736962
     m_ClipIn: 0
     m_Asset: {fileID: -8021660247563151478}
     m_Duration: 0.8125
     m_TimeScale: 2
-    m_ParentTrack: {fileID: -2446786612154833299}
-    m_EaseInDuration: 0
-    m_EaseOutDuration: 0
-    m_BlendInDuration: -1
-    m_BlendOutDuration: -1
-    m_MixInCurve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_MixOutCurve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_BlendInCurveMode: 0
-    m_BlendOutCurveMode: 0
-    m_ExposedParameterNames: []
-    m_AnimationCurves: {fileID: 0}
-    m_Recordable: 0
-    m_PostExtrapolationMode: 1
-    m_PreExtrapolationMode: 1
-    m_PostExtrapolationTime: 0
-    m_PreExtrapolationTime: 0
-    m_DisplayName: Varlik|Blinking
-  - m_Version: 1
-    m_Start: 14.979189342403627
-    m_ClipIn: 0.3250000000000002
-    m_Asset: {fileID: -8896455458787092315}
-    m_Duration: 1.2999999999999998
-    m_TimeScale: 1
     m_ParentTrack: {fileID: -2446786612154833299}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
@@ -771,9 +738,42 @@ MonoBehaviour:
     m_PreExtrapolationMode: 1
     m_PostExtrapolationTime: 0
     m_PreExtrapolationTime: 0
+    m_DisplayName: Varlik|Blinking
+  - m_Version: 1
+    m_Start: 16.112522675736958
+    m_ClipIn: 0.3250000000000002
+    m_Asset: {fileID: -8896455458787092315}
+    m_Duration: 1.2999999999999998
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: -2446786612154833299}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: 0
+    m_BlendOutDuration: 0
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 1
+    m_PreExtrapolationMode: 1
+    m_PostExtrapolationTime: 0
+    m_PreExtrapolationTime: 0
     m_DisplayName: Varlik|Idle
   - m_Version: 1
-    m_Start: 16.279189342403622
+    m_Start: 17.412522675736955
     m_ClipIn: 0
     m_Asset: {fileID: 6801217901794180586}
     m_Duration: 0.8125
@@ -806,7 +806,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: Varlik|Blinking
   - m_Version: 1
-    m_Start: 17.091689342403622
+    m_Start: 18.225022675736955
     m_ClipIn: 0.3250000000000002
     m_Asset: {fileID: 806473369353810263}
     m_Duration: 1.4083106575963775
@@ -839,7 +839,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: Varlik|Idle
   - m_Version: 1
-    m_Start: 18.580768758921767
+    m_Start: 19.7141020922551
     m_ClipIn: 0.3250000000000002
     m_Asset: {fileID: -2587192552534591793}
     m_Duration: 1.2999999999999998
@@ -872,7 +872,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: Varlik|Idle
   - m_Version: 1
-    m_Start: 19.880768758921768
+    m_Start: 21.0141020922551
     m_ClipIn: 0
     m_Asset: {fileID: -8028920746061348707}
     m_Duration: 0.8125
@@ -905,7 +905,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: Varlik|Blinking
   - m_Version: 1
-    m_Start: 20.693268758921768
+    m_Start: 21.8266020922551
     m_ClipIn: 0.3250000000000002
     m_Asset: {fileID: 163348071115952894}
     m_Duration: 1.316655328798185
@@ -938,7 +938,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: Varlik|Idle
   - m_Version: 1
-    m_Start: 22.009924087719956
+    m_Start: 23.14325742105329
     m_ClipIn: 0.3250000000000002
     m_Asset: {fileID: -7638214413496548597}
     m_Duration: 1.2999999999999998
@@ -971,7 +971,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: Varlik|Idle
   - m_Version: 1
-    m_Start: 23.309924087719953
+    m_Start: 24.443257421053286
     m_ClipIn: 0
     m_Asset: {fileID: -7867116457593759774}
     m_Duration: 0.8125
@@ -1004,7 +1004,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: Varlik|Blinking
   - m_Version: 1
-    m_Start: 24.122424087719953
+    m_Start: 25.255757421053286
     m_ClipIn: 0.3250000000000002
     m_Asset: {fileID: -6949892730955743324}
     m_Duration: 1.4500113378684798
@@ -1037,7 +1037,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: Varlik|Idle
   - m_Version: 1
-    m_Start: 25.572435425588445
+    m_Start: 26.705768758921778
     m_ClipIn: 0
     m_Asset: {fileID: 5980663954681243042}
     m_Duration: 0.8125
@@ -1088,7 +1088,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: Varlik|Blinking
   - m_Version: 1
-    m_Start: 26.384935425588445
+    m_Start: 27.518268758921778
     m_ClipIn: 0.3250000000000002
     m_Asset: {fileID: 5262099239330617241}
     m_Duration: 0.9749999999999979
@@ -1121,7 +1121,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: Varlik|Idle
   - m_Version: 1
-    m_Start: 27.35993542558844
+    m_Start: 28.493268758921772
     m_ClipIn: 0
     m_Asset: {fileID: -6884407964447461917}
     m_Duration: 0.8125
@@ -1154,7 +1154,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: Varlik|Blinking
   - m_Version: 1
-    m_Start: 28.172435425588446
+    m_Start: 29.30576875892178
     m_ClipIn: 0
     m_Asset: {fileID: 8200842901939705097}
     m_Duration: 1.3275645744115536
@@ -1487,7 +1487,7 @@ MonoBehaviour:
   m_Children: []
   m_Clips:
   - m_Version: 1
-    m_Start: 0
+    m_Start: 1.1333333333333333
     m_ClipIn: 0
     m_Asset: {fileID: 3231089549011145628}
     m_Duration: 18.5
@@ -1556,7 +1556,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: solnche,solnche, solnche...
   - m_Version: 1
-    m_Start: 18.5
+    m_Start: 19.633333333333333
     m_ClipIn: 0
     m_Asset: {fileID: 5746517686841504612}
     m_Duration: 11

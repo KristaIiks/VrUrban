@@ -105,7 +105,7 @@ MonoBehaviour:
   m_Children: []
   m_Clips:
   - m_Version: 1
-    m_Start: 0
+    m_Start: 0.9166666666666666
     m_ClipIn: 42.61666666666667
     m_Asset: {fileID: -7610803433399293982}
     m_Duration: 8.75
@@ -171,7 +171,7 @@ MonoBehaviour:
     m_PostExtrapolationMode: 1
     m_PreExtrapolationMode: 1
     m_PostExtrapolationTime: Infinity
-    m_PreExtrapolationTime: 0
+    m_PreExtrapolationTime: 0.9166666666666666
     m_DisplayName: Take 001
   m_Markers:
     m_Objects: []
@@ -259,7 +259,7 @@ MonoBehaviour:
   m_Children: []
   m_Clips:
   - m_Version: 1
-    m_Start: 2.7083333333333335
+    m_Start: 3.6249999999999982
     m_ClipIn: 0
     m_Asset: {fileID: 2562916722886615114}
     m_Duration: 0.8125
@@ -267,7 +267,7 @@ MonoBehaviour:
     m_ParentTrack: {fileID: -2446786612154833299}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
-    m_BlendInDuration: -1
+    m_BlendInDuration: 0
     m_BlendOutDuration: -1
     m_MixInCurve:
       serializedVersion: 2
@@ -292,7 +292,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: Varlik|Blinking
   - m_Version: 1
-    m_Start: 6.245833333333334
+    m_Start: 7.162499999999998
     m_ClipIn: 0
     m_Asset: {fileID: 6533124179432359632}
     m_Duration: 2.5041666666666664
@@ -325,7 +325,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: Varlik|Idle
   - m_Version: 1
-    m_Start: 3.5208333333333335
+    m_Start: 4.437499999999998
     m_ClipIn: 0
     m_Asset: {fileID: 6060060402631598934}
     m_Duration: 1.9125
@@ -358,7 +358,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: Varlik|Idle
   - m_Version: 1
-    m_Start: 0
+    m_Start: 0.9166666666666666
     m_ClipIn: 0
     m_Asset: {fileID: 5748602059439634265}
     m_Duration: 2.7083333333333335
@@ -367,7 +367,7 @@ MonoBehaviour:
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
     m_BlendInDuration: -1
-    m_BlendOutDuration: -1
+    m_BlendOutDuration: 0
     m_MixInCurve:
       serializedVersion: 2
       m_Curve:
@@ -394,25 +394,7 @@ MonoBehaviour:
       m_RotationOrder: 4
     m_MixOutCurve:
       serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
+      m_Curve: []
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -424,10 +406,10 @@ MonoBehaviour:
     m_PostExtrapolationMode: 1
     m_PreExtrapolationMode: 1
     m_PostExtrapolationTime: 0
-    m_PreExtrapolationTime: 0
+    m_PreExtrapolationTime: 0.9166666666666666
     m_DisplayName: Varlik|radost
   - m_Version: 1
-    m_Start: 5.433333333333334
+    m_Start: 6.349999999999998
     m_ClipIn: 0
     m_Asset: {fileID: 2577525691678492284}
     m_Duration: 0.8125
@@ -592,7 +574,7 @@ MonoBehaviour:
   m_Children: []
   m_Clips:
   - m_Version: 1
-    m_Start: 0.5666666666666667
+    m_Start: 1.483333333333333
     m_ClipIn: 1.75
     m_Asset: {fileID: -4858613273997151744}
     m_Duration: 3
@@ -600,53 +582,17 @@ MonoBehaviour:
     m_ParentTrack: {fileID: 2777732470418788092}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
-    m_BlendInDuration: 0.2833333333333333
-    m_BlendOutDuration: 0.3208333333333333
+    m_BlendInDuration: 0.28333333333333366
+    m_BlendOutDuration: 0.32083333333333464
     m_MixInCurve:
       serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
+      m_Curve: []
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     m_MixOutCurve:
       serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
+      m_Curve: []
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -661,7 +607,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: Take 001
   - m_Version: 1
-    m_Start: 0
+    m_Start: 0.9166666666666666
     m_ClipIn: 0
     m_Asset: {fileID: -4911906906183335278}
     m_Duration: 0.85
@@ -670,7 +616,7 @@ MonoBehaviour:
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
     m_BlendInDuration: -1
-    m_BlendOutDuration: 0.2833333333333333
+    m_BlendOutDuration: 0.28333333333333366
     m_MixInCurve:
       serializedVersion: 2
       m_Curve:
@@ -697,25 +643,7 @@ MonoBehaviour:
       m_RotationOrder: 4
     m_MixOutCurve:
       serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
+      m_Curve: []
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -727,10 +655,10 @@ MonoBehaviour:
     m_PostExtrapolationMode: 1
     m_PreExtrapolationMode: 1
     m_PostExtrapolationTime: 0
-    m_PreExtrapolationTime: 0
+    m_PreExtrapolationTime: 0.9166666666666666
     m_DisplayName: Take 001
   - m_Version: 1
-    m_Start: 3.245833333333333
+    m_Start: 4.162499999999998
     m_ClipIn: 1.75
     m_Asset: {fileID: -4385241448334764608}
     m_Duration: 3
@@ -738,7 +666,7 @@ MonoBehaviour:
     m_ParentTrack: {fileID: 2777732470418788092}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
-    m_BlendInDuration: 0.3208333333333333
+    m_BlendInDuration: 0.32083333333333464
     m_BlendOutDuration: 0.49583333333333446
     m_MixInCurve:
       serializedVersion: 2
@@ -763,7 +691,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: Take 001
   - m_Version: 1
-    m_Start: 5.749999999999999
+    m_Start: 6.666666666666663
     m_ClipIn: 1.75
     m_Asset: {fileID: -773114201264361324}
     m_Duration: 3
@@ -855,7 +783,7 @@ MonoBehaviour:
   m_Children: []
   m_Clips:
   - m_Version: 1
-    m_Start: 0
+    m_Start: 0.9166666666666666
     m_ClipIn: 0
     m_Asset: {fileID: -6700434906517808400}
     m_Duration: 8.75
@@ -921,7 +849,7 @@ MonoBehaviour:
     m_PostExtrapolationMode: 1
     m_PreExtrapolationMode: 1
     m_PostExtrapolationTime: Infinity
-    m_PreExtrapolationTime: 0
+    m_PreExtrapolationTime: 0.9166666666666666
     m_DisplayName: Take 001
   m_Markers:
     m_Objects: []
@@ -965,7 +893,7 @@ MonoBehaviour:
   m_Children: []
   m_Clips:
   - m_Version: 1
-    m_Start: 0
+    m_Start: 0.9166666666666666
     m_ClipIn: 0
     m_Asset: {fileID: -7585574004460058932}
     m_Duration: 8.75
