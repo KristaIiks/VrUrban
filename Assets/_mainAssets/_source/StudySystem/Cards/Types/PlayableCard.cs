@@ -20,7 +20,11 @@ namespace StudySystem
 			Invoke(nameof(Continue), (float)Timeline.duration);
 		}
 
-		protected override void Continue() => m_previousCard.Invoke();
+		protected override void Continue()
+		{
+			OnComplete?.Invoke();
+			m_previousCard.Invoke();
+		}
 
 		public override void SkipAll() { }
 	}

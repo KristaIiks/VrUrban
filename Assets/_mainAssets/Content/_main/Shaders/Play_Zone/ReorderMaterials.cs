@@ -12,7 +12,7 @@ public class ReorderMaterials : MonoBehaviour
 		
 		foreach (var item in renderers)
 		{
-			if (IgnoreList.Contains(item)) { continue; }
+			if (IgnoreList.Contains(item) || item.sharedMaterial == null) { continue; }
 			
 			#if UNITY_EDITOR
 			Material tempMaterial = new Material(item.sharedMaterial);
