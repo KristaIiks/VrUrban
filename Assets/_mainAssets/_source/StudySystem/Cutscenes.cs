@@ -18,6 +18,8 @@ namespace StudySystem
 		
 		public void RunCutscene(PlayableAsset timeline)
 		{
+			_playable.time = _playable.duration; // set the time to the last frame
+			_playable.Evaluate(); // evaluates the timeline
 			_playable.Stop();
 			
 			if (timeline == null) { return; }

@@ -34,16 +34,7 @@ namespace StudySystem
 			OnStart?.Invoke();
 		}
 		
-		protected virtual void Continue()
-		{
-			// if has only 1 card force start next without drawing
-			if (_allCards.Count == 1 && !_allCards[0].IsCompleted)
-			{
-				_allCards[0].StartCard(() => Continue(), m_branch);
-				return;
-			}
-		}
-		
+		protected abstract void Continue();		
 		public abstract void SkipAll();
 		public virtual void Skip(Card to)
 		{

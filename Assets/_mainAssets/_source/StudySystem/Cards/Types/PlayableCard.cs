@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Timeline;
@@ -17,13 +18,20 @@ namespace StudySystem
 			base.StartCard(previousCard, branch);
 			Cutscenes.Instance.RunCutscene(Timeline);
 			
-			Invoke(nameof(Continue), (float)Timeline.duration);
+			StartCoroutine(Continue((float)Timeline.duration));
 		}
 
 		protected override void Continue()
 		{
+			IsCompleted = true;
 			OnComplete?.Invoke();
+			
 			m_previousCard.Invoke();
+		}
+		private IEnumerator Continue(float time)
+		{
+			yield return new WaitForSeconds(time);
+			Continue();
 		}
 
 		public override void SkipAll() { }

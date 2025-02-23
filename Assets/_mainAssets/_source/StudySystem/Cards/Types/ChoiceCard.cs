@@ -21,9 +21,7 @@ namespace StudySystem
 		}
 
 		protected override void Continue()
-		{
-			base.Continue();
-			
+		{			
 			if (Cards.All((card) => card.IsCompleted)) { m_previousCard.Invoke(); return; }
 			
 			CardsWindow.Instance.DisplayCards(

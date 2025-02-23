@@ -12,7 +12,12 @@ namespace StudySystem
 		
 		protected override void Continue()
 		{
-			base.Continue();
+			// if has only 1 card force start next without drawing
+			if (_allCards.Count == 1 && !_allCards[0].IsCompleted)
+			{
+				_allCards[0].StartCard(() => Continue(), m_branch);
+				return;
+			}
 			
 			if (Cards.Count == 0 || Cards.All((card) => card.IsCompleted))
 			{

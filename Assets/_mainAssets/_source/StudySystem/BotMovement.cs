@@ -39,6 +39,9 @@ namespace StudySystem
 			else if (_target != null) // Rotate to target before start move
 			{
 				Vector3 direction = _target.position - transform.position;
+				
+				if (direction == Vector3.zero) { _canMove = true; _time = 0; return; }
+				
 				Quaternion targetRotation = Quaternion.LookRotation(direction);
 				
 				transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, RotateSpeed * _time);
