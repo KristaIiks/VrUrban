@@ -10,7 +10,7 @@ namespace StudySystem
 {
 	public sealed class Branch : MonoBehaviour
 	{
-		private const string LOG_TAG = "Study";		
+		private const string LOG_TAG = "Study";
 		[SerializeField] private Card FirstCard;
 #if UNITY_EDITOR
 		[SerializeField] private Card DebugSkip;
@@ -42,6 +42,7 @@ namespace StudySystem
 				else
 				{
 					listToSkip[0].StartCard(() => OnBranchComplete?.Invoke(), this);
+					CardsWindow.Instance.HideCards();
 					
 					for (int i = 0; i < listToSkip.Count - 1; i++)
 					{

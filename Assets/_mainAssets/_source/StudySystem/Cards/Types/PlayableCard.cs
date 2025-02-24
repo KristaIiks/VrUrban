@@ -34,6 +34,12 @@ namespace StudySystem
 			Continue();
 		}
 
-		public override void SkipAll() { }
+		public override void SkipAll()
+		{
+			Cutscenes.Instance.RunCutscene(Timeline);
+			
+			IsCompleted = true;
+			OnComplete?.Invoke();
+		}
 	}
 }

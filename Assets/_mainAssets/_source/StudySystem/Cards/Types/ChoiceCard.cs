@@ -34,6 +34,7 @@ namespace StudySystem
 		public override void SkipAll()
 		{
 			OnStart?.Invoke();
+			IsCompleted = true;
 			OnComplete?.Invoke();
 			
 			Cards.ForEach((card) => card.SkipAll());

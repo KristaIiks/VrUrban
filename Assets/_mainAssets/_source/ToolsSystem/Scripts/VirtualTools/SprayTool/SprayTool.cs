@@ -31,6 +31,8 @@ namespace ToolsSystem
 			_audio.clip = _sprayClip;
 		}
 
+		private void Awake() => ChangeInputState(false);
+		
 		private void Update()
 		{
 			if (!IsEnabled || !_isWork) { return; }
@@ -81,13 +83,13 @@ namespace ToolsSystem
 		{
 			if (state)
 			{
-				//_effect.Play();
+				_effect.Play();
 				_audio.Play();
 				_isWork = true;
 			}
 			else
 			{
-				//_effect.Stop();
+				_effect.Stop();
 				_audio.Stop();
 				_lastTime = 0f;
 				_isWork = false;

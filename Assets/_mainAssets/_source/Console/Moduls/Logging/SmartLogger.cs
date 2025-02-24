@@ -72,7 +72,7 @@ namespace SmartConsole
 				path = @$"{Application.persistentDataPath}\Logs\Editor";
 			}
 			#else
-			path = @$"{Directory.GetCurrentDirectory()}\Logs";
+			path = @$"{Application.persistentDataPath}/Logs";
 			#endif
 			
 			Directory.CreateDirectory(path);

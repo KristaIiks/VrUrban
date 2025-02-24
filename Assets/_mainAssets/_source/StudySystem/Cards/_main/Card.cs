@@ -38,19 +38,9 @@ namespace StudySystem
 		public abstract void SkipAll();
 		public virtual void Skip(Card to)
 		{
-			SConsole.Log("Skipping", $"From {gameObject.name} to {to.name}", 2);
-			if(!_allCards.Contains(to))
-			{ 
-				SConsole.Log(
-					LOG_TAG, 
-					"Card not found in list of this card. Error path finding.", 
-					LogType.Error, 
-					gameObject
-				); 
-				return; 
-			}
+			SConsole.Log("Skipping", $"From {gameObject.name} to {to.name}", 2);			
+			Restart(false);
 			
-			Restart(false); // reset player changes and deactivate quests
 			IsCompleted = true;
 		}
 		

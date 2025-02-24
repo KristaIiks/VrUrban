@@ -23,6 +23,7 @@ namespace StudySystem
 		{
 			OnStart?.Invoke();
 			CardsOrder.ForEach(card => card.SkipAll());
+			IsCompleted = true;
 			OnComplete?.Invoke();
 		}
 		public override void Skip(Card to)

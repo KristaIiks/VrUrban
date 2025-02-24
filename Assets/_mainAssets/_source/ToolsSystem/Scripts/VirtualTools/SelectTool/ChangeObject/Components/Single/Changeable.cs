@@ -25,9 +25,10 @@ namespace ToolsSystem
 			
 			if (_defaultObject) { _defaultObject.SetActive(false); }
 			
-			for (int i = 0; i < Variants.Count - 1; i++)
+			for (int i = 0; i < Variants.Count; i++)
 			{
-				Variants[i].Object?.SetActive(false);
+				if (Variants[i].Object)
+					Variants[i].Object.SetActive(false);
 				Variants[i].IsSelected = false;
 			}
 			
@@ -54,7 +55,7 @@ namespace ToolsSystem
 		{
 			CanSelect = true;
 			
-			_studyEvent = (id) => { OnComplete?.Invoke(); OnObjectChanged -= _studyEvent; };
+			_studyEvent = (id) => { OnComplete?.Invoke(); CanSelect = false; OnObjectChanged -= _studyEvent; };
 			OnObjectChanged += _studyEvent;
 		}
 
