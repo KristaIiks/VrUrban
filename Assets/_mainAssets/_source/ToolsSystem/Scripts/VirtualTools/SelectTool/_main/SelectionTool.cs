@@ -32,7 +32,8 @@ namespace ToolsSystem
 		public event Action<T> OnDeselect;
 		public event Action<T> OnHover;
 		
-		protected LineRenderer _lineRenderer;
+		[SerializeField] protected LineRenderer _lineRenderer;
+		[SerializeField] private SphereCollider _collider;
 		protected T _selectedObject;
 
 		private T RayObject
@@ -58,7 +59,6 @@ namespace ToolsSystem
 		}
 		private T _rayObject;
 		private Transform _lastCheckedObject;
-		private SphereCollider _collider;
 		
 		protected override void OnValidate()
 		{

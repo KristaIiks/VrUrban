@@ -14,7 +14,7 @@ namespace ToolsSystem
 		public event Action<bool> OnToolSelectChanged;
 		
 		protected string LOG_TAG { get { return $"Tool: {ToolInfo?.ToolName ?? "ErrorName"}"; } }
-		protected AudioSource _audio;
+		[SerializeField] protected AudioSource _audio;
 		
 		protected virtual void OnValidate()
 		{

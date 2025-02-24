@@ -9,22 +9,22 @@ namespace ToolsSystem
 	public sealed class CrumblyBlock : BaseToolObject
 	{
 		[SerializeField] private CrumblyBlockSettings _blockSettings;
+		[SerializeField] private Outline Outline;
 		
 		public event Action OnDig;
 		private event Action _studyEvent;
 		
 		private bool _canDig;
-		private Outline _outline;
 		
 		private void OnValidate()
 		{
-			if(!_outline)
+			if(!Outline)
 			{
-				_outline = GetComponent<Outline>();
-				_outline.OutlineWidth = 8f;
-				_outline.OutlineColor = Color.yellow;
+				Outline = GetComponent<Outline>();
+				Outline.OutlineWidth = 8f;
+				Outline.OutlineColor = Color.yellow;
 				
-				_outline.enabled = false;				
+				Outline.enabled = false;				
 			}
 		}
 		
@@ -60,7 +60,7 @@ namespace ToolsSystem
 		public override void Restart(bool canContinue = true)
 		{
 			_canDig = canContinue;
-			_outline.enabled = canContinue;
+			Outline.enabled = canContinue;
 			gameObject.SetActive(true);
 		}
 	}

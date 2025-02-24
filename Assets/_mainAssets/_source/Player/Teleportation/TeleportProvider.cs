@@ -1,6 +1,5 @@
 using UnityEngine;
 
-
 public class TeleportProvider : UnityEngine.XR.Interaction.Toolkit.Locomotion.Teleportation.TeleportationProvider
 {
     public void Teleport(Transform _point)

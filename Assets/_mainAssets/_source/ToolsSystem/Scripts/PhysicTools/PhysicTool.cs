@@ -11,7 +11,7 @@ namespace ToolsSystem
 		[SerializeField] private HandGrabType GrabType;
 		[SerializeField] private bool _forceInteract;
 		
-		protected XRGrabInteractable _grabInteractable;
+		[SerializeField] protected XRGrabInteractable _grabInteractable;
 		protected bool _isGrabbed;
 
 		protected override void OnValidate()

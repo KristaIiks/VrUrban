@@ -6,11 +6,11 @@ using UnityEngine;
 public sealed class TrashObject : Selectable
 {
 	[SerializeField] private float _decreaseTime = 5f;
+	[SerializeField] private Vector3 DefaultScale;
 	
 	public event Action OnRemove;
 	public event Action _studyEvent;
 	
-	private Vector3 _defaultScale;
 	private bool _isDestroyed;
 	private float _percent = 1f;
 
@@ -25,7 +25,7 @@ public sealed class TrashObject : Selectable
 		}
 		
 		CanSelect = false;
-		_defaultScale = transform.localScale;
+		DefaultScale = transform.localScale;
 		
 		base.OnValidate();
 	}
@@ -51,7 +51,7 @@ public sealed class TrashObject : Selectable
 		if (_isDestroyed)
 		{
 			_percent = Mathf.MoveTowards(_percent, 0, Time.deltaTime / _decreaseTime);
-			transform.localScale = _defaultScale * _percent;
+			transform.localScale = DefaultScale * _percent;
 			
 			if(_percent == 0) { Remove(); }
 		}
@@ -87,6 +87,6 @@ public sealed class TrashObject : Selectable
 		SelectOutline.OutlineColor = Color.yellow;
 		SelectOutline.enabled = canContinue;
 		
-		transform.localScale = _defaultScale;
+		transform.localScale = DefaultScale;
 	}
 }

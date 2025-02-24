@@ -8,24 +8,27 @@ namespace StudySystem
 	{
 		public static Cutscenes Instance;
 		
-		private PlayableDirector _playable;
+		[SerializeField] private PlayableDirector Playable;
 		
 		private void OnValidate()
 		{
+			Playable ??= GetComponent<PlayableDirector>();
+		}
+		
+		private void Awake()
+		{
 			Instance = this;
-			_playable ??= GetComponent<PlayableDirector>();
 		}
 		
 		public void RunCutscene(PlayableAsset timeline)
 		{
-			_playable.time = _playable.duration; // set the time to the last frame
-			_playable.Evaluate(); // evaluates the timeline
-			_playable.Stop();
+			Playable.time = Playable.duration; // set the time to the last frame
+			Playable.Evaluate(); // evaluates the timeline
+			Playable.Stop();
 			
 			if (timeline == null) { return; }
-				
-			_playable.playableAsset = timeline;
-			_playable.Play();
+			
+			Playable.Play(timeline);
 		}
 	}
 }

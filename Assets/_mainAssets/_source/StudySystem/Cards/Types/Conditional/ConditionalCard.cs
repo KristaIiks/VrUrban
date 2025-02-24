@@ -17,7 +17,7 @@ namespace StudySystem
 		[SerializeField] private UnityEvent OnCorrectEvent;
 		[SerializeField] private UnityEvent OnWrongEvent;
 		
-		protected override List<Card> _allCards { get; set; }
+		[field:SerializeField, HideInInspector] protected override List<Card> _allCards { get; set; }
 		private bool _conditional;
 
 		private void OnValidate()

@@ -12,6 +12,7 @@ namespace ToolsSystem
 		
 		[SerializeField] private GameObject[] _blockStages;
 		[SerializeField] private SolidBlockSettings _settings;
+		[SerializeField] private Outline Outline;
 		
 		public event Action<float> OnDamage;
 		public event Action OnDestroy;
@@ -22,30 +23,16 @@ namespace ToolsSystem
 		
 		private bool _canInteract;
 		
-		private Outline _outline;
 		
 		private void OnValidate()
 		{
-			if(!_outline)
+			if (!Outline)
 			{
-				_outline = GetComponent<Outline>();
-				_outline.OutlineWidth = 8f;
-				_outline.OutlineColor = Color.yellow;
+				Outline = GetComponent<Outline>();
+				Outline.OutlineWidth = 8f;
+				Outline.OutlineColor = Color.yellow;
 				
-				_outline.enabled = false;				
-			}
-		}
-		
-		private void Awake()
-		{
-			if (!_settings)
-			{
-				SConsole.LogException(LOG_TAG, new NullReferenceException(), _settings);
-				gameObject.SetActive(false);
-			}
-			else
-			{
-				Restart(false);
+				Outline.enabled = false;		
 			}
 		}
 		
@@ -103,11 +90,13 @@ namespace ToolsSystem
 		public override void Restart(bool canContinue = true)
 		{			
 			_canInteract = canContinue;
-			_outline.enabled = canContinue;
+			Outline.enabled = canContinue;
 			
 			gameObject.SetActive(true);
 			_health = _settings.Health;
 			SetModel();
+			
+			SConsole.Log(LOG_TAG, $"Reset {gameObject.name}", 2);
 		}
 	}
 }

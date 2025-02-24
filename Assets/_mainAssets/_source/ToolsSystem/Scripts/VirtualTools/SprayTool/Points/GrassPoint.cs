@@ -17,7 +17,7 @@ namespace ToolsSystem
 		public override event Action OnPaint;
 		private event Action _studyEvent;
 
-		private MeshRenderer _meshRenderer;
+		[SerializeField] private MeshRenderer _meshRenderer;
 		
 		private void OnValidate()
 		{

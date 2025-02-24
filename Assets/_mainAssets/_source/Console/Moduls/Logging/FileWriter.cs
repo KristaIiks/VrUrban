@@ -16,7 +16,7 @@ namespace SmartConsole
 
 		public FileWriter(string path, string fileName)
 		{
-			FilePath = string.Format(@"{0}\{1}.txt", path, fileName);
+			FilePath = string.Format(@"{0}/{1}.txt", path, fileName);
 			FileStream fs = new FileStream(FilePath, FileMode.CreateNew, FileAccess.Write);
 			fs.Close();
 		}
