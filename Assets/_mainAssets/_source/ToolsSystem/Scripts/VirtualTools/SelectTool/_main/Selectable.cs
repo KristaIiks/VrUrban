@@ -74,7 +74,7 @@ namespace ToolsSystem
 		
 		public virtual void Select(SelectFilter filter)
 		{
-			if (!CanSelect || _isSelected || !CompareFilter(filter)) { return; }
+			if (!CompareFilter(SelectFilter.Script) && (!CanSelect || _isSelected || !CompareFilter(filter))) { return; }
 			
 			_isSelected = true;
 			if (SelectOutline) { SelectOutline.enabled = true; }

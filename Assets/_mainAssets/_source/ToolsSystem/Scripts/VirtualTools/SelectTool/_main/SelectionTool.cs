@@ -109,11 +109,11 @@ namespace ToolsSystem
 			if (interactionResult && InteractionClip)
 				_audio.PlayRandomized(InteractionClip, PitchRange);
 		}
-		public void InteractObject(T obj) => InteractObject(obj, SelectFilter.Script);
+		public void InteractObject(T obj) => Select(obj, SelectFilter.Script);
 		
 		protected virtual void Select(T obj, SelectFilter filter)
 		{	
-			if(!IsEnabled) { return; }
+			if(!IsEnabled && !filter.HasFlag(SelectFilter.Script)) { return; }
 			
 			if(_selectedObject || obj == null)
 			{
