@@ -45,7 +45,13 @@ public sealed class TrashObject : Selectable
 		}
 		return false;
 	}
-
+	
+	public override void Deselect()
+	{
+		if (!_isSelected) { return; }		
+		_isSelected = false;
+	}
+	
 	private void Update()
 	{
 		if (_isDestroyed)

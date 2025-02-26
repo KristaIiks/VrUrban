@@ -70,6 +70,7 @@ namespace StudySystem
 		{
 			OnStart?.Invoke();
 			Quests.ForEach((quest) => quest.Skip());
+			IsCompleted = true;
 			OnComplete?.Invoke();
 			OnCorrectEvent?.Invoke();
 			
