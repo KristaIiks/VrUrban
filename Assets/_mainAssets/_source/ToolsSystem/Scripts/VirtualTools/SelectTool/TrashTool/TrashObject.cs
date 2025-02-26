@@ -36,6 +36,7 @@ public sealed class TrashObject : Selectable
 	{
 		if (base.TryInteract(out canSelect, filter))
 		{
+			CanSelect = false;
 			CanInteract = false;
 			
 			if (SelectOutline) { SelectOutline.OutlineColor = Color.red; }
