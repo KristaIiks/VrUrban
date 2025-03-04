@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 041588db72cf78a4ca29d68a210ee919, type: 3}
+  m_Name: Grass
+  m_EditorClassIdentifier: 
+  <HillMaterial>k__BackingField: {fileID: 2100000, guid: feaef991a96f4e649aaae5628ebb8307,
+    type: 2}
+  <DigEffect>k__BackingField: {fileID: 6710944556907608751, guid: f60a78587489d374eaaa6f17dcdbd342,
+    type: 3}
+  <DigSound>k__BackingField: {fileID: 8300000, guid: 3fb5f3f747588734dbad170f32d0c321,
+    type: 3}

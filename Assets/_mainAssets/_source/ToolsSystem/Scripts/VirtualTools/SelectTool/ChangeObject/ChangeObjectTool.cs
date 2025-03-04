@@ -6,8 +6,8 @@ namespace ToolsSystem
 {
 	public sealed class ChangeObjectTool : SelectionTool<Changeable>
 	{		
-		// TODO: remove and replace by zenject
 		[Space(25)]
+		// TODO: remove and replace by zenject
 		[SerializeField] private ChangeWindow Menu;
 		[SerializeField] private Transform RayMenuPos;
 		[SerializeField] private AudioClip ChangeObjectClip;
@@ -28,13 +28,15 @@ namespace ToolsSystem
 
 		public void SelectVariant(int id)
 		{
-			if (!_selectedObject) { return; }
+			if (!_selectedObject)
+				return;
 			
-			_audio.PlayRandomized(ChangeObjectClip, PitchRange);
+			Audio.PlayRandomized(ChangeObjectClip, PitchRange);
 			
 			Changeable obj = _selectedObject;
 			Deselect();
 			
+			// TODO: Bad sorting for study need rework
 			obj.ChangeBuild(id);
 			OnObjectChanged?.Invoke(obj, id);
 		}
@@ -46,6 +48,7 @@ namespace ToolsSystem
 				Menu.Open(_selectedObject.Variants, _selectedObject.UIPosition, this);
 				return;
 			}
+			
 			Menu.Open(_selectedObject.Variants, RayMenuPos, this);			
 		}
 		private void CloseMenu() => Menu.Close();

@@ -20,7 +20,8 @@ namespace ToolsSystem
 
 			for (int i = 0; i < variants.Count; i++)
 			{
-				if (variants[i].IsHidden) { continue; }
+				if (variants[i].IsHidden)
+					continue;
 				
 				Instantiate(_variantPrefab, _content, false).Init(
 					variants[i],

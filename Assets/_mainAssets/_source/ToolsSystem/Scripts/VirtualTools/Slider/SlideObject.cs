@@ -15,7 +15,7 @@ namespace ToolsSystem
 		
 		public void Reset()
 		{
-			if (Random.Range(0, 100) <= 50)
+			if (Random.Range(0, 100) < 50)
 			{
 				FirstObject.SetActive(true);
 				SecondObject.SetActive(false);

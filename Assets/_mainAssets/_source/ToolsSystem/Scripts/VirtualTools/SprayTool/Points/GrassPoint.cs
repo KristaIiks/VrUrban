@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using SmartConsole;
 using UnityEngine;
 
 namespace ToolsSystem
@@ -15,13 +16,14 @@ namespace ToolsSystem
 		[HideInInspector] public bool CanPaint { get; private set; }
 
 		public override event Action OnPaint;
+		
 		private event Action _studyEvent;
 
-		[SerializeField] private MeshRenderer _meshRenderer;
+		[SerializeField] private MeshRenderer MeshRenderer;
 		
 		private void OnValidate()
 		{
-			_meshRenderer ??= GetComponent<MeshRenderer>();
+			MeshRenderer ??= GetComponent<MeshRenderer>();
 		}
 		
 		private void Awake() => Restart();
@@ -30,13 +32,17 @@ namespace ToolsSystem
 		{
 			if (!CanPaint) { return false; }
 			
-			_meshRenderer.material = GrassMaterial;
+			MeshRenderer.material = GrassMaterial;
 			CanPaint = false;
+			
+			SConsole.Log("Grass point", "Successful pained");
 			OnPaint?.Invoke();
+			
 			StartCoroutine(Expansion());
 			
 			return true;
 		}
+		
 		private IEnumerator Expansion()
 		{
 			while (true)
@@ -67,7 +73,7 @@ namespace ToolsSystem
 		public override void Restart(bool canContinue = true)
 		{			
 			CanPaint = canContinue;
-			_meshRenderer.material = GroundMaterial;
+			MeshRenderer.material = GroundMaterial;
 		}
 	}
 }

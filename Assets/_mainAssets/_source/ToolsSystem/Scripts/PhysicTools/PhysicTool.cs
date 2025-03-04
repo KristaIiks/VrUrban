@@ -7,9 +7,8 @@ namespace ToolsSystem
 	[RequireComponent(typeof(XRGrabInteractable))]
 	public abstract class PhysicTool : Tool
 	{
-		// TODO: realize permanent grab if (maybe create my own interactor)
 		[SerializeField] private HandGrabType GrabType;
-		[SerializeField] private bool _forceInteract;
+		[SerializeField] private bool ForceInteract; // TODO: permanent grab tool (you don't need press btn)
 		
 		[SerializeField] protected XRGrabInteractable _grabInteractable;
 		protected bool _isGrabbed;
@@ -17,6 +16,7 @@ namespace ToolsSystem
 		protected override void OnValidate()
 		{
 			base.OnValidate();
+			
 			if(_grabInteractable == null)
 			{
 				_grabInteractable = GetComponent<XRGrabInteractable>();
@@ -61,10 +61,10 @@ namespace ToolsSystem
 			_isGrabbed = state;
 		}
 
-		public void ActivateAndGrabTool()
+		public void ActivateAndForceGrabTool()
 		{
 			ChangeToolActiveState(true);
-			// TODO: Grab 
+			// TODO: realize permanent grab if (maybe create my own interactor)
 		}
 
 		// Activate/deactivate event on pick/drop item

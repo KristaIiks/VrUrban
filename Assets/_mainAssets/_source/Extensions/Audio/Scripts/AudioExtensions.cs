@@ -10,12 +10,17 @@ namespace Extensions.Audio
 		/// <param name="source"></param>
 		/// <param name="clip"></param>
 		/// <param name="settings"></param>
-		public static void PlayOneShot(this AudioSource source, AudioClip clip, StartupAudioSettings settings)
+		public static void PlayOneShot(this AudioSource source, AudioClip clip, StartupAudioSettings? settings)
 		{
 			AudioSource _newSource = CreateAndAssign(source, clip, settings);
 			_newSource.Play();
 			
 			Object.Destroy(_newSource.gameObject, clip.length);
+		}
+		
+		public static void PlayInstanced(this AudioSource source, AudioClip clip)
+		{
+			PlayOneShot(source, clip, null);
 		}
 		
 		/// <summary>
@@ -38,15 +43,15 @@ namespace Extensions.Audio
 		/// <param name="clip"></param>
 		/// <param name="settings"></param>
 		/// <returns></returns>
-		private static AudioSource CreateAndAssign(AudioSource source, AudioClip clip, StartupAudioSettings settings)
+		private static AudioSource CreateAndAssign(AudioSource source, AudioClip clip, StartupAudioSettings? settings = null)
 		{
 			AudioSource _newAudioSource = new GameObject(
 				"[Audio System] OneShot Audio"
 			).AddComponent<AudioSource>();
 			
-			_newAudioSource.outputAudioMixerGroup = settings.audioGroup ?? source.outputAudioMixerGroup;
-			_newAudioSource.volume = settings.volume ?? source.volume;
-			_newAudioSource.pitch = settings.pitch ?? source.pitch;
+			_newAudioSource.outputAudioMixerGroup = settings?.audioGroup ?? source.outputAudioMixerGroup;
+			_newAudioSource.volume = settings?.volume ?? source.volume;
+			_newAudioSource.pitch = settings?.pitch ?? source.pitch;
 			_newAudioSource.clip = clip;
 			
 			return _newAudioSource;

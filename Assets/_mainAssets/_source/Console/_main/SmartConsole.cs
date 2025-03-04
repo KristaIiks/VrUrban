@@ -4,9 +4,7 @@ using UnityEngine;
 
 namespace SmartConsole
 {
-	// TODO: create editor menu to configure
-	// TODO: add filter to control display level in game + state
-	// TODO: add scriptable settings
+	// TODO: create editor menu to configure + scriptable
 	public class SConsole
 	{
 		private const string LOG_TAG = "<color=#ffff00ff>Console</color>";
@@ -103,7 +101,7 @@ namespace SmartConsole
 			Debug.LogException(exception, context);
 		}
 		
-		public static void EnableSmartLogger()
+		private static void EnableSmartLogger()
 		{
 			if(_loggerEnabled) { return; }
 			
@@ -116,7 +114,7 @@ namespace SmartConsole
 			PrintEnablingStats();
 		}
 		
-		public static void DisableSmartLogger()
+		private static void DisableSmartLogger()
 		{
 			if(!_loggerEnabled) { return; }
 			

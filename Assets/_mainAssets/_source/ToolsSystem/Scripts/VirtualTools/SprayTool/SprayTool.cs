@@ -10,26 +10,19 @@ namespace ToolsSystem
 	// TODO: add filter points (grass, graffiti or other)
 	public sealed class SprayTool : VirtualTool
 	{
-		[SerializeField] private InputActionReference _interactInput;
+		[SerializeField] private InputActionReference Input;
 		
 		[Space(25)]
-		[SerializeField, Min(.1f)] private float _sprayDistance = 2f;
-		[SerializeField] private float _interactionDelay = .5f;
+		[SerializeField, Min(.1f)] private float Distance = 2f;
+		[SerializeField] private float InteractDelay = .5f;
 		
 		[Space(25)]
-		[SerializeField] private AudioClip _sprayClip;
-		[SerializeField] private VisualEffect _effect;
+		[SerializeField] private VisualEffect VFX;
 		
-		public event Action<SprayPoint> PaintPoint;
+		public event Action<SprayPoint> Paint;
 		
 		private float _lastTime;
 		private bool _isWork;
-
-		protected override void OnValidate()
-		{
-			base.OnValidate();
-			_audio.clip = _sprayClip;
-		}
 
 		private void Awake() => ChangeInputState(false);
 		
@@ -39,24 +32,24 @@ namespace ToolsSystem
 			
 			_lastTime += Time.deltaTime;
 
-			if (_lastTime >= _interactionDelay)
+			if (_lastTime >= InteractDelay)
 			{
 				_lastTime = 0f;
 				
-				TryInteract();
+				Interact();
 			}	
 		}
 		
-		private void TryInteract()
+		private void Interact()
 		{
-			if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, _sprayDistance) 
+			if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, Distance) 
 			&& hit.collider.TryGetComponent(out SprayPoint sprayPoint))
 			{
 				SConsole.Log(LOG_TAG, $"Try paint - {sprayPoint.gameObject.name}");
+				
 				if (sprayPoint.Paint())
 				{
-					PaintPoint?.Invoke(sprayPoint);
-					SConsole.Log(LOG_TAG, "Successful pained");
+					Paint?.Invoke(sprayPoint);
 				}
 			}
 		}
@@ -65,13 +58,13 @@ namespace ToolsSystem
 		{			
 			if (state) 
 			{
-				_interactInput.action.started += OnInteractTool;
-				_interactInput.action.canceled += OnInteractTool;
+				Input.action.started += OnInteractTool;
+				Input.action.canceled += OnInteractTool;
 			}
 			else
 			{
-				_interactInput.action.started -= OnInteractTool;
-				_interactInput.action.canceled -= OnInteractTool;
+				Input.action.started -= OnInteractTool;
+				Input.action.canceled -= OnInteractTool;
 				
 				ChangeInputState(state);
 			}
@@ -83,14 +76,14 @@ namespace ToolsSystem
 		{
 			if (state)
 			{
-				_effect.Play();
-				_audio.Play();
+				VFX.Play();
+				Audio.Play();
 				_isWork = true;
 			}
 			else
 			{
-				_effect.Stop();
-				_audio.Stop();
+				VFX.Stop();
+				Audio.Stop();
 				_lastTime = 0f;
 				_isWork = false;
 			}
@@ -110,7 +103,7 @@ namespace ToolsSystem
 
 		private void OnDrawGizmosSelected()
 		{
-			if(Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, _sprayDistance)
+			if(Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, Distance)
 			&& hit.collider.TryGetComponent(out SprayPoint sprayPoint))
 			{
 				Gizmos.color = Color.green;
@@ -119,7 +112,7 @@ namespace ToolsSystem
 			}
 			
 			Gizmos.color = Color.red;
-			Gizmos.DrawRay(transform.position, transform.forward * _sprayDistance);
+			Gizmos.DrawRay(transform.position, transform.forward * Distance);
 		}
 	}
 }
