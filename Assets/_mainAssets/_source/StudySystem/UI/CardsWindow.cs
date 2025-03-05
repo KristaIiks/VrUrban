@@ -6,10 +6,11 @@ namespace StudySystem
 {
 	public class CardsWindow : MonoBehaviour
 	{
+		// TODO: replace by zenject
 		public static CardsWindow Instance;
 		
 		[SerializeField] private GameObject Window;
-		[SerializeField] private CardView[] Views;
+		[SerializeField] private CardView[] Views; //? other solution
 		
 		[SerializeField] private Transform Content;
 		
@@ -19,14 +20,18 @@ namespace StudySystem
 			HideCards();
 		}
 		
+		// TODO: add single card support
 		public void DisplayCards(Action previousCard, Branch branch, Card[] cards)
 		{
 			ClearViewCards();
 			
 			foreach (Card card in cards)
 			{
-				if (card.IsCompleted) { continue; }
-				if (!card.Info) { SConsole.LogException("Display", new NullReferenceException(), card); }
+				if (card.IsCompleted)
+					continue;
+				
+				if (!card.Info)
+					SConsole.LogException("Display", new NullReferenceException(), card);
 				
 				foreach (CardView view in Views)
 				{

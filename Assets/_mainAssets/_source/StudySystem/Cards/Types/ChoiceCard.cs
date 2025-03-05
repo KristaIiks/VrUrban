@@ -9,7 +9,7 @@ namespace StudySystem
 	{
 		[Space(25), Header("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"), Space(25)]
 		[SerializeField] private List<Card> Cards = new List<Card>();
-		protected override List<Card> _allCards { get => Cards; set => Cards = value; }
+		protected override List<Card> _pathFindCards { get => Cards; set => Cards = value; }
 
 		public override void StartCard(Action previousCard, Branch branch)
 		{

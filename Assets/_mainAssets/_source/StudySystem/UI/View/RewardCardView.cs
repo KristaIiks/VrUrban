@@ -16,7 +16,7 @@ namespace StudySystem
 			
 			if (info is not RewardQuestCardSO questCard) { return; }
 			
-			RewardText.text = $"Комфортнойсть: {questCard.Stats.Comfort}\n" + 
+			RewardText.text = $"Комфортность: {questCard.Stats.Comfort}\n" + 
 				$"Экология: {questCard.Stats.Ecology}\n" +
 				$"Безопасность: {questCard.Stats.Security}\n" +
 				$"Стоимость жилья: {questCard.Stats.HousePrice}\n" +

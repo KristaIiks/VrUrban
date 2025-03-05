@@ -16,7 +16,8 @@ namespace StudySystem
 
 		public override void Init(Action cardAction, Action disableWindow, CardSO info)
 		{
-			if (info is not QuestCardSO questCard) { return; }
+			if (info is not QuestCardSO questCard)
+				return;
 			
 			NameText.text = questCard.Name;
 			DescriptionText.text = questCard.Description;

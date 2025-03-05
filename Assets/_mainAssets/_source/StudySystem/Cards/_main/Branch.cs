@@ -14,40 +14,45 @@ namespace StudySystem
 		[SerializeField] private Card FirstCard;
 #if UNITY_EDITOR
 		[SerializeField] private Card DebugSkip;
-		[Space(25)]
 #endif
+		[Space(25)]
 		[SerializeField] private UnityEvent OnBranchComplete;
 		
-		[HideInInspector] public Card _currentCard;
+		[HideInInspector] public Card _currentCard; // TODO: private
 		private bool _isStarted;
 		
 		private BranchResult _result = new BranchResult();
 		
+		// TODO: add onAwake param
 		public void Start() => StartBranch();
 		
 		[ContextMenu("Start study")]
 		public void StartBranch()
 		{
-			if(_isStarted) { return; }
+			if(_isStarted) //? restarting
+				return;
 			
 			#if UNITY_EDITOR
 			
-			if(DebugSkip)
+			if (DebugSkip)
 			{
 				List<Card> listToSkip = FindPath(new List<Card>(){FirstCard}, FirstCard, DebugSkip);
+				
 				if(listToSkip == null)
 				{
 					SConsole.Log(LOG_TAG, "Cant find path to card!", LogType.Warning);
 				}
 				else
 				{
+					// TODO: disable visuals (other skip in cards)
 					listToSkip[0].StartCard(() => OnBranchComplete?.Invoke(), this);
-					CardsWindow.Instance.HideCards();
+					CardsWindow.Instance.HideCards(); // temp solution
 					
 					for (int i = 0; i < listToSkip.Count - 1; i++)
 					{
 						listToSkip[i].Skip(listToSkip[i + 1]);
 					}
+					
 					SConsole.Log(LOG_TAG, "Skip successful!", 2);
 				}
 			}
@@ -110,7 +115,6 @@ namespace StudySystem
 				_result.Mistakes += result.WrongAnswers;
 				_result.Time += result.Time;
 				
-				// adding rewards
 				ChangeStats(result.Reward);
 			}
 			
@@ -119,7 +123,8 @@ namespace StudySystem
 		
 		private void ChangeStats(RewardStats? stats)
 		{
-			if (stats == null) { return; }
+			if (stats == null)
+				return;
 			
 			_result.Stats.HousePrice += stats.Value.HousePrice;
 			_result.Stats.Beauty += stats.Value.Beauty;
@@ -130,24 +135,24 @@ namespace StudySystem
 		
 		private List<Card> FindPath(List<Card> path, Card card, Card find)
 		{	
-			if(card.GetCards().Contains(find)) { path.Add(find); return path; }
+			if (card.GetCards().Contains(find)) { path.Add(find); return path; }
 			
 			foreach (var item in card.GetCards())
 			{
 				List<Card> tmp = new List<Card>(path) {item};
 				tmp = FindPath(tmp, item, find);
 				
-				if(tmp != null)
-				{
+				if (tmp != null)
 					return tmp;
-				}
 			}
+			
 			return null;
 		}
 	}
 }
 
-
+// TODO: move to other file
+//? other system (own by card res)
 public class BranchResult
 {
 	public uint Mistakes;

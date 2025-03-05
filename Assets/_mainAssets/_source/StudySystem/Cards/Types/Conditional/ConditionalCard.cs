@@ -17,7 +17,7 @@ namespace StudySystem
 		[SerializeField] private UnityEvent OnCorrectEvent;
 		[SerializeField] private UnityEvent OnWrongEvent;
 		
-		[field:SerializeField, HideInInspector] protected override List<Card> _allCards { get; set; }
+		[field:SerializeField, HideInInspector] protected override List<Card> _pathFindCards { get; set; }
 		private bool _conditional;
 
 		private void OnValidate()
@@ -27,7 +27,7 @@ namespace StudySystem
 			cards.AddRange(WrongCards);
 			cards = cards.Distinct().ToList();
 			
-			_allCards = cards;
+			_pathFindCards = cards;
 		}
 
 		protected override void QuestCompleted(QuestResult result)

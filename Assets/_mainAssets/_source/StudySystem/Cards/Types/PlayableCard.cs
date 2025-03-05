@@ -11,7 +11,7 @@ namespace StudySystem
 		[Space(25)]
 		[SerializeField] private TimelineAsset Timeline;
 		
-		protected override List<Card> _allCards { get; set; } = new List<Card>();
+		protected override List<Card> _pathFindCards { get; set; } = new List<Card>();
 
 		public override void StartCard(Action previousCard, Branch branch)
 		{

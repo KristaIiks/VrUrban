@@ -11,16 +11,8 @@ namespace StudySystem
 		
 		[HideInInspector] public UnityEvent<QuestResult> OnComplete;
 		
-		public QuestResult Result { get; private set; }
-		
-		public bool IsCompleted
-		{ 
-			get => m_isCompleted; 
-			private set { m_isCompleted = value; _inProgress = !value; } 
-		}
-		
-		private bool m_isCompleted;
-		private bool _inProgress;
+		public QuestResult Result { get; private set; }		
+		public bool IsCompleted { get; private set; }
 		
 		public void StartQuest()
 		{
@@ -45,7 +37,6 @@ namespace StudySystem
 			if(!canContinue)
 			{
 				IsCompleted = false;
-				_inProgress = false;
 				
 				OnComplete.RemoveAllListeners();
 				Info.OnQuestComplete -= CompleteQuest;

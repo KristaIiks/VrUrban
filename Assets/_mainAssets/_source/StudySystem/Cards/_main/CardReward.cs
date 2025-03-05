@@ -1,5 +1,6 @@
 namespace StudySystem
 {
+	//? refactor to other system (value add by param name)
 	[System.Serializable]
 	public struct CardReward
 	{

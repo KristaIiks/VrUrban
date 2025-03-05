@@ -8,7 +8,7 @@ namespace StudySystem
 	{
 		[Space(25), Header("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"), Space(25)]
 		[SerializeField] private List<Card> CardsOrder = new List<Card>();
-		protected override List<Card> _allCards { get => CardsOrder; set => CardsOrder = value; }
+		protected override List<Card> _pathFindCards { get => CardsOrder; set => CardsOrder = value; }
 
 		public override void StartCard(Action previousCard, Branch branch)
 		{
