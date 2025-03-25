@@ -7,13 +7,12 @@ namespace ToolsSystem
 {
 	public sealed class Drill : PhysicTool
 	{
-		[SerializeField] private Collider _trigger;
-		[SerializeField] private GameObject _vfxObject;
-		[SerializeField] private float _drillSpeed;
-		[SerializeField] private Vector2 _pitchRange = new Vector2(-1f, 1f);
+		[SerializeField] private Collider Trigger;
+		[SerializeField] private GameObject VfxObject;
+		[SerializeField] private float DrillSpeed;
 		
-		public event Action Performed;
 		public event Action<SolidBlock> OnDrillObject;
+		public event Action Performed;
 		
 		private List<SolidBlock> _blocks = new List<SolidBlock>();
 
@@ -21,24 +20,19 @@ namespace ToolsSystem
 		
 		private void Update()
 		{
-			if (!_isGrabbed && _blocks.Count != 0) { return; }
+			if (!_isGrabbed && _blocks.Count == 0) { return; }
 			
-			int length = _blocks.Count - 1;
-			for (int i = length; i >= 0; i--)
+			for (int i = _blocks.Count - 1; i >= 0; i--)
 			{
-				if (_blocks[i].ApplyDamage(_drillSpeed * Time.deltaTime, out SolidBlockSettings settings))
+				if (_blocks[i].ApplyDamage(DrillSpeed * Time.deltaTime, out SolidBlockSettings settings))
 				{
 					if (settings.BreakSound)
-						_audio.PlayRandomized(settings.BreakSound, _pitchRange);
+						Audio.PlayInstanced(settings.BreakSound);
 					
 					OnDrillObject?.Invoke(_blocks[i]);
 					_blocks.RemoveAt(i);
 					
-					if (_blocks.Count == 0)
-					{
-						_vfxObject.SetActive(false);
-						_audio.Stop();
-					}
+					UpdateVisuals();
 				}					
 			}
 			Performed?.Invoke();
@@ -47,26 +41,37 @@ namespace ToolsSystem
 		protected override void SelectTool(bool state)
 		{
 			base.SelectTool(state);
-			_trigger.isTrigger = state;
+			Trigger.isTrigger = state;
 		}
 
-		private  void Reset()
+		private void Reset()
 		{
-			_trigger.isTrigger = false;
-			_vfxObject.SetActive(false);
+			Trigger.isTrigger = false;
+			VfxObject.SetActive(false);
 		}
 
+		private void UpdateVisuals()
+		{
+			if (_blocks.Count == 0)
+			{
+				VfxObject.SetActive(false);
+				Audio.Stop();
+				return;
+			}
+			
+			if (!Audio.isPlaying)
+			{
+				VfxObject.SetActive(true);
+				Audio.Play();
+			}
+		}
+		
 		private void OnTriggerEnter(Collider other)
 		{
 			if(other.TryGetComponent(out SolidBlock block))
 			{
-				if (_blocks.Count == 0)
-				{
-					_vfxObject.SetActive(true);
-					_audio.Play();
-				}
-					
 				_blocks.Add(block);
+				UpdateVisuals();
 			}
 		}
 		
@@ -75,12 +80,7 @@ namespace ToolsSystem
 			if(other.TryGetComponent(out SolidBlock block))
 			{
 				_blocks.Remove(block);
-				
-				if (_blocks.Count == 0)
-				{
-					_vfxObject.SetActive(false);
-					_audio.Stop();
-				}
+				UpdateVisuals();
 			}
 		}
 	}

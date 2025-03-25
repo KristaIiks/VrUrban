@@ -11,10 +11,13 @@ namespace ToolsSystem
 		
 		[field:Space(25)]
 		[field:SerializeField] public List<ChangeVariant> Variants { get; protected set; }
-		[SerializeField] private GameObject _defaultObject;
+		[SerializeField] private GameObject DefaultObject;
+		
+		//? Other world ui system?
 		[field:SerializeField] public Transform UIPosition { get; private set; }
 		
 		public event Action<int> OnObjectChanged;
+		
 		private event Action<int> _studyEvent;
 		
 		protected virtual void Awake() => Restart(false);
@@ -23,19 +26,23 @@ namespace ToolsSystem
 		{
 			id = Mathf.Clamp(id, 0, Variants.Count - 1);
 			
-			if (_defaultObject) { _defaultObject.SetActive(false); }
+			if (DefaultObject)
+				DefaultObject.SetActive(false);
 			
 			for (int i = 0; i < Variants.Count; i++)
 			{
 				if (Variants[i].Object)
 					Variants[i].Object.SetActive(false);
+				
 				Variants[i].IsSelected = false;
 			}
 			
-			if (Variants[id].Object != null) { Variants[id].Object.SetActive(true); }
+			if (Variants[id].Object)
+				Variants[id].Object.SetActive(true);
+			
 			Variants[id].IsSelected = true;
 			
-			if (Variants[id].Object != null)
+			if (Variants[id].Object)
 				SConsole.Log(LOG_TAG, $"Change [{gameObject.name}] object to [{Variants[id].Object.name}][{id}]");
 			else
 				SConsole.Log(LOG_TAG, $"Change [{gameObject.name}] object to [Nothing][{id}]");
@@ -43,13 +50,14 @@ namespace ToolsSystem
 			OnObjectChanged?.Invoke(id);
 		}
 		
-		public void HideVariant(int id) => HideVariant(id, true);
 		public void HideVariant(int id, bool value)
 		{
-			if (id >= Variants.Count) { return; }
+			if (id >= Variants.Count)
+				return;
 			
 			Variants[id].IsHidden = value;
 		}
+		public void HideVariant(int id) => HideVariant(id, true);
 		
 		public override void StartDefaultStudy(Action OnComplete = null)
 		{
@@ -67,13 +75,13 @@ namespace ToolsSystem
 
 		public override void Restart(bool canContinue)
 		{
-			if (_defaultObject) { _defaultObject.SetActive(true); }
+			if (DefaultObject) { DefaultObject.SetActive(true); }
 			
 			for(int i = 0; i < Variants.Count - 1; i++)
 			{
 				ChangeVariant variant = Variants[i];
 				
-				if (_defaultObject != variant.Object)
+				if (DefaultObject != variant.Object)
 				{
 					variant.Object.SetActive(false);
 					variant.IsSelected = false;

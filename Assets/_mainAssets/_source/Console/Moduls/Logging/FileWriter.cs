@@ -31,7 +31,7 @@ namespace SmartConsole
 		
 		public void RemoveText(int length)
 		{
-			if(length == 0) { return; }
+			if (length <= 0) { return; }
 			
 			using (FileStream fs = new FileStream(FilePath, FileMode.Open, FileAccess.Write))
 			{

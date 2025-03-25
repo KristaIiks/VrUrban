@@ -8,10 +8,11 @@ namespace ToolsSystem
 	[RequireComponent(typeof(Collider), typeof(Outline))]
 	public sealed class CrumblyBlock : BaseToolObject
 	{
-		[SerializeField] private CrumblyBlockSettings _blockSettings;
+		[SerializeField] private CrumblyBlockSettings Settings;
 		[SerializeField] private Outline Outline;
 		
 		public event Action OnDig;
+		
 		private event Action _studyEvent;
 		
 		private bool _canDig;
@@ -30,16 +31,15 @@ namespace ToolsSystem
 		
 		public bool Dig(out CrumblyBlockSettings settings)
 		{
-			SConsole.Log("Tool: Shovel", $"Try dig - {gameObject.name}");
 			if (!_canDig) { settings = null; return false; }
 			
 			gameObject.SetActive(false);
 			_canDig = false;
 			
+			SConsole.Log("CrumblyBlock", $"Successful dig");
 			OnDig?.Invoke(); 
 			
-			SConsole.Log("Tool: Shovel", $"Successful dig");
-			settings = _blockSettings;
+			settings = Settings;
 			return true;
 		}
 

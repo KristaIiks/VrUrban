@@ -26,43 +26,48 @@ namespace ToolsSystem
 		[SerializeField] private AudioClip InteractionClip;
 		[SerializeField] private AudioClip SelectObjectClip;
 		[SerializeField] private AudioClip DeSelectObjectClip;
-		[SerializeField] protected Vector2 PitchRange = new Vector2(-0.1f, .1f);
+		
+		// TODO: create struct for audio + pitch (or other settings)
+		[SerializeField] protected Vector2 PitchRange = new Vector2(1, 1.1f);
 		
 		public event Action<T> OnSelect;
 		public event Action<T> OnDeselect;
 		public event Action<T> OnHover;
 		
-		[SerializeField] protected LineRenderer _lineRenderer;
+		[SerializeField] private LineRenderer _lineRenderer;
 		[SerializeField] private SphereCollider _collider;
+		
 		protected T _selectedObject;
 
 		private T RayObject
 		{
-			get => _rayObject;
+			get => m_rayObject;
 			set 
 			{
-				if (_rayObject) { _rayObject.OnStateChanged -= SetRayColor; }
+				if (m_rayObject) { m_rayObject.OnStateChanged -= SetRayColor; }
 				
-				_rayObject = value;
+				m_rayObject = value;
 				
-				if (_rayObject) 
+				if (m_rayObject) 
 				{
-					_rayObject.OnStateChanged += SetRayColor;
-					SetRayColor(_rayObject.ObjectState);
+					m_rayObject.OnStateChanged += SetRayColor;
+					SetRayColor(m_rayObject.ObjectState);
 				}
 				else
 				{
 					SetRayColor(ErrorSelectGradient);
 				}
-				OnHover?.Invoke(_rayObject);
+				OnHover?.Invoke(m_rayObject);
 			}
 		}
-		private T _rayObject;
+		private T m_rayObject;
+		
 		private Transform _lastCheckedObject;
 		
 		protected override void OnValidate()
 		{
 			base.OnValidate();
+			
 			if (!_lineRenderer)
 			{
 				_lineRenderer = GetComponent<LineRenderer>();
@@ -94,6 +99,7 @@ namespace ToolsSystem
 			{
 				DeselectWithSound();
 			}
+			
 			base.SelectTool(state);
 		}
 
@@ -107,33 +113,28 @@ namespace ToolsSystem
 			if (canSelect)
 				Select(obj, filter);
 			if (interactionResult && InteractionClip)
-				_audio.PlayRandomized(InteractionClip, PitchRange);
+				Audio.PlayRandomized(InteractionClip, PitchRange);
 		}
+		
+		// TODO: interaction
 		public void InteractObject(T obj) => Select(obj, SelectFilter.Script);
 		
 		protected virtual void Select(T obj, SelectFilter filter)
 		{	
 			if(!IsEnabled && !filter.HasFlag(SelectFilter.Script)) { return; }
 			
-			if(_selectedObject || obj == null)
-			{
-				if(obj == null)
-				{
-					DeselectWithSound();
-					return;
-				}
-				else
-				{
-					Deselect();
-				}
-			}
+			if (_selectedObject)
+				DeselectWithSound();
+				
+			if (obj == null)
+				return;
 			
 			_selectedObject = obj;
 			_selectedObject.Select(filter);
 			_lineRenderer.enabled = false;
 		
 			if (SelectObjectClip)
-				_audio.PlayRandomized(SelectObjectClip, PitchRange);
+				Audio.PlayRandomized(SelectObjectClip, PitchRange);
 			
 			SConsole.Log(LOG_TAG, "Select object - " + obj.gameObject.name);
 			
@@ -141,45 +142,56 @@ namespace ToolsSystem
 		}
 		
 		protected virtual void Deselect()
-		{			
-			_selectedObject?.Deselect();			
-			OnDeselect?.Invoke(_selectedObject);
-			_selectedObject = null;
+		{
+			if (!_selectedObject)
+				return;
 			
 			SConsole.Log(LOG_TAG, "Deselect object");
+			
+			_selectedObject?.Deselect();			
+			OnDeselect?.Invoke(_selectedObject);
+			
+			_selectedObject = null;
 		}
 		
 		protected void DeselectWithSound()
 		{
-			if (!_selectedObject) { return; }
+			if (!_selectedObject)
+				return;
 			
 			if (DeSelectObjectClip)
-				_audio.PlayRandomized(DeSelectObjectClip, PitchRange);
+				Audio.PlayRandomized(DeSelectObjectClip, PitchRange);
 			
 			Deselect();
 		}
 		
 		private void CalculateRay()
 		{
-			if (!IsEnabled) { return; }
+			if (!IsEnabled)
+				return;
 			
 			_lineRenderer.SetPosition(0, transform.position);
 						
 			if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, RayDistance, RayMask))
 			{
-				Transform obj = GetParentObject(hit.transform);
+				_lineRenderer.SetPosition(1, hit.point);
+				
+				Transform obj = GetParentObject(hit.transform, Selectable.OBJECT_TAG);
+
+				if (obj == _lastCheckedObject || obj == _selectedObject?.transform)
+				{
+					_lineRenderer.enabled = ForceShowRay || SelectBtn.action.IsPressed() ||
+						(obj != _selectedObject?.transform && (RayObject?.CanSelect ?? false));
+					return;
+				}
+				
 				T component = obj.GetComponent<T>();
 				
-				_lineRenderer.SetPosition(1, hit.point);
 				_lineRenderer.enabled = ForceShowRay || SelectBtn.action.IsPressed() ||
-					(obj != _selectedObject?.transform && (component?.CanSelect ?? false)
-				);
+					(obj != _selectedObject?.transform && (component?.CanSelect ?? false));
 				
-				if(obj != _lastCheckedObject && obj != _selectedObject?.transform)
-				{
-					_lastCheckedObject = obj;
-					RayObject = component;
-				}
+				_lastCheckedObject = obj;
+				RayObject = component;
 			}
 			else
 			{
@@ -191,9 +203,9 @@ namespace ToolsSystem
 			}
 		}
 		
-		private Transform GetParentObject(Transform obj)
+		private Transform GetParentObject(Transform obj, string tag)
 		{
-			while (obj.parent != null && !obj.CompareTag(Selectable.OBJECT_TAG)) // Find selectable object
+			while (obj.parent != null && !obj.CompareTag(tag))
 			{
 				obj = obj.parent;
 			}
@@ -206,12 +218,10 @@ namespace ToolsSystem
 		
 		private void OnTriggerEnter(Collider other)
 		{
-			Transform obj = GetParentObject(other.transform);
+			Transform obj = GetParentObject(other.transform, Selectable.OBJECT_TAG);
 			
-			if (obj.CompareTag(Selectable.OBJECT_TAG) && obj.TryGetComponent(out T component))
-			{
+			if (obj.TryGetComponent(out T component))
 				InteractObject(component, SelectFilter.Zone);
-			}
 		}
 
 		private void OnDrawGizmosSelected()

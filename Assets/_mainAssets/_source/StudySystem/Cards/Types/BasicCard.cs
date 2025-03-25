@@ -8,14 +8,14 @@ namespace StudySystem
 	{
 		[Space(25), Header("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"), Space(25)]
 		[SerializeField] private List<Card> Cards = new List<Card>();
-		protected override List<Card> _allCards { get => Cards; set => Cards = value; }
+		protected override List<Card> _pathFindCards { get => Cards; set => Cards = value; }
 		
 		protected override void Continue()
 		{
 			// if has only 1 card force start next without drawing
-			if (_allCards.Count == 1 && !_allCards[0].IsCompleted)
+			if (_pathFindCards.Count == 1 && !_pathFindCards[0].IsCompleted)
 			{
-				_allCards[0].StartCard(() => Continue(), m_branch);
+				_pathFindCards[0].StartCard(() => Continue(), m_branch);
 				return;
 			}
 			

@@ -1,22 +1,23 @@
 using System;
 using Extensions.Audio;
+using SmartConsole;
 using UnityEngine;
 
 namespace ToolsSystem
 {
 	public sealed class Shovel : PhysicTool
 	{
-		[SerializeField] private Collider _collider;
-		[SerializeField] private CrumblyBlockSettings _defaultSettings;
-		[SerializeField] private Transform _effectsTransform;
-		[SerializeField] private MeshRenderer _hillObject;
+		[SerializeField] private Collider Collider;
+		[SerializeField] private Transform EffectsTransform;
+		[SerializeField] private MeshRenderer HillObject;
 		
 		public event Action<CrumblyBlock> OnDig;
 		
+		private float _angle = 0.5f;
 		private bool _isFilled;
-		private float _angle = 0.5f;  
 
 		private void Awake() => Reset();
+		
 		private void Update()
 		{
 			if (_isFilled && CheckRotation(-_angle))
@@ -28,29 +29,27 @@ namespace ToolsSystem
 		protected override void SelectTool(bool state)
 		{
 			base.SelectTool(state);
-			_collider.enabled = state;
+			Collider.enabled = state;
 		}
 
 		private void DigObject(CrumblyBlock block)
 		{
-			if (block == null && CheckRotation(_angle)) { return; }
+			if (block == null) { return; }
 			
+			SConsole.Log(LOG_TAG, $"Try dig - {gameObject.name}");
 			if(block.Dig(out CrumblyBlockSettings settings))
 			{
-				_audio.PlayRandomized(
-					settings.DigSound ?? _defaultSettings.DigSound, 
-					new Vector2(1, 1.1f)
-				);
+				Audio.PlayInstanced(settings.DigSound);
 			
 				ParticleSystem vfx = Instantiate(
-					settings.DigEffect ?? _defaultSettings.DigEffect,
-					_effectsTransform.position, 
+					settings.DigEffect,
+					EffectsTransform.position, 
 					Quaternion.identity, 
 					transform
 				);
-				Destroy(vfx, 3f);
+				Destroy(vfx, vfx.totalTime);
 				
-				_hillObject.material = settings.Material ?? _defaultSettings.Material;
+				HillObject.material = settings.HillMaterial;
 				ActivateHill(true);
 				
 				OnDig?.Invoke(block);
@@ -60,22 +59,15 @@ namespace ToolsSystem
 		private void ActivateHill(bool state)
 		{
 			_isFilled = state;
-			_hillObject.gameObject.SetActive(_isFilled);
+			HillObject.gameObject.SetActive(_isFilled);
 		}
 
 		private void Reset()
 		{
 			ActivateHill(false);
-			_collider.enabled = false;
+			Collider.enabled = false;
 		}
 
-		private void OnTriggerEnter(Collider other)
-		{
-			if (_isGrabbed && !_isFilled && other.TryGetComponent(out CrumblyBlock block))
-			{
-				DigObject(block);
-			}
-		}
 		private bool CheckRotation(float angle)
 		{
 			float dotProduct = Vector3.Dot(transform.up, Vector3.up);
@@ -83,5 +75,13 @@ namespace ToolsSystem
 			return dotProduct < angle;
 		}
 		
+		private void OnTriggerEnter(Collider other)
+		{
+			if (_isGrabbed && !_isFilled && CheckRotation(_angle) 
+				&& other.TryGetComponent(out CrumblyBlock block))
+			{
+				DigObject(block);
+			}
+		}
 	}
 }

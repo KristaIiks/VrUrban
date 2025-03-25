@@ -10,15 +10,16 @@ namespace ToolsSystem
 	{
 		private const string LOG_TAG = "SolidBlock";
 		
-		[SerializeField] private GameObject[] _blockStages;
-		[SerializeField] private SolidBlockSettings _settings;
+		[SerializeField] private GameObject[] Stages;
+		[SerializeField] private SolidBlockSettings Settings;
 		[SerializeField] private Outline Outline;
 		
 		public event Action<float> OnDamage;
 		public event Action OnDestroy;
+		
 		private event Action _studyEvent;
 		
-		private float _stageHealth { get => _settings.Health / _blockStages.Length; }
+		private float _stageHealth { get => Settings.Health / Stages.Length; }
 		private float _health;
 		
 		private bool _canInteract;
@@ -36,20 +37,23 @@ namespace ToolsSystem
 			}
 		}
 		
+		// TODO: move settings to other void
 		public bool ApplyDamage(float damage, out SolidBlockSettings settings)
 		{
 			if (!_canInteract) { settings = null; return false; }
 			
-			SConsole.Log(LOG_TAG, $"Block: {gameObject.name} takes damage \nHP reduced from {_health} to {_health - damage}");
+			SConsole.Log(LOG_TAG, $"Block: {gameObject.name} takes damage");
 			_health -= damage;
+			
 			OnDamage?.Invoke(_health);
 			
 			if (_health <= 0)
 			{
 				Destroy();
-				settings = _settings;
+				settings = Settings;
 				return true;
 			}
+			
 			SetModel();
 			
 			settings = null;
@@ -58,11 +62,11 @@ namespace ToolsSystem
 		
 		private void SetModel()
 		{
-			int index = _blockStages.Length - Mathf.CeilToInt(_health / _stageHealth);
-			for (int i = 0; i < _blockStages.Length; i++)
+			int index = Stages.Length - Mathf.CeilToInt(_health / _stageHealth);
+			for (int i = 0; i < Stages.Length; i++)
 			{
-				if (i == index) { _blockStages[i].SetActive(true); continue; }
-				_blockStages[i].SetActive(false);
+				if (i == index) { Stages[i].SetActive(true); continue; }
+				Stages[i].SetActive(false);
 			}
 		}
 		
@@ -93,7 +97,7 @@ namespace ToolsSystem
 			Outline.enabled = canContinue;
 			
 			gameObject.SetActive(true);
-			_health = _settings.Health;
+			_health = Settings.Health;
 			SetModel();
 			
 			SConsole.Log(LOG_TAG, $"Reset {gameObject.name}", 2);

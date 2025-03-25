@@ -24,7 +24,7 @@ namespace ToolsSystem
 			NameText.text = info.Name;
 			DescriptionText.text = info.Description;
 			
-			StatsText.text = $"Комфортнойсть: {info.Rewards.Comfort}\n" + 
+			StatsText.text = $"Комфортность: {info.Rewards.Comfort}\n" + 
 				$"Экология: {info.Rewards.Ecology}\n" +
 				$"Безопасность: {info.Rewards.Security}\n" +
 				$"Стоимость жилья: {info.Rewards.HousePrice}\n" +

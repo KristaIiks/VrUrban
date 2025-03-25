@@ -4,6 +4,8 @@ using UnityEngine;
 
 namespace StudySystem
 {
+	//? static in other quest if missing component
+	//? other solution
 	[CreateAssetMenu(menuName = "Study/Quests/Default", fileName = "New Quest", order = 0)]
 	public class DefaultQuest : QuestSO
 	{
@@ -11,13 +13,14 @@ namespace StudySystem
 		protected override DateTime Time { get; set; }
 		
 		private List<IStudyObject> _studyObjects = new List<IStudyObject>();
-		private int _questsCompleted;
+		private int _objectsCompleted;
 
 		public override void StartQuest(GameObject[] objs)
 		{
 			base.StartQuest(objs);
 			
-			_questsCompleted = 0;
+			// TODO: reset settings
+			_objectsCompleted = 0;
 			_studyObjects.Clear();
 			
 			foreach (GameObject obj in objs)
@@ -47,8 +50,10 @@ namespace StudySystem
 		
 		public override void CompleteQuest()
 		{
-			_questsCompleted++;
-			if (_questsCompleted < _studyObjects.Count) { return; }
+			_objectsCompleted++;
+			
+			if (_objectsCompleted < _studyObjects.Count)
+				return;
 			
 			OnQuestComplete?.Invoke(new QuestResult(
 				this,

@@ -1,16 +1,12 @@
 using System;
-using UnityEngine;
 
 namespace StudySystem
 {
+	//? refactor
 	public interface IStudyObject: IStudyEvents
 	{
-		void IStudyInit() => Restart(true);
 		void StartDefaultStudy(Action OnComplete);
-		
-		[ContextMenu("Restart")]
 		void Skip();
-		[ContextMenu("Restart")]
 		void Restart(bool canContinue = true);
 	}
 }

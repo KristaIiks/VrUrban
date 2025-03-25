@@ -6,6 +6,7 @@ using UnityEngine.Events;
 
 namespace StudySystem
 {
+	// TODO: need full refactoring
 	public abstract class Card : MonoBehaviour
 	{
 		protected static string LOG_TAG = "Study";
@@ -18,7 +19,7 @@ namespace StudySystem
 		
 		public bool IsCompleted { get; protected set; }
 				
-		protected abstract List<Card> _allCards { get; set; }
+		protected abstract List<Card> _pathFindCards { get; set; }
 		
 		protected Branch m_branch;
 		protected Action m_previousCard;
@@ -52,7 +53,7 @@ namespace StudySystem
 					Restart();
 					break;
 				case RestartType.All:
-					foreach (Card card in _allCards)
+					foreach (Card card in _pathFindCards)
 					{
 						card.Restart(type);
 					}
@@ -67,6 +68,6 @@ namespace StudySystem
 			IsCompleted = false;
 		}
 		
-		public IReadOnlyList<Card> GetCards() => _allCards;
+		public IReadOnlyList<Card> GetCards() => _pathFindCards;
 	}
 }

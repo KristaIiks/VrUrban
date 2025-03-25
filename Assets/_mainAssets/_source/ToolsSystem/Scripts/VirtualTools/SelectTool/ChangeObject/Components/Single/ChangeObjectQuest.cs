@@ -8,17 +8,18 @@ using UnityEngine;
 namespace ToolsSystem
 {
 	[CreateAssetMenu(menuName = "Study/Quests/ChangeObject", fileName = "New Quest", order = 1)]
-	public class ChangeObjectQuest : MistakesQuest
+	public sealed class ChangeObjectQuest : MistakesQuest
 	{
 		[field:SerializeField] public int[] CorrectObjectsId { get; private set; } = new int[1];
 		
-		protected override DateTime Time { get; set; }
-
 		public override event Action<QuestResult> OnQuestComplete;
+		
+		protected override DateTime Time { get; set; }
 		
 		private Changeable _changeable;
 		private int _currentObjectId = -1;
 
+		//? add support to multiple objects
 		public override void StartQuest(GameObject[] objs)
 		{
 			base.StartQuest(objs);
@@ -26,6 +27,7 @@ namespace ToolsSystem
 			if (!objs[0].TryGetComponent(out Changeable component))
 			{
 				SConsole.LogException("ChangeQuest", new MissingComponentException());
+				//? Start default quest?
 				return;
 			}
 			
@@ -68,7 +70,11 @@ namespace ToolsSystem
 					}
 				}
 				
-				if (mistakesId.Count == 0) { SConsole.LogException("Skipping", new IndexOutOfRangeException()); return; }
+				if (mistakesId.Count == 0)
+				{
+					SConsole.LogException("Skipping", new IndexOutOfRangeException());
+					return;
+				}
 				
 				_changeable.ChangeBuild(mistakesId[UnityEngine.Random.Range(0, mistakesId.Count)]);
 			}
@@ -97,17 +103,12 @@ namespace ToolsSystem
 				_mistakesCount++;
 				
 				if (RemoveOnMistake)
-				{
 					RemoveMistake();
-				}
 			}
 			
 			CompleteQuest();
 		}
 
-		protected override void RemoveMistake()
-		{
-			_changeable.HideVariant(_currentObjectId);
-		}
+		protected override void RemoveMistake() => _changeable.HideVariant(_currentObjectId);
 	}
 }
