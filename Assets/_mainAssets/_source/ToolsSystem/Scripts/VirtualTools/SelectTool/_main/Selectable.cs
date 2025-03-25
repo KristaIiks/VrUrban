@@ -19,11 +19,10 @@ namespace ToolsSystem
 			protected set
 			{
 				bool lastState = ObjectState;
+				m_canInteract = value;
 				
 				if (lastState != ObjectState)
 					OnStateChanged?.Invoke(ObjectState);
-				
-				m_canInteract = value;
 			}
 		}
 		public bool CanSelect
@@ -32,11 +31,10 @@ namespace ToolsSystem
 			set
 			{
 				bool lastState = ObjectState;
+				m_canSelect = value;
 				
 				if (lastState != ObjectState)
 					OnStateChanged?.Invoke(ObjectState);
-				
-				m_canSelect = value;
 			}
 		}
 		

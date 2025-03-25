@@ -179,13 +179,16 @@ namespace ToolsSystem
 				Transform obj = GetParentObject(hit.transform, Selectable.OBJECT_TAG);
 
 				if (obj == _lastCheckedObject || obj == _selectedObject?.transform)
+				{
+					_lineRenderer.enabled = ForceShowRay || SelectBtn.action.IsPressed() ||
+						(obj != _selectedObject?.transform && (RayObject?.CanSelect ?? false));
 					return;
+				}
 				
 				T component = obj.GetComponent<T>();
 				
 				_lineRenderer.enabled = ForceShowRay || SelectBtn.action.IsPressed() ||
-					(obj != _selectedObject?.transform && (component?.CanSelect ?? false)
-				);
+					(obj != _selectedObject?.transform && (component?.CanSelect ?? false));
 				
 				_lastCheckedObject = obj;
 				RayObject = component;

@@ -380,7 +380,7 @@ MonoBehaviour:
     IsBlocked: 0
     IsHidden: 0
     IsSelected: 0
-  _defaultObject: {fileID: 5808247849639987285}
+  DefaultObject: {fileID: 5808247849639987285}
   <UIPosition>k__BackingField: {fileID: 8884203013218071045}
   Objects: []
 --- !u!1 &8730596394711471604

@@ -425,12 +425,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <ToolInfo>k__BackingField: {fileID: 11400000, guid: 5b92df2e18af71d43baeb431cf0f23b3,
     type: 2}
+  Audio: {fileID: 5832507010077190564}
   GrabType: 2
-  _forceInteract: 0
-  _collider: {fileID: 6069361421699926147}
-  _defaultSettings: {fileID: 11400000, guid: 0447ea54b16120c44a53b3921201ea10, type: 2}
-  _effectsTransform: {fileID: 1950343360233662274}
-  _hillObject: {fileID: 4298073225728520831}
+  ForceInteract: 0
+  _grabInteractable: {fileID: 6113557362270415044}
+  Collider: {fileID: 6069361421699926147}
+  EffectsTransform: {fileID: 1950343360233662274}
+  HillObject: {fileID: 4298073225728520831}
 --- !u!114 &6113557362270415044
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -16,6 +16,6 @@ MonoBehaviour:
   <ToolDescription>k__BackingField: "\u041C\u043E\u0436\u0435\u0442 \u0440\u0430\u0441\u043F\u044B\u043B\u044F\u0442\u044C
     \u0442\u0440\u0430\u0432\u043A\u0443 \u043D\u0430 \u0433\u0430\u0437\u043E\u043D
     :)"
-  <ToolMode>k__BackingField: 1
+  <InteractionMode>k__BackingField: 1
   <SelectToolClip>k__BackingField: {fileID: 0}
   <DeSelectToolClip>k__BackingField: {fileID: 0}

@@ -93,6 +93,8 @@ namespace StudySystem
 						Quests.ForEach((quest) => quest.Skip(false));
 						break;
 				}
+				
+				_conditional = true;
 				OnCorrectEvent?.Invoke();
 			}
 			else
@@ -108,6 +110,8 @@ namespace StudySystem
 						Quests.ForEach((quest) => quest.Skip());
 						break;
 				}
+				
+				_conditional = false;
 				OnWrongEvent?.Invoke();
 			}
 		}

@@ -30,6 +30,7 @@ namespace ToolsSystem
 			GrabHand.enableUIInteraction = _canUI;
 			
 			tool.ChangeToolActiveState(true);
+			_activeTools = tool;
 		}
 		
 		public void DeactivateTool()

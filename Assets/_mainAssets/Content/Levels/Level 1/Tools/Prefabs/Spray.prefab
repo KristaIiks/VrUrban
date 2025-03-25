@@ -48,12 +48,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <ToolInfo>k__BackingField: {fileID: 11400000, guid: 3da0343d59bbe824e935ba87f7e4dccf,
     type: 2}
-  _interactInput: {fileID: 187161793506945269, guid: c348712bda248c246b8c49b3db54643f,
-    type: 3}
-  _sprayDistance: 2
-  _interactionDelay: 1
-  _sprayClip: {fileID: 8300000, guid: 784f1f77e28024240ac5268561581957, type: 3}
-  _effect: {fileID: 846305142953123390}
+  Audio: {fileID: 4522297882300151388}
+  Input: {fileID: 0}
+  Distance: 2
+  InteractDelay: 0.5
+  VFX: {fileID: 846305142953123390}
 --- !u!82 &4522297882300151388
 AudioSource:
   m_ObjectHideFlags: 0

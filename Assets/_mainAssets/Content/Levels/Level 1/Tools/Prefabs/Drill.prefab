@@ -295,12 +295,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <ToolInfo>k__BackingField: {fileID: 11400000, guid: 621af2b33a4d9de4db420a1a91600ff9,
     type: 2}
+  Audio: {fileID: 3437262475049048704}
   GrabType: 3
-  _forceInteract: 0
-  _trigger: {fileID: 1535313838541110250}
-  _vfxObject: {fileID: 1989889639805015426}
-  _drillSpeed: 35
-  _pitchRange: {x: -1, y: 1}
+  ForceInteract: 0
+  _grabInteractable: {fileID: 8648699685961544223}
+  Trigger: {fileID: 1535313838541110250}
+  VfxObject: {fileID: 1989889639805015426}
+  DrillSpeed: 0
 --- !u!114 &8648699685961544223
 MonoBehaviour:
   m_ObjectHideFlags: 0
