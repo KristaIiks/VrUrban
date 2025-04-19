@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -30,7 +31,7 @@ namespace ToolsSystem
 				$"Стоимость жилья: {info.Rewards.HousePrice}\n" +
 				$"Эстетика: {info.Rewards.Beauty}\n";
 			
-			PriceText.text = info.Rewards.Money.ToString();
+			PriceText.text = Math.Sign(info.Rewards.Money).ToString() + Math.Abs(info.Rewards.Money).ToString();
 			
 			BuildIcon.sprite = info.Icon;
 			_tool = tool;

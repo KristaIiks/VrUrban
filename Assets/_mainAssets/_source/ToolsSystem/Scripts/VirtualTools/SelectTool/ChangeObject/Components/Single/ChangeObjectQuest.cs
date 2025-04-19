@@ -32,6 +32,8 @@ namespace ToolsSystem
 			}
 			
 			_changeable = component;
+			_changeable.Highlight(true);
+			
 			_changeable.OnObjectChanged += CheckId;
 			
 			_changeable.CanSelect = true;
@@ -91,6 +93,7 @@ namespace ToolsSystem
 				Time = DateTime.UtcNow;
 			}
 			
+			_changeable.Highlight(canContinue);
 			_changeable.Restart(canContinue);
 		}
 		

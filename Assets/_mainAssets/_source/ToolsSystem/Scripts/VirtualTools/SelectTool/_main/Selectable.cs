@@ -85,7 +85,10 @@ namespace ToolsSystem
 			_isSelected = true;
 			
 			if (SelectOutline)
+			{
+				SelectOutline.OutlineColor = Color.yellow;
 				SelectOutline.enabled = true;
+			}
 			
 			OnSelectChanged?.Invoke(true);
 		}
@@ -100,6 +103,18 @@ namespace ToolsSystem
 			
 			OnSelectChanged?.Invoke(false);
 		}
+		
+		public virtual void Highlight(bool state)
+		{
+			if (SelectOutline) return;
+			
+			SelectOutline.enabled = state;
+			
+			SelectOutline.OutlineWidth = state ? 4f : 8f;
+			SelectOutline.OutlineColor = state ? Color.white : Color.yellow;
+		}
+
+		public override void StartDefaultStudy(Action OnComplete = null) => Highlight(true);
 		
 		protected bool CompareFilter(SelectFilter filter) => SelectFilter.HasFlag(filter);
 	}

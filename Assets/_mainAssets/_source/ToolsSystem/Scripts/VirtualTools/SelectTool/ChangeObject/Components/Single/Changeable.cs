@@ -61,6 +61,8 @@ namespace ToolsSystem
 		
 		public override void StartDefaultStudy(Action OnComplete = null)
 		{
+			base.StartDefaultStudy(OnComplete);
+			
 			CanSelect = true;
 			
 			_studyEvent = (id) => { OnComplete?.Invoke(); CanSelect = false; OnObjectChanged -= _studyEvent; };
@@ -94,6 +96,8 @@ namespace ToolsSystem
 			}
 			
 			CanSelect = canContinue;
+			Deselect();
+			
 			SConsole.Log(LOG_TAG, $"Reset {gameObject.name}", 2);
 		}
 	}

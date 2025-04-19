@@ -21,7 +21,7 @@ namespace StudySystem
 		[HideInInspector] public Card _currentCard; // TODO: private
 		private bool _isStarted;
 		
-		private BranchResult _result = new BranchResult();
+		public readonly BranchResult result;
 		
 		// TODO: add onAwake param
 		public void Start() => StartBranch();
@@ -108,29 +108,28 @@ namespace StudySystem
 			StartBranch();
 		}
 		
-		public void CompleteCard(List <QuestResult> results, RewardStats? cardStats = null)
+		public void CompleteCard(List<QuestResult> results, RewardStats? cardStats = null)
 		{
 			foreach (QuestResult result in results)
 			{
-				_result.Mistakes += result.WrongAnswers;
-				_result.Time += result.Time;
+				this.result.Mistakes += result.WrongAnswers;
+				this.result.Time += result.Time;
 				
-				ChangeStats(result.Reward);
+				if (result.Reward != null)
+					ChangeStats((RewardStats)result.Reward);
 			}
 			
-			ChangeStats(cardStats);
+			if (cardStats != null)
+				ChangeStats((RewardStats)cardStats);
 		}
 		
-		private void ChangeStats(RewardStats? stats)
-		{
-			if (stats == null)
-				return;
-			
-			_result.Stats.HousePrice += stats.Value.HousePrice;
-			_result.Stats.Beauty += stats.Value.Beauty;
-			_result.Stats.Comfort += stats.Value.Comfort;
-			_result.Stats.Ecology += stats.Value.Ecology;
-			_result.Stats.Security += stats.Value.Security;
+		private void ChangeStats(RewardStats stats)
+		{			
+			result.Stats.HousePrice += stats.HousePrice;
+			result.Stats.Beauty += stats.Beauty;
+			result.Stats.Comfort += stats.Comfort;
+			result.Stats.Ecology += stats.Ecology;
+			result.Stats.Security += stats.Security;
 		}
 		
 		private List<Card> FindPath(List<Card> path, Card card, Card find)

@@ -22,7 +22,7 @@ namespace StudySystem
 				$"Стоимость жилья: {questCard.Stats.HousePrice}\n" +
 				$"Эстетика: {questCard.Stats.Beauty}\n";
 			
-			PriceText.text = questCard.Price.ToString();
+			PriceText.text = Math.Sign(questCard.Price).ToString() + Math.Abs(questCard.Price).ToString();
 		}
 		
 		public override Type GetCardsType() => typeof(RewardQuestCardSO);
